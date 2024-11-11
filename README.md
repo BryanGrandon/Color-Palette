@@ -1,50 +1,45 @@
-# React + TypeScript + Vite
+# Color Palette
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Generate your color palette for your projects
 
-Currently, two official plugins are available:
+<!-- - [🌐 Website Demo.]() -->
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 📚 Technologies Used
 
-## Expanding the ESLint configuration
+[![React](https://img.shields.io/badge/React-61DAFB?style=flat&logo=react&logoColor=black)](https://react.dev/)
+[![TS](https://img.shields.io/badge/TypeScript-3178C6?style=flat&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![Vite](https://img.shields.io/badge/Vite-646CFF?logo=vite&logoColor=fff)](https://vite.dev/)
+[![sass](https://img.shields.io/badge/Sass-CC6699?style=flat&logo=sass&logoColor=white)](https://sass-lang.com/)
+[![React-icons](https://img.shields.io/badge/React_icons-2D3136.svg?style=flat&logo=react&logoColor=white)](https://www.npmjs.com/package/react-icons)
+[![React router dom](https://img.shields.io/badge/-React%20Router-CA4245??style=flat&logo=react-router&logoColor=white)](https://reactrouter.com/en/main)
+[![Vitest](https://img.shields.io/badge/vitest-6E9F18?style=flat&logo=vitest&logoColor=white)](https://vitest.dev/)
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## ⚙️ Installation
 
-- Configure the top-level `parserOptions` property like this:
+Clone the repository:
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+```bash
+git clone https://github.com/BryanGrandon/Color-Palette.git
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+Access the project folder
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+```bash
+cd Color-Palette
 ```
+
+Install all the project dependencies with:
+
+```bash
+npm install
+```
+
+And start the development server with:
+
+```bash
+npm run dev
+```
+
+## License
+
+See the [LICENSE](/LICENSE.MD) file for license rights and limitations (MIT).
