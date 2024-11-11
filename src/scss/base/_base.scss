@@ -1,0 +1,21 @@
+@use "../utilities/mixin" as *;
+@use "../utilities/variables" as *;
+
+html {
+  @include scroll($main, $stroke, 0.1rem);
+  @include selection($main, $stroke);
+}
+
+body {
+  font-family: $main-source;
+  color: $dark;
+  background-color: $light;
+}
+
+/* We adapt them to the dark mode.  */
+@media (prefers-color-scheme: dark) {
+  body {
+    color: $light;
+    background-color: $dark;
+  }
+}

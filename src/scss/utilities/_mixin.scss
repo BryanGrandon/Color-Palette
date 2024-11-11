@@ -1,0 +1,49 @@
+@mixin flexbox($direction, $wrap, $just, $align) {
+  display: flex;
+  flex-flow: $direction $wrap;
+  justify-content: $just;
+  align-items: $align;
+}
+
+@mixin overlay($color) {
+  position: relative;
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: $color;
+  }
+}
+
+@mixin scroll($color, $bg, $margin) {
+  ::-webkit-scrollbar {
+    width: 0.2rem;
+    height: 0.3rem;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: $color;
+    border-radius: 100vw;
+  }
+  ::-webkit-scrollbar-track {
+    margin-block: $margin;
+    margin-inline: $margin;
+    background: $bg;
+  }
+  ::-webkit-scrollbar-corner {
+    display: none;
+  }
+}
+
+@mixin selection($color, $bg) {
+  ::-moz-selection {
+    background-color: $bg;
+    color: $color;
+  }
+  ::selection {
+    background-color: $bg;
+    color: $color;
+  }
+}
