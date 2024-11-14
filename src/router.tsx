@@ -28,12 +28,20 @@ const router = createHashRouter(
           hydrateFallbackElement: TheFallback('Loading saved'),
         },
         {
-          path: 'image',
+          path: 'color-palettes',
           lazy: async () => {
-            const Image = await import('./pages/image')
-            return { Component: Image.default }
+            const ColorPalettes = await import('./pages/color-palettes')
+            return { Component: ColorPalettes.default }
           },
-          hydrateFallbackElement: TheFallback('Loading Image'),
+          hydrateFallbackElement: TheFallback('Loading Color Palettes'),
+        },
+        {
+          path: 'palette-from-image',
+          lazy: async () => {
+            const PaletteFromImage = await import('./pages/palette-from-image')
+            return { Component: PaletteFromImage.default }
+          },
+          hydrateFallbackElement: TheFallback('Loading Palette from Image'),
         },
       ],
     },
