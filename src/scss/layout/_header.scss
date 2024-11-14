@@ -1,0 +1,71 @@
+@use '../utilities/mixin' as *;
+@use '../utilities/variables' as *;
+
+.header-main {
+  @include overlay(#0000008c);
+  background-image: url('https://images.pexels.com/photos/1694000/pexels-photo-1694000.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
+  background-size: cover;
+}
+
+.header {
+  @include flexbox(row, nowrap, space-between, center);
+  gap: 1rem;
+  padding: 1rem 2rem;
+  position: relative;
+  border-bottom: 1px solid rgb(255, 255, 255);
+
+  &__nav {
+    @include flexbox(row, nowrap, space-between, center);
+    gap: 2rem;
+    font-size: 0.9rem;
+    font-weight: bold;
+  }
+
+  &__buttons {
+    @include flexbox(row, nowrap, space-between, center);
+    gap: 3rem;
+  }
+}
+
+.btn-github {
+  @include flexbox(row, nowrap, space-between, center);
+  gap: 0.5rem;
+}
+
+.nav {
+  &-dropdown {
+    @include flexbox(column, nowrap, center, center);
+    gap: 1rem;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    position: absolute;
+    width: 100%;
+    background-color: #0000008c;
+  }
+  &-link {
+    text-transform: capitalize;
+    text-align: center;
+    cursor: pointer;
+    &:hover {
+      color: $main;
+    }
+  }
+  &-btn {
+    display: none;
+    font-size: 1.2rem;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .header__nav {
+    display: none;
+  }
+  .nav {
+    &-link {
+      width: 100%;
+    }
+    &-btn {
+      display: block;
+    }
+  }
+}
