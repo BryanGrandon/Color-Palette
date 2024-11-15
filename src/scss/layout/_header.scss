@@ -57,8 +57,13 @@
 }
 
 @media screen and (max-width: 800px) {
-  .header__nav {
-    display: none;
+  .header {
+    &__nav {
+      display: none;
+    }
+    &__buttons {
+      gap: 1rem;
+    }
   }
   .nav {
     &-link {
@@ -66,6 +71,12 @@
     }
     &-btn {
       display: block;
+    }
+  }
+  .btn-github {
+    font-size: 1.2rem;
+    &__text {
+      display: none;
     }
   }
 }
