@@ -1,1 +1,5 @@
-
+.home {
+  display: grid;
+  //   grid-template-columns: repeat(auto-fill, minmax(1fr, 2fr));
+  grid-template-columns: repeat(9, 1fr);
+}
