@@ -14,7 +14,7 @@ describe('Random Color', () => {
     const regularExpressions = (regexp: RegExp, testText: string) => {
       return regexp.test(testText) ? true : false
     }
-    expect(regularExpressions(/^#[A-F0-9]*/, randomColor())).toBe(true)
-    expect(regularExpressions(/^#[A-F0-9]*/, randomColor(true))).toBe(true)
+    expect(regularExpressions(/^#[A-F0-9]{6}$/, randomColor())).toBe(true)
+    expect(regularExpressions(/^#[A-F0-9]{8}$/, randomColor(true))).toBe(true)
   })
 })
