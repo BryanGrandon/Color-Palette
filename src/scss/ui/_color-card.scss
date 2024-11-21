@@ -3,7 +3,7 @@
 
 .color-card {
   @include flexbox(column, nowrap, space-between, center);
-  padding: 1rem 0 2rem 0;
+  padding: 1rem 0 2rem;
   height: 20rem;
 
   &:hover {
@@ -25,7 +25,7 @@
   }
 
   &__options {
-    @include flexbox(column, nowrap, normal, center);
+    @include flexbox(column, nowrap, normal, normal);
     gap: 1rem;
     position: relative;
     display: none;

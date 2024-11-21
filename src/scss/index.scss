@@ -2,6 +2,7 @@
 @use './base/reset-styles';
 @use './base/typography';
 @use './base/base';
+@use './base/media-queries';
 
 // Layout
 @use './layout/header';
