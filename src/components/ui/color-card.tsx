@@ -1,6 +1,8 @@
-import { FaRegBookmark, FaBookmark } from 'react-icons/fa'
+// import { FaRegBookmark, FaBookmark } from 'react-icons/fa'
 import { TfiReload } from 'react-icons/tfi'
 import { IoIosColorPalette } from 'react-icons/io'
+import { IoClose } from 'react-icons/io5'
+import { FaArrowsUpDown } from 'react-icons/fa6'
 import CopyButton from './copy-button'
 
 type Props = {
@@ -11,12 +13,12 @@ const ColorCard = ({ color }: Props) => {
   console.log(color)
   return (
     <section className='color-card' style={{ background: color }}>
-      <h2>{color}</h2>
-      <section>
+      <h2 className='color-card__title'>{color}</h2>
+      <section className='color-card__options'>
         <CopyButton onClick={() => {}} />
+
         <button>
-          <FaBookmark />
-          <FaRegBookmark />
+          <FaArrowsUpDown />
         </button>
 
         <label htmlFor='color-s'>
@@ -25,6 +27,9 @@ const ColorCard = ({ color }: Props) => {
 
         <button>
           <TfiReload />
+        </button>
+        <button>
+          <IoClose />
         </button>
       </section>
     </section>
