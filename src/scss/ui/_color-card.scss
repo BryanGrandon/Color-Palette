@@ -27,10 +27,7 @@
   &__options {
     @include flexbox(column, nowrap, normal, center);
     gap: 1rem;
-    font-size: 1.3rem;
-    font-weight: bold;
     position: relative;
-    color: $white;
     display: none;
   }
 }

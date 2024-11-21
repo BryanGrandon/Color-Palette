@@ -4,7 +4,7 @@ import { randomColor } from '../functions/random-color'
 const Home = () => {
   const array: string[] = []
 
-  for (let i = 0; i < 10; i++) {
+  for (let i = 0; i < 9; i++) {
     const color = randomColor()
     array.push(color)
   }

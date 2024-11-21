@@ -5,9 +5,9 @@ type CopyBtn = {
   onClick: () => void
 }
 
-const CopyButton = ({ className, onClick }: CopyBtn) => {
+const CopyButton = ({ className = '', onClick }: CopyBtn) => {
   return (
-    <button className={`${className} copy-button`} onClick={onClick}>
+    <button className={`copy-button ${className}`} onClick={onClick}>
       <IoCopyOutline className='copy-button__deselected' />
       <IoCopy className='copy-button__selected' />
     </button>
