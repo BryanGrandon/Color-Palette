@@ -4,7 +4,6 @@ import IconButton from './icon-button'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 // Icons
-// import { FaRegBookmark, FaBookmark } from 'react-icons/fa'
 import { FaPalette } from 'react-icons/fa'
 import { IoClose, IoReloadOutline } from 'react-icons/io5'
 import { FaArrowsUpDown } from 'react-icons/fa6'
@@ -13,8 +12,8 @@ type Props = {
   color: string
 }
 
-const ColorCard = ({ color }: Props) => {
-  const notify = (text: string) => {
+const ColorCard = ({ color }: Props): JSX.Element => {
+  const notify = (text: string): void => {
     toast.success(text, {
       autoClose: 1500,
       theme: 'dark',

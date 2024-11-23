@@ -4,7 +4,7 @@ type IconBtn = {
   onClick: () => void
 }
 
-const IconButton = ({ className = '', value, onClick }: IconBtn) => {
+const IconButton = ({ className = '', value, onClick }: IconBtn): JSX.Element => {
   return (
     <button onClick={onClick} className={`icon-button ${className}`}>
       {value}

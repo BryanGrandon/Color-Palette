@@ -7,14 +7,13 @@ type CopyBtn = {
 }
 
 const CopyButton = ({ className = '', onClick, value }: CopyBtn) => {
+  const handlerClick = (): void => {
+    onClick()
+    navigator.clipboard.writeText(value)
+  }
+
   return (
-    <button
-      className={`copy-button ${className}`}
-      onClick={() => {
-        onClick()
-        navigator.clipboard.writeText(value)
-      }}
-    >
+    <button className={`copy-button ${className}`} onClick={handlerClick}>
       <IoCopyOutline className='copy-button__deselected' />
       <IoCopy className='copy-button__selected' />
     </button>
