@@ -1,11 +1,9 @@
-interface IColorPalette {
+export interface IColorPalette {
   id: number
-  name: string
-  color: string[]
+  hex: string
 }
 
-type ColorPaletteType = {
-  colorPalettes: IColorPalette[]
+export type ColorPaletteType = {
+  colorLimit: number
+  colorPalette: IColorPalette[]
 }
-
-export { ColorPaletteType, IColorPalette }

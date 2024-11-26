@@ -1,15 +1,21 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { ColorPaletteContext } from './color-palette-context'
 import { IColorPalette } from '../types/context'
+import { generateColorPalette } from '../functions/generate-color-palette'
 
 type ProviderProps = {
   children: React.ReactNode
 }
 
 const ColorPaletteProvider = ({ children }: ProviderProps) => {
-  const [colorPalettes] = useState<IColorPalette[]>([{ id: 1, name: 'Color Palette 1', color: ['#f00'] }])
+  const [colorPalette, setColorPalette] = useState<IColorPalette[]>([{ id: 1, hex: '#f00' }])
+  const [colorLimit] = useState(5)
 
-  return <ColorPaletteContext.Provider value={{ colorPalettes }}>{children}</ColorPaletteContext.Provider>
+  useEffect(() => {
+    setColorPalette(generateColorPalette(colorLimit))
+  }, [colorLimit])
+
+  return <ColorPaletteContext.Provider value={{ colorPalette, colorLimit }}>{children}</ColorPaletteContext.Provider>
 }
 
 export { ColorPaletteProvider }
