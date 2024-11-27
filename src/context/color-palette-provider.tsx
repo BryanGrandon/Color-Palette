@@ -19,7 +19,6 @@ const ColorPaletteProvider = ({ children }: ProviderProps) => {
         setColorPalette([...colorPalette, { id: colorLimit + 1, hex: randomColor() }])
       }
     },
-
     delete: (id: number) => {
       if (colorLimit <= 9 && colorLimit >= 3) {
         setColorLimit(colorLimit - 1)
@@ -27,6 +26,14 @@ const ColorPaletteProvider = ({ children }: ProviderProps) => {
         colors.map((e, i) => (e.id = i + 1))
         setColorPalette(colors)
       }
+    },
+    change: (id: number) => {
+      colorPalette.map((e) => {
+        if (e.id === id) {
+          e.hex = randomColor()
+          setColorPalette([...colorPalette])
+        }
+      })
     },
   }
 

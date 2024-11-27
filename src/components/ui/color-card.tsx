@@ -33,7 +33,7 @@ const ColorCard = ({ color, id }: Props): JSX.Element => {
         <CopyButton onClick={() => notify(`Color copied!`)} value={color} />
         <IconButton className='not-on-mobile' value={<FaPalette />} onClick={() => {}} />
         <IconButton className='not-on-mobile' value={<FaArrowsUpDown />} onClick={() => {}} />
-        <IconButton value={<IoReloadOutline />} onClick={() => {}} />
+        <IconButton value={<IoReloadOutline />} onClick={() => modify.change(id)} />
         {colorLimit >= 3 ? (
           <IconButton
             value={<IoClose />}
