@@ -1,15 +1,11 @@
 import { IColorPalette } from '../types/context'
 import { randomColor } from './random-color'
 
-export const generateColorPalette = (limit: number): IColorPalette[] => {
+export const generateColorPalette = (limit: number = 1): IColorPalette[] => {
   const palette: IColorPalette[] = []
 
   for (let i = 1; i <= limit; i++) {
-    const color = {
-      id: i,
-      hex: randomColor(),
-    }
-    palette.push(color)
+    palette.push({ id: i, hex: randomColor() })
   }
 
   return palette
