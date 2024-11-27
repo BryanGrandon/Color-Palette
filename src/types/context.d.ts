@@ -13,4 +13,5 @@ export type ColorPaletteType = {
   colorLimit: number
   colorPalette: IColorPalette[]
   modify: Modify
+  notify: (text: string) => void
 }

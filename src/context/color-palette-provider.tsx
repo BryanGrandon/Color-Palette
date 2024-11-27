@@ -3,6 +3,9 @@ import { ColorPaletteContext } from './color-palette-context'
 import { IColorPalette } from '../types/context'
 import { generateColorPalette } from '../functions/generate-color-palette'
 import { randomColor } from '../functions/random-color'
+// react-toastify
+import { ToastContainer, toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 type ProviderProps = {
   children: React.ReactNode
@@ -37,8 +40,18 @@ const ColorPaletteProvider = ({ children }: ProviderProps) => {
     },
   }
 
+  const notify = (text: string): void => {
+    toast.success(text, {
+      autoClose: 1500,
+      theme: 'dark',
+    })
+  }
+
   return (
-    <ColorPaletteContext.Provider value={{ colorPalette, colorLimit, modify }}>{children}</ColorPaletteContext.Provider>
+    <ColorPaletteContext.Provider value={{ colorPalette, colorLimit, modify, notify }}>
+      <ToastContainer />
+      {children}
+    </ColorPaletteContext.Provider>
   )
 }
 
