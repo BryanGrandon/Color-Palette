@@ -7,12 +7,17 @@ import 'react-toastify/dist/ReactToastify.css'
 import { FaPalette } from 'react-icons/fa'
 import { IoClose, IoReloadOutline } from 'react-icons/io5'
 import { FaArrowsUpDown } from 'react-icons/fa6'
+import { useContext } from 'react'
+import { ColorPaletteContext } from '../../context/color-palette-context'
 
 type Props = {
+  id: number
   color: string
 }
 
-const ColorCard = ({ color }: Props): JSX.Element => {
+const ColorCard = ({ color, id }: Props): JSX.Element => {
+  const { modify, colorLimit } = useContext(ColorPaletteContext)
+
   const notify = (text: string): void => {
     toast.success(text, {
       autoClose: 1500,
@@ -29,7 +34,14 @@ const ColorCard = ({ color }: Props): JSX.Element => {
         <IconButton className='not-on-mobile' value={<FaPalette />} onClick={() => {}} />
         <IconButton className='not-on-mobile' value={<FaArrowsUpDown />} onClick={() => {}} />
         <IconButton value={<IoReloadOutline />} onClick={() => {}} />
-        <IconButton value={<IoClose />} onClick={() => {}} />
+        {colorLimit >= 3 ? (
+          <IconButton
+            value={<IoClose />}
+            onClick={() => {
+              modify.delete(id)
+            }}
+          />
+        ) : null}
       </section>
     </section>
   )
