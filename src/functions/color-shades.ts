@@ -4,7 +4,7 @@ type RGB = {
   g: number
   b: number
 }
-const hexToRGB = (hex: string): RGB => {
+const hexToRgb = (hex: string): RGB => {
   let r, g, b
   if (hex.length === 6) {
     r = +`0x${hex[0]}${hex[1]}`
@@ -26,7 +26,7 @@ type HSL = {
   s: number
   l: number
 }
-const RGBToHSL = (rgb: RGB): HSL => {
+const RgbToHsl = (rgb: RGB): HSL => {
   const r = rgb.r / 255
   const g = rgb.g / 255
   const b = rgb.b / 255
@@ -47,8 +47,45 @@ const RGBToHSL = (rgb: RGB): HSL => {
   let s = delta === 0 ? 0 : delta / (1 - Math.abs(2 * l - 1))
   l = +(l * 100).toFixed(0)
   s = +(s * 100).toFixed(0)
-
   return { h, s, l }
+}
+
+// HSL to Hex
+const HslToRgb = (H: number, S: number, L: number) => {
+  const h = H / 360
+  const s = S / 100
+  const l = L / 100
+  let t2
+  let t3
+  let val
+
+  if (s === 0) {
+    val = l * 255
+    return [val, val, val]
+  }
+
+  if (l < 0.5) t2 = l * (1 + s)
+  else t2 = l + s - l * s
+  const t1 = 2 * l - t2
+
+  const rgb = [0, 0, 0]
+  for (let i = 0; i < 3; i++) {
+    t3 = h + (1 / 3) * -(i - 1)
+    if (t3 < 0) t3++
+    if (t3 > 1) t3--
+    if (6 * t3 < 1) val = t1 + (t2 - t1) * 6 * t3
+    else if (2 * t3 < 1) val = t2
+    else if (3 * t3 < 2) val = t1 + (t2 - t1) * (2 / 3 - t3) * 6
+    else val = t1
+    rgb[i] = val * 255
+  }
+
+  return rgb
+}
+const RgbToHex = (args: number[]) => {
+  const integer = ((Math.round(args[0]) & 0xff) << 16) + ((Math.round(args[1]) & 0xff) << 8) + (Math.round(args[2]) & 0xff)
+  const string = integer.toString(16).toUpperCase()
+  return '000000'.substring(string.length) + string
 }
 
 // Shades
@@ -56,21 +93,22 @@ const RGBToHSL = (rgb: RGB): HSL => {
 const shades = (hsl: HSL, number: number) => {
   const array = []
   const limit = 100 / number
-  let lighting = 0
+  let lighting = hsl.l === 100 ? 100 : 0
+
   for (let i = 0; i <= number; i++) {
     if (hsl.l === lighting) {
       array.push({ id: i, color: { h: hsl.h, s: hsl.s, l: hsl.l }, lighting: hsl.l })
-      lighting += limit
+      if (hsl.l === 100) lighting -= limit
+      else lighting += limit
       continue
     }
     const newColor = { id: i, color: { h: hsl.h, s: hsl.s, l: Math.round(lighting) }, lighting }
     array.push(newColor)
-    lighting += limit
+    if (hsl.l === 100) lighting -= limit
+    else lighting += limit
   }
   return array
 }
-
-// HSL to HEX
 
 type Output = {
   id: number
@@ -83,17 +121,19 @@ export const colorShades = (text: string) => {
     .split('')
     .filter((e) => e !== '#')
     .join('')
-  const rgb = hexToRGB(hex)
-  const hsl = RGBToHSL(rgb)
+  const rgb = hexToRgb(hex)
+  const hsl = RgbToHsl(rgb)
   const output: Output[] = []
   const array = shades(hsl, 10)
+
   array.forEach((e) => {
+    const rgb = HslToRgb(e.color.h, e.color.s, e.color.l)
     const newElement = {
       id: e.id,
       lighting: e.lighting,
-      color: `hsl(${e.color.h}, ${e.color.s}%, ${e.color.l}%)`,
+      color: `#${RgbToHex(rgb)}`,
     }
     output.push(newElement)
   })
-  return output.reverse()
+  return hsl.l === 100 ? output : output.reverse()
 }

@@ -9,12 +9,23 @@
     justify-items: center;
     align-items: center;
     gap: 0.5rem;
+    &:hover > .modal-shades__hex {
+      color: #f00;
+    }
     &:hover > .modal-shades__lighting {
       color: #f00;
     }
   }
   &__color {
+    @include flexbox(column, nowrap, center, center);
     height: 3rem;
     width: 100%;
+  }
+  &__hex {
+    border-radius: 0.4rem;
+    padding: 0.1rem 0.5rem;
+    background: #00000052;
+    box-shadow: 0 4px 30px #0000001a;
+    border: 1px solid #ffffff4d;
   }
 }
