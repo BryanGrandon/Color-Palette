@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { ColorPaletteContext } from './color-palette-context'
-import { IColorPalette } from '../types/context'
+import { IColorPalette, TheModal } from '../types/context'
 import { generateColorPalette } from '../functions/generate-color-palette'
 import { randomColor } from '../functions/random-color'
 // react-toastify
@@ -14,6 +14,15 @@ type ProviderProps = {
 const ColorPaletteProvider = ({ children }: ProviderProps) => {
   const [colorLimit, setColorLimit] = useState(5)
   const [colorPalette, setColorPalette] = useState<IColorPalette[]>(generateColorPalette(colorLimit))
+  // Modal
+  const [openModal, setOpenModal] = useState<boolean>(true)
+  const [modalContent] = useState<JSX.Element>(<p>Hello</p>)
+
+  const theModal: TheModal = {
+    isOpen: openModal,
+    content: modalContent,
+    modify: () => setOpenModal(!openModal),
+  }
 
   const modify = {
     add: () => {
@@ -48,7 +57,7 @@ const ColorPaletteProvider = ({ children }: ProviderProps) => {
   }
 
   return (
-    <ColorPaletteContext.Provider value={{ colorPalette, colorLimit, modify, notify }}>
+    <ColorPaletteContext.Provider value={{ colorPalette, colorLimit, modify, notify, theModal }}>
       <ToastContainer />
       {children}
     </ColorPaletteContext.Provider>

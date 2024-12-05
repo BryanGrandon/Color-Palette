@@ -9,9 +9,16 @@ type Modify = {
   change: (id: number) => void
 }
 
+export type TheModal = {
+  isOpen: boolean
+  content: JSX.Element
+  modify: () => void
+}
+
 export type ColorPaletteType = {
   colorLimit: number
   colorPalette: IColorPalette[]
   modify: Modify
   notify: (text: string) => void
+  theModal: TheModal
 }

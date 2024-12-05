@@ -1,0 +1,34 @@
+@use '../utilities/mixin' as *;
+@use '../utilities/variables' as *;
+
+.modal {
+  @include flexbox(row, nowrap, center, center);
+  position: absolute;
+  background-color: $modal;
+  height: 100vh;
+  width: 100vw;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  z-index: 1;
+
+  &__main {
+    position: relative;
+    border: 1px solid $white;
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+    min-width: 20rem;
+    background-color: #ffffff0a;
+    color: $white;
+  }
+
+  &__btn {
+    cursor: pointer;
+    position: absolute;
+    top: 1vh;
+    right: 1vh;
+    font-size: 1.4rem;
+    &:hover {
+      color: #f00;
+    }
+  }
+}
