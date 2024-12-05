@@ -5,9 +5,7 @@ import { ColorPaletteContext } from '../context/color-palette-context'
 const Home = () => {
   const { colorPalette, colorLimit, modify } = useContext(ColorPaletteContext)
 
-  const handlerClickAdd = () => {
-    modify.add()
-  }
+  const handlerClickAdd = () => modify.add()
 
   return (
     <main className='home'>

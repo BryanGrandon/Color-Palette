@@ -6,6 +6,7 @@ import { randomColor } from '../functions/random-color'
 // react-toastify
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
+import { ModalShades } from '../components/ui/modal-shades'
 
 type ProviderProps = {
   children: React.ReactNode
@@ -15,8 +16,8 @@ const ColorPaletteProvider = ({ children }: ProviderProps) => {
   const [colorLimit, setColorLimit] = useState(5)
   const [colorPalette, setColorPalette] = useState<IColorPalette[]>(generateColorPalette(colorLimit))
   // Modal
-  const [openModal, setOpenModal] = useState<boolean>(true)
-  const [modalContent] = useState<JSX.Element>(<p>Hello</p>)
+  const [openModal, setOpenModal] = useState<boolean>(false)
+  const [modalContent, setModalContent] = useState<JSX.Element>(<></>)
 
   const theModal: TheModal = {
     isOpen: openModal,
@@ -46,6 +47,19 @@ const ColorPaletteProvider = ({ children }: ProviderProps) => {
           setColorPalette([...colorPalette])
         }
       })
+    },
+    shades: (color: string, id: number) => {
+      const handlerClickModalShades = (color: string) => {
+        colorPalette.map((e) => {
+          if (e.id === id) {
+            e.hex = color
+            setColorPalette([...colorPalette])
+          }
+        })
+        setOpenModal(false)
+      }
+      setModalContent(<ModalShades color={color} onClick={handlerClickModalShades} />)
+      setOpenModal(true)
     },
   }
 

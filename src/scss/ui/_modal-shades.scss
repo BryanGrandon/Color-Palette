@@ -1,0 +1,20 @@
+@use '../utilities/mixin' as *;
+@use '../utilities/variables' as *;
+.modal-shades {
+  @include flexbox(column, nowrap, normal, normal);
+
+  &__main {
+    display: grid;
+    grid-template-columns: minmax(6rem, 20rem) 2.5rem;
+    justify-items: center;
+    align-items: center;
+    gap: 0.5rem;
+    &:hover > .modal-shades__lighting {
+      color: #f00;
+    }
+  }
+  &__color {
+    height: 3rem;
+    width: 100%;
+  }
+}

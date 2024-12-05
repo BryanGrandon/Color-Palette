@@ -10,14 +10,14 @@
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);
   z-index: 1;
+  padding: 1rem;
 
   &__main {
     position: relative;
     border: 1px solid $white;
     border-radius: 0.5rem;
-    padding: 1.5rem;
-    min-width: 20rem;
-    background-color: #ffffff0a;
+    padding: 2rem 1.5rem 1.5rem;
+    background-color: #ffffff23;
     color: $white;
   }
 
@@ -26,7 +26,7 @@
     position: absolute;
     top: 1vh;
     right: 1vh;
-    font-size: 1.4rem;
+    font-size: 2rem;
     &:hover {
       color: #f00;
     }

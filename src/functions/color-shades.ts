@@ -59,15 +59,23 @@ const shades = (hsl: HSL, number: number) => {
   let lighting = 0
   for (let i = 0; i <= number; i++) {
     if (hsl.l === lighting) {
-      array.push(`hsl(${hsl.h}, ${hsl.s}%, ${hsl.l})`)
+      array.push({ id: i, color: { h: hsl.h, s: hsl.s, l: hsl.l }, lighting: hsl.l })
       lighting += limit
       continue
     }
-    const newColor = `hsl(${hsl.h}, ${hsl.s}%, ${Math.round(lighting)})`
+    const newColor = { id: i, color: { h: hsl.h, s: hsl.s, l: Math.round(lighting) }, lighting }
     array.push(newColor)
     lighting += limit
   }
   return array
+}
+
+// HSL to HEX
+
+type Output = {
+  id: number
+  lighting: number
+  color: string
 }
 
 export const colorShades = (text: string) => {
@@ -77,5 +85,15 @@ export const colorShades = (text: string) => {
     .join('')
   const rgb = hexToRGB(hex)
   const hsl = RGBToHSL(rgb)
-  return shades(hsl, 10)
+  const output: Output[] = []
+  const array = shades(hsl, 10)
+  array.forEach((e) => {
+    const newElement = {
+      id: e.id,
+      lighting: e.lighting,
+      color: `hsl(${e.color.h}, ${e.color.s}%, ${e.color.l}%)`,
+    }
+    output.push(newElement)
+  })
+  return output.reverse()
 }
