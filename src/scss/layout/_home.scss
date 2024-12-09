@@ -11,5 +11,19 @@
     gap: 1rem;
     border: 1px solid #f00;
     padding: 1rem 1.5rem;
+    font-size: 1.2rem;
+
+    &__random {
+      cursor: pointer;
+      &:hover {
+        animation: Loop 1s ease-in;
+      }
+    }
+  }
+}
+
+@keyframes Loop {
+  0% {
+    rotate: 360deg;
   }
 }

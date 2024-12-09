@@ -1,6 +1,5 @@
 import { useContext } from 'react'
 import { ColorPaletteContext } from '../../context/color-palette-context'
-import CopyButton from './copy-button'
 import IconButton from './icon-button'
 // Icons
 import { FaPalette } from 'react-icons/fa'
