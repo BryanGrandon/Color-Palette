@@ -61,6 +61,12 @@ const ColorPaletteProvider = ({ children }: ProviderProps) => {
       setModalContent(<ModalShades color={color} onClick={handlerClickModalShades} />)
       setOpenModal(true)
     },
+    random: () => {
+      colorPalette.map((e) => {
+        e.hex = randomColor()
+        setColorPalette([...colorPalette])
+      })
+    },
   }
 
   const notify = (text: string): void => {

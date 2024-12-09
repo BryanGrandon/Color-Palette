@@ -8,6 +8,7 @@ type Modify = {
   delete: (id: number) => void
   change: (id: number) => void
   shades: (color: string, id: number) => void
+  random: () => void
 }
 
 export type TheModal = {

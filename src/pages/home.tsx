@@ -6,11 +6,13 @@ const Home = () => {
   const { colorPalette, colorLimit, modify } = useContext(ColorPaletteContext)
 
   const handlerClickAdd = () => modify.add()
+  const handlerClickRandom = () => modify.random()
 
   return (
     <main className='home'>
       <section>
         <button onClick={handlerClickAdd}>Add</button>
+        <button onClick={handlerClickRandom}>Random</button>
       </section>
       <article className='color-palette' style={{ gridTemplateColumns: `repeat(${colorLimit}, 1fr)` }}>
         {colorPalette.map((e) => (
