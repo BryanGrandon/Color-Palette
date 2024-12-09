@@ -1,3 +1,15 @@
+@use '../utilities/mixin' as *;
+@use '../utilities/variables' as *;
+
 .color-palette {
   display: grid;
+}
+
+.home {
+  &-header {
+    @include flexbox(row, nowrap, end, center);
+    gap: 1rem;
+    border: 1px solid #f00;
+    padding: 1rem 1.5rem;
+  }
 }

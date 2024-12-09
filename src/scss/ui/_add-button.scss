@@ -1,0 +1,21 @@
+.add-button {
+  font-size: 1.3rem;
+  cursor: pointer;
+  filter: drop-shadow(1px 1px 3px #2e2e2e);
+
+  &__deselected {
+    display: block;
+
+    &:active {
+      display: none;
+    }
+
+    &:active + .add-button__selected {
+      display: block;
+    }
+  }
+
+  &__selected {
+    display: none;
+  }
+}
