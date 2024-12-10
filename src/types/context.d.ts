@@ -6,7 +6,7 @@ export interface IColorPalette {
 type Modify = {
   add: () => void
   delete: (id: number) => void
-  change: (id: number) => void
+  change: (id: number, color: string) => void
   shades: (color: string, id: number) => void
   random: () => void
 }

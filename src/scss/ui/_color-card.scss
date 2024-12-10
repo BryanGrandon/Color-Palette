@@ -29,5 +29,11 @@
     gap: 1rem;
     position: relative;
     display: none;
+    font-size: 1.3rem;
+  }
+
+  &__input {
+    width: 0;
+    height: 0;
   }
 }

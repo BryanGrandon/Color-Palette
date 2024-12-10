@@ -26,9 +26,17 @@ const ColorCard = ({ color, id }: Props): JSX.Element => {
       <h2 className='color-card__title'>{color}</h2>
       <section className='color-card__options'>
         <IconsButtons selected={<IoCopy />} deselected={<IoCopyOutline />} onClick={handlerClickCopy} />
-        <IconButton className='not-on-mobile' value={<FaPalette />} onClick={() => {}} />
+        <label
+          className='not-on-mobile'
+          onClick={(e) => ((e.target as HTMLTextAreaElement).value = color)}
+          onChange={(e) => modify.change(id, (e.target as HTMLTextAreaElement).value)}
+        >
+          <FaPalette />
+          <input type='color' className='color-card__input' />
+        </label>
+
         <IconButton className='not-on-mobile' value={<FaArrowsUpDown />} onClick={() => modify.shades(color, id)} />
-        <IconButton value={<IoReloadOutline />} onClick={() => modify.change(id)} />
+        <IconButton value={<IoReloadOutline />} onClick={() => modify.change(id, '')} />
         {colorLimit >= 3 ? <IconButton value={<IoClose />} onClick={() => modify.delete(id)} /> : null}
       </section>
     </section>
