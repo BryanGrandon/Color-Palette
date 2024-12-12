@@ -12,7 +12,6 @@
   gap: 1rem;
   padding: 1rem 2rem;
   position: relative;
-  border-bottom: 1px solid rgb(255, 255, 255);
 
   &__nav {
     @include flexbox(row, nowrap, space-between, center);
@@ -35,12 +34,12 @@
 .nav {
   &-dropdown {
     @include flexbox(column, nowrap, center, center);
-    gap: 1rem;
-    padding: 1rem;
-    border-radius: 0.5rem;
+    gap: 1.5rem;
+    padding: 1.5rem 1rem;
     position: absolute;
     width: 100%;
-    background-color: #0000008c;
+    z-index: 2;
+    background-color: #000000b4;
   }
   &-link {
     text-transform: capitalize;

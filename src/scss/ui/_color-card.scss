@@ -5,6 +5,9 @@
   @include flexbox(column, nowrap, space-between, center);
   padding: 1rem 0 2rem;
   height: 20rem;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  box-shadow: 2px 2px 4px #000000;
 
   &:hover {
     @include overlay(#00000052);

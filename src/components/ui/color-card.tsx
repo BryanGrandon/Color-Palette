@@ -1,12 +1,12 @@
 import { useContext } from 'react'
 import { ColorPaletteContext } from '../../context/color-palette-context'
+import IconsButtons from './icons-buttons'
 import IconButton from './icon-button'
 // Icons
-import { FaPalette } from 'react-icons/fa'
-import { IoClose, IoReloadOutline } from 'react-icons/io5'
+import { FaPalette, FaExpandArrowsAlt } from 'react-icons/fa'
+import { IoClose, IoReloadOutline, IoCopyOutline, IoCopy } from 'react-icons/io5'
 import { FaArrowsUpDown } from 'react-icons/fa6'
-import { IoCopyOutline, IoCopy } from 'react-icons/io5'
-import IconsButtons from './icons-buttons'
+import { RiLoopLeftFill } from 'react-icons/ri'
 
 type Props = {
   id: number
@@ -35,8 +35,13 @@ const ColorCard = ({ color, id }: Props): JSX.Element => {
           <input type='color' className='color-card__input' />
         </label>
 
-        <IconButton className='not-on-mobile' value={<FaArrowsUpDown />} onClick={() => modify.shades(color, id)} />
-        <IconButton value={<IoReloadOutline />} onClick={() => modify.change(id, '')} />
+        <IconsButtons
+          className='not-on-mobile'
+          selected={<FaExpandArrowsAlt />}
+          deselected={<FaArrowsUpDown />}
+          onClick={() => modify.shades(color, id)}
+        />
+        <IconsButtons selected={<RiLoopLeftFill />} deselected={<IoReloadOutline />} onClick={() => modify.change(id, '')} />
         {colorLimit >= 3 ? <IconButton value={<IoClose />} onClick={() => modify.delete(id)} /> : null}
       </section>
     </section>
