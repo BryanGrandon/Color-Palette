@@ -9,12 +9,18 @@ type Modify = {
   change: (id: number, color: string) => void
   shades: (color: string, id: number) => void
   random: () => void
+  saved: () => void
 }
 
 export type TheModal = {
   isOpen: boolean
   content: JSX.Element
   modify: () => void
+}
+
+export type Saved = {
+  id: number
+  color: IColorPalette[]
 }
 
 export type ColorPaletteType = {

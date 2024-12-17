@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
 import { ColorPaletteContext } from './color-palette-context'
-import { IColorPalette, TheModal } from '../types/context'
+import { IColorPalette, TheModal, Saved } from '../types/context'
 import { generateColorPalette } from '../functions/generate-color-palette'
 import { randomColor } from '../functions/random-color'
 // react-toastify
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
-import { ModalShades } from '../components/ui/modal-shades'
+import { ModalShades } from '../components/layout/modal-shades'
 
 type ProviderProps = {
   children: React.ReactNode
@@ -15,6 +15,8 @@ type ProviderProps = {
 const ColorPaletteProvider = ({ children }: ProviderProps) => {
   const [colorLimit, setColorLimit] = useState(5)
   const [colorPalette, setColorPalette] = useState<IColorPalette[]>(generateColorPalette(colorLimit))
+  const [savedPalette, setSavedPalette] = useState<Saved[]>([])
+
   // Modal
   const [openModal, setOpenModal] = useState<boolean>(false)
   const [modalContent, setModalContent] = useState<JSX.Element>(<></>)
@@ -72,7 +74,25 @@ const ColorPaletteProvider = ({ children }: ProviderProps) => {
         setColorPalette([...colorPalette])
       })
     },
+    saved: () => {
+      console.log(colorPalette)
+      const palette: IColorPalette[] = []
+      colorPalette.map((e) => {
+        const newColor = {
+          id: e.id,
+          hex: e.hex,
+        }
+        palette.push(newColor)
+      })
+      const newPalette = {
+        id: savedPalette.length + 1,
+        color: palette,
+      }
+
+      setSavedPalette([newPalette, ...savedPalette])
+    },
   }
+  console.log(savedPalette)
 
   const notify = (text: string): void => {
     toast.success(text, {

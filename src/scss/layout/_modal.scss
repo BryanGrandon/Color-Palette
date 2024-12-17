@@ -3,10 +3,10 @@
 
 .modal {
   @include flexbox(row, nowrap, center, center);
-  position: absolute;
+  position: fixed;
   background-color: $modal;
-  height: 100vh;
-  width: 100vw;
+  height: 100%;
+  width: 100%;
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);
   z-index: 1;

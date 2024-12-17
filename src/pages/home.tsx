@@ -6,11 +6,13 @@ import IconsButtons from '../components/ui/icons-buttons'
 import { IoBookmark, IoBookmarkOutline } from 'react-icons/io5'
 import { IoIosAddCircleOutline, IoMdAddCircle } from 'react-icons/io'
 import { RiLoopLeftFill } from 'react-icons/ri'
+
 const Home = () => {
   const { colorPalette, colorLimit, modify } = useContext(ColorPaletteContext)
 
   const handlerClickAdd = () => modify.add()
   const handlerClickRandom = () => modify.random()
+  const handlerClickSaved = () => modify.saved()
 
   return (
     <main className='home'>
@@ -19,7 +21,7 @@ const Home = () => {
           <RiLoopLeftFill />
         </button>
         <IconsButtons selected={<IoMdAddCircle />} deselected={<IoIosAddCircleOutline />} onClick={handlerClickAdd} />
-        <button>
+        <button onClick={handlerClickSaved}>
           <IoBookmark />
           <IoBookmarkOutline />
         </button>
