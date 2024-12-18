@@ -75,24 +75,50 @@ const ColorPaletteProvider = ({ children }: ProviderProps) => {
       })
     },
     saved: () => {
-      console.log(colorPalette)
-      const palette: IColorPalette[] = []
-      colorPalette.map((e) => {
-        const newColor = {
-          id: e.id,
-          hex: e.hex,
+      const verification = checkSaved()
+      if (!verification) {
+        const palette: IColorPalette[] = []
+        colorPalette.map((e) => {
+          const newColor = {
+            id: e.id,
+            hex: e.hex,
+          }
+          palette.push(newColor)
+        })
+        const newPalette = {
+          id: savedPalette.length + 1,
+          color: palette,
         }
-        palette.push(newColor)
-      })
-      const newPalette = {
-        id: savedPalette.length + 1,
-        color: palette,
+        setSavedPalette([newPalette, ...savedPalette])
       }
-
-      setSavedPalette([newPalette, ...savedPalette])
     },
   }
-  console.log(savedPalette)
+
+  const checkSaved = () => {
+    let output: boolean = false
+    let count = 0
+    savedPalette.map((e) => {
+      const id = e.id
+      const array: string[] = []
+      colorPalette.map((e) => array.push(e.hex))
+      for (let i = 0; i < array.length; i++) {
+        if (array.includes(e.color[i].hex)) {
+          output = true
+          count += 1
+        } else {
+          output = false
+          break
+        }
+      }
+      if (count === array.length) {
+        output = true
+        const result = savedPalette.filter((e) => e.id !== id)
+        for (let i = 0; i < result.length; i++) result[i].id = i
+        setSavedPalette(result)
+      }
+    })
+    return output
+  }
 
   const notify = (text: string): void => {
     toast.success(text, {
