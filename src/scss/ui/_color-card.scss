@@ -9,17 +9,12 @@
   overflow: hidden;
   box-shadow: 2px 2px 4px #000000;
 
-  &:hover {
-    @include overlay(#00000052);
-  }
-
   &:hover > .color-card__options {
     display: flex;
   }
 
   &__title {
     color: $white;
-    position: relative;
     border-radius: 0.4rem;
     padding: 0.1rem 0.5rem;
     background: #00000052;
@@ -30,9 +25,11 @@
   &__options {
     @include flexbox(column, nowrap, normal, normal);
     gap: 1rem;
-    position: relative;
     display: none;
     font-size: 1.3rem;
+    background-color: #00000042;
+    padding: 0.4rem;
+    border-radius: 0.5rem;
   }
 
   &__input {
