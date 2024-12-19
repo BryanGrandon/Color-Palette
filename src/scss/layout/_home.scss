@@ -11,7 +11,6 @@
 .home {
   background-image: url('https://cdn.pixabay.com/photo/2024/12/03/16/06/ai-generated-9242497_1280.jpg');
   background-size: cover;
-  height: 100vh;
   @include overlay(#0000008c);
 
   &-option {

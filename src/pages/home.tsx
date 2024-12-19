@@ -28,6 +28,30 @@ const Home = () => {
           <ColorCard key={e.id} id={e.id} color={e.hex} />
         ))}
       </article>
+      <article>
+        <section>
+          <h2>Color Palette</h2>
+          <p>Generate your perfect color palette for each project or illustration.</p>
+        </section>
+        <section>
+          <h3>Information</h3>
+          <p>It has a maximum limit of 9 colors and a minimum of 2 colors.</p>
+          <ul>
+            <li>
+              <IoReloadOutline /> : Allows to generate random colors.
+            </li>
+            <li>
+              <IoIosAddCircleOutline /> : Allows you to add one more color.
+            </li>
+            <li>
+              <IoBookmarkOutline /> : Allows you to save the color palette.
+            </li>
+          </ul>
+        </section>
+        <section>
+          <h3>Information card</h3>
+        </section>
+      </article>
     </main>
   )
 }
