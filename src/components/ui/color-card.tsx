@@ -1,12 +1,12 @@
 import { useContext } from 'react'
 import { ColorPaletteContext } from '../../context/color-palette-context'
 import IconsButtons from './icons-buttons'
-import IconButton from './icon-button'
 // Icons
 import { FaPalette, FaExpandArrowsAlt } from 'react-icons/fa'
 import { IoClose, IoReloadOutline, IoCopyOutline, IoCopy } from 'react-icons/io5'
+import { IoIosClose } from 'react-icons/io'
 import { FaArrowsUpDown } from 'react-icons/fa6'
-import { RiLoopLeftFill } from 'react-icons/ri'
+import { TbArrowsRandom } from 'react-icons/tb'
 
 type Props = {
   id: number
@@ -41,8 +41,10 @@ const ColorCard = ({ color, id }: Props): JSX.Element => {
           deselected={<FaArrowsUpDown />}
           onClick={() => modify.shades(color, id)}
         />
-        <IconsButtons selected={<RiLoopLeftFill />} deselected={<IoReloadOutline />} onClick={() => modify.change(id, '')} />
-        {colorLimit >= 3 ? <IconButton value={<IoClose />} onClick={() => modify.delete(id)} /> : null}
+        <IconsButtons selected={<TbArrowsRandom />} deselected={<IoReloadOutline />} onClick={() => modify.change(id, '')} />
+        {colorLimit >= 3 ? (
+          <IconsButtons selected={<IoIosClose />} deselected={<IoClose />} onClick={() => modify.delete(id)} />
+        ) : null}
       </section>
     </section>
   )

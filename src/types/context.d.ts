@@ -29,4 +29,5 @@ export type ColorPaletteType = {
   modify: Modify
   notify: (text: string) => void
   theModal: TheModal
+  markedAsSaved: boolean
 }

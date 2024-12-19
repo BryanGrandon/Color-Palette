@@ -20,6 +20,7 @@ const ColorPaletteProvider = ({ children }: ProviderProps) => {
   // Modal
   const [openModal, setOpenModal] = useState<boolean>(false)
   const [modalContent, setModalContent] = useState<JSX.Element>(<></>)
+  const [markedAsSaved, setMarkedAsSaved] = useState<boolean>(false)
 
   const theModal: TheModal = {
     isOpen: openModal,
@@ -76,6 +77,7 @@ const ColorPaletteProvider = ({ children }: ProviderProps) => {
     },
     saved: () => {
       const verification = checkSaved()
+      setMarkedAsSaved(!markedAsSaved)
       if (!verification) {
         const palette: IColorPalette[] = []
         colorPalette.map((e) => {
@@ -128,7 +130,7 @@ const ColorPaletteProvider = ({ children }: ProviderProps) => {
   }
 
   return (
-    <ColorPaletteContext.Provider value={{ colorPalette, colorLimit, modify, notify, theModal }}>
+    <ColorPaletteContext.Provider value={{ markedAsSaved, colorPalette, colorLimit, modify, notify, theModal }}>
       <ToastContainer />
       {children}
     </ColorPaletteContext.Provider>
