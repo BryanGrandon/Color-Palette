@@ -13,13 +13,46 @@
   background-size: cover;
   @include overlay(#0000008c);
 
-  &-option {
+  &__options {
     position: relative;
     @include flexbox(row, nowrap, end, center);
     color: $white;
     gap: 1rem;
     padding: 1rem 1.5rem;
     font-size: 1.4rem;
-    bottom: 0;
+  }
+
+  &__content {
+    position: relative;
+    @include flexbox(column, nowrap, normal, normal);
+    gap: 2rem;
+    padding: 1rem;
+    color: $white;
+
+    &__header {
+      @include flexbox(column, nowrap, normal, center);
+      gap: 0.3rem;
+    }
+    &__section {
+      max-width: 1200px;
+      width: 100%;
+      margin: auto;
+    }
+  }
+
+  &__title {
+    font-size: 2rem;
+    text-align: center;
+  }
+
+  &__list {
+    @include flexbox(column, nowrap, normal, normal);
+    gap: 0.5rem;
+    padding: 1rem;
+
+    &__element {
+      @include flexbox(row, nowrap, normal, center);
+      gap: 1rem;
+    }
   }
 }
