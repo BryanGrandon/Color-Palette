@@ -1,5 +1,6 @@
 @use '../utilities/mixin' as *;
 @use '../utilities/variables' as *;
+
 .modal-shades {
   @include flexbox(column, nowrap, normal, normal);
 
