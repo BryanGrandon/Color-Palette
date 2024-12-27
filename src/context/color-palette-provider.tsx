@@ -44,8 +44,10 @@ const ColorPaletteProvider = ({ children }: ProviderProps) => {
   const modifyChange = (id: number, color: string): void => {
     const conditional = regularExpressions(/^#[A-Fa-f0-9]{6}$/, color) || regularExpressions(/^#[A-Fa-f0-9]{3}$/, color)
     colorPalette.map((e) => {
-      if (e.id === id && conditional) {
-        e.hex = color
+      console.log(e.id === id)
+      if (e.id === id) {
+        if (conditional) e.hex = color
+        else e.hex = randomColor()
         setColorPalette([...colorPalette])
       }
     })
