@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { ColorPaletteContext } from './color-palette-context'
 import { IColorPalette, TheModal, Saved } from '../types/context'
 import { generateColorPalette } from '../functions/generate-color-palette'
-import { randomColor } from '../functions/random-color'
+import { randomColor } from '../core/script/random-color'
 // react-toastify
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
@@ -77,6 +77,7 @@ const ColorPaletteProvider = ({ children }: ProviderProps) => {
   const modifySaved = (): void => {
     const verification = checkSaved()
     setMarkedAsSaved(!markedAsSaved)
+
     if (!verification) {
       const palette: IColorPalette[] = []
       colorPalette.map((e) => {
@@ -101,7 +102,7 @@ const ColorPaletteProvider = ({ children }: ProviderProps) => {
     },
     delete: (id: number) => {
       if (colorLimit <= 9 && colorLimit >= 3) modifyDelete(id)
-      setMarkedAsSaved(false)
+      setMarkedAsSaved(checkSaved())
     },
     change: (id: number, color: string) => {
       modifyChange(id, color)
@@ -137,7 +138,7 @@ const ColorPaletteProvider = ({ children }: ProviderProps) => {
         output = true
         const result = savedPalette.filter((e) => e.id !== id)
         for (let i = 0; i < result.length; i++) result[i].id = i
-        setSavedPalette(result)
+        setSavedPalette([...savedPalette, ...result])
       }
     })
     return output

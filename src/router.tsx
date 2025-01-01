@@ -14,8 +14,8 @@ const router = createHashRouter(
         {
           path: '',
           lazy: async () => {
-            const Home = await import('./pages/home')
-            return { Component: Home.default }
+            const PagesHome = await import('./pages/pages-home/pages-home')
+            return { Component: PagesHome.default }
           },
           hydrateFallbackElement: TheFallback('Loading Home'),
         },

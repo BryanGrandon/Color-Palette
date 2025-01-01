@@ -1,5 +1,5 @@
 import { IColorPalette } from '../types/context'
-import { randomColor } from './random-color'
+import { randomColor } from '../core/script/random-color'
 
 export const generateColorPalette = (limit: number = 1): IColorPalette[] => {
   const palette: IColorPalette[] = []
