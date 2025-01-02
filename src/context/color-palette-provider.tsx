@@ -2,12 +2,15 @@ import React, { useState } from 'react'
 import { ColorPaletteContext } from './color-palette-context'
 import { IColorPalette, TheModal, Saved } from '../types/context'
 import { generateColorPalette } from '../functions/generate-color-palette'
-import { randomColor } from '../core/script/random-color'
+import { ModalShades } from '../components/layout/modal-shades'
+import { addColor } from '../pages/pages-home/script/add-color'
+import { changeColor } from '../pages/pages-home/script/change-color'
+import { shadesColor } from '../pages/pages-home/script/shades-color'
+import { deleteColor } from '../pages/pages-home/script/delete-color'
+import { randomColorPalette } from '../pages/pages-home/script/random-color-palette'
 // react-toastify
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
-import { ModalShades } from '../components/layout/modal-shades'
-import { regularExpressions } from '../functions/regular-expressions'
 
 type ProviderProps = {
   children: React.ReactNode
@@ -27,51 +30,6 @@ const ColorPaletteProvider = ({ children }: ProviderProps) => {
     isOpen: openModal,
     content: modalContent,
     modify: () => setOpenModal(!openModal),
-  }
-
-  const modifyAdd = (): void => {
-    setColorLimit(colorLimit + 1)
-    setColorPalette([...colorPalette, { id: colorLimit + 1, hex: randomColor() }])
-  }
-
-  const modifyDelete = (id: number): void => {
-    setColorLimit(colorLimit - 1)
-    const colors = colorPalette.filter((e) => e.id !== id)
-    colors.map((e, i) => (e.id = i + 1))
-    setColorPalette(colors)
-  }
-
-  const modifyChange = (id: number, color: string): void => {
-    const conditional = regularExpressions(/^#[A-Fa-f0-9]{6}$/, color) || regularExpressions(/^#[A-Fa-f0-9]{3}$/, color)
-    colorPalette.map((e) => {
-      console.log(e.id === id)
-      if (e.id === id) {
-        if (conditional) e.hex = color
-        else e.hex = randomColor()
-        setColorPalette([...colorPalette])
-      }
-    })
-  }
-
-  const modifyShades = (color: string, id: number): void => {
-    const handlerClickModalShades = (color: string) => {
-      colorPalette.map((e) => {
-        if (e.id === id) {
-          e.hex = color
-          setColorPalette([...colorPalette])
-        }
-      })
-      setOpenModal(false)
-    }
-    setModalContent(<ModalShades color={color} onClick={handlerClickModalShades} />)
-    setOpenModal(true)
-  }
-
-  const modifyRandom = (): void => {
-    colorPalette.map((e) => {
-      e.hex = randomColor()
-      setColorPalette([...colorPalette])
-    })
   }
 
   const modifySaved = (): void => {
@@ -97,22 +55,34 @@ const ColorPaletteProvider = ({ children }: ProviderProps) => {
 
   const modify = {
     add: () => {
-      if (colorLimit < 9) modifyAdd()
+      const data = addColor({ limit: colorLimit, palette: colorPalette })
+      setColorLimit(data.limit)
+      setColorPalette(data.palette)
       setMarkedAsSaved(false)
     },
     delete: (id: number) => {
-      if (colorLimit <= 9 && colorLimit >= 3) modifyDelete(id)
-      setMarkedAsSaved(checkSaved())
+      const data = deleteColor({ colorId: id, limit: colorLimit, palette: colorPalette })
+      setColorLimit(data.limit)
+      setColorPalette(data.palette)
+      setMarkedAsSaved(false)
     },
     change: (id: number, color: string) => {
-      modifyChange(id, color)
+      const data = changeColor({ colorId: id, color, palette: colorPalette })
+      setColorPalette(data)
       setMarkedAsSaved(false)
     },
     shades: (color: string, id: number) => {
-      modifyShades(color, id)
+      const handlerClickModalShades = (color: string) => {
+        const data = shadesColor({ color, colorId: id, palette: colorPalette })
+        setColorPalette(data)
+        setOpenModal(false)
+      }
+      setModalContent(<ModalShades color={color} onClick={handlerClickModalShades} />)
+      setOpenModal(true)
     },
     random: () => {
-      modifyRandom()
+      const data = randomColorPalette(colorPalette)
+      setColorPalette(data)
       setMarkedAsSaved(false)
     },
     saved: () => {
