@@ -3,11 +3,9 @@ import { ColorPaletteContext } from './color-palette-context'
 import { IColorPalette, TheModal, Saved } from '../types/context'
 import { generateColorPalette } from '../functions/generate-color-palette'
 import { ModalShades } from '../components/layout/modal-shades'
-import { addColor } from '../pages/pages-home/script/add-color'
 import { changeColor } from '../pages/pages-home/script/change-color'
 import { shadesColor } from '../pages/pages-home/script/shades-color'
 import { deleteColor } from '../pages/pages-home/script/delete-color'
-import { randomColorPalette } from '../pages/pages-home/script/random-color-palette'
 // react-toastify
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
@@ -53,13 +51,19 @@ const ColorPaletteProvider = ({ children }: ProviderProps) => {
     }
   }
 
-  const modify = {
-    add: () => {
-      const data = addColor({ limit: colorLimit, palette: colorPalette })
-      setColorLimit(data.limit)
-      setColorPalette(data.palette)
-      setMarkedAsSaved(false)
+  const options = {
+    get: {
+      limit: colorLimit,
+      palette: colorPalette,
     },
+    update: {
+      limit: (number: number) => setColorLimit(number),
+      palette: (palette: IColorPalette[]) => setColorPalette(palette),
+    },
+  }
+
+  const modify = {
+    add: () => {},
     delete: (id: number) => {
       const data = deleteColor({ colorId: id, limit: colorLimit, palette: colorPalette })
       setColorLimit(data.limit)
@@ -80,11 +84,7 @@ const ColorPaletteProvider = ({ children }: ProviderProps) => {
       setModalContent(<ModalShades color={color} onClick={handlerClickModalShades} />)
       setOpenModal(true)
     },
-    random: () => {
-      const data = randomColorPalette(colorPalette)
-      setColorPalette(data)
-      setMarkedAsSaved(false)
-    },
+    random: () => {},
     saved: () => {
       modifySaved()
     },
@@ -122,7 +122,9 @@ const ColorPaletteProvider = ({ children }: ProviderProps) => {
   }
 
   return (
-    <ColorPaletteContext.Provider value={{ savedPalette, markedAsSaved, colorPalette, colorLimit, modify, notify, theModal }}>
+    <ColorPaletteContext.Provider
+      value={{ options, savedPalette, markedAsSaved, colorPalette, colorLimit, modify, notify, theModal }}
+    >
       <ToastContainer />
       {children}
     </ColorPaletteContext.Provider>

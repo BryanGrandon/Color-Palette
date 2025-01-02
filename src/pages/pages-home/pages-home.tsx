@@ -7,12 +7,27 @@ import { TbArrowsRandom } from 'react-icons/tb'
 import { IoBookmark, IoBookmarkOutline, IoReloadOutline } from 'react-icons/io5'
 import { IoIosAddCircleOutline, IoMdAddCircle } from 'react-icons/io'
 import { contentHome } from '../../content/content-home'
+import { addColor } from './script/add-color'
+import { randomColorPalette } from './script/random-color-palette'
 
 const PagesHome = () => {
-  const { colorPalette, colorLimit, modify, markedAsSaved } = useContext(ColorPaletteContext)
+  const { modify, markedAsSaved, options } = useContext(ColorPaletteContext)
 
-  const handlerClickAdd = () => modify.add()
-  const handlerClickRandom = () => modify.random()
+  const { palette, limit } = options.get
+
+  const handlerClickAdd = (): void => {
+    const { limit, palette } = options.get
+    const data = addColor({ limit, palette })
+    options.update?.limit(data.limit)
+    options.update?.palette(data.palette)
+  }
+
+  const handlerClickRandom = () => {
+    const { palette } = options.get
+    const data = randomColorPalette(palette)
+    options.update?.palette(data)
+  }
+
   const handlerClickSaved = () => modify.saved()
 
   return (
@@ -25,8 +40,8 @@ const PagesHome = () => {
         </button>
       </article>
 
-      <article className='color-palette' style={{ gridTemplateColumns: `repeat(${colorLimit}, 1fr)` }}>
-        {colorPalette.map((e) => (
+      <article className='color-palette' style={{ gridTemplateColumns: `repeat(${limit}, 1fr)` }}>
+        {palette.map((e) => (
           <ColorCard key={e.id} id={e.id} color={e.hex} />
         ))}
       </article>
