@@ -8,6 +8,7 @@ import { IoIosClose } from 'react-icons/io'
 import { FaArrowsUpDown } from 'react-icons/fa6'
 import { TbArrowsRandom } from 'react-icons/tb'
 import { MINIMUM_COLORS } from '../../../../core/constants'
+import { deleteColor } from '../../script/delete-color'
 
 type Props = {
   id: number
@@ -16,7 +17,13 @@ type Props = {
 
 const ColorCard = ({ color, id }: Props): JSX.Element => {
   const { modify, options, notify } = useContext(ColorPaletteContext)
-  const { limit } = options.get
+  const { limit, palette } = options.get
+
+  const handlerClickDelete = (id: number): void => {
+    const data = deleteColor({ colorId: id, limit, palette })
+    options.update?.limit(data.limit)
+    options.update?.palette(data.palette)
+  }
 
   const handlerClickCopy = (): void => {
     notify(`Color copied!`)
@@ -45,7 +52,7 @@ const ColorCard = ({ color, id }: Props): JSX.Element => {
         />
         <IconsButtons selected={<TbArrowsRandom />} deselected={<IoReloadOutline />} onClick={() => modify.change(id, '')} />
         {limit > MINIMUM_COLORS ? (
-          <IconsButtons selected={<IoIosClose />} deselected={<IoClose />} onClick={() => modify.delete(id)} />
+          <IconsButtons selected={<IoIosClose />} deselected={<IoClose />} onClick={() => handlerClickDelete(id)} />
         ) : null}
       </section>
     </section>

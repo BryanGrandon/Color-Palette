@@ -1,6 +1,6 @@
 import { useContext } from 'react'
 import { ColorPaletteContext } from '../core/context/color-palette-context'
-import SavedCard from '../components/ui/saved-card'
+import SavedCard from '../core/components/ui/saved-card'
 
 const Saved = () => {
   const { options } = useContext(ColorPaletteContext)

@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { ColorPaletteContext } from './color-palette-context'
 import { TheModal, Saved, Palette } from '../types/context'
 import { generateColorPalette } from '../../functions/generate-color-palette'
 import { ModalShades } from '../../pages/pages-home/components/layout/modal-shades'
@@ -9,7 +10,6 @@ import { savedColorPalette } from '../../pages/pages-home/script/saved-color-pal
 // react-toastify
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
-import { ColorPaletteContext } from './color-palette-context'
 
 type ProviderProps = {
   children: React.ReactNode

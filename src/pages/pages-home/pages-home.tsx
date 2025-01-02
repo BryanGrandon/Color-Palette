@@ -10,7 +10,7 @@ import { savedColorPalette } from './script/saved-color-palette'
 import { useHookContext } from '../../hooks/hook-context'
 
 const PagesHome = () => {
-  const { modify, options } = useHookContext()
+  const { options } = useHookContext()
   const { palette, limit, saved } = options.get
 
   const handlerClickAdd = (): void => {
@@ -26,12 +26,14 @@ const PagesHome = () => {
     options.update?.palette(data)
   }
 
+  const handlerClickSaved = () => {
+    const { newSaved } = savedColorPalette({ palette, saved })
+    options.update?.saved(newSaved)
+  }
   const markedSaved = () => {
     const { checking } = savedColorPalette({ palette, saved })
     return checking
   }
-
-  const handlerClickSaved = () => modify.saved()
 
   return (
     <main className='home'>

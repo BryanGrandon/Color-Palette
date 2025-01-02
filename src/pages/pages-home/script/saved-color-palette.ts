@@ -1,29 +1,34 @@
 import { Saved } from '../../../core/types/context'
 import { SavedColorPalette } from '../types/options'
 
-type Checking = {
-  check: boolean
-  savedId: number
-}
+type Checking = SavedColorPalette & { toEliminate?: boolean }
 
-const checking = ({ palette, saved }: SavedColorPalette): Checking => {
+const checking = ({ palette, saved, toEliminate }: Checking): savedPalette => {
   let count = 0
-  const output = {
-    check: false,
-    savedId: 0,
-  }
+  let savedId = 0
+  const check: boolean[] = []
   saved.map((e) => {
     const colorsPalette: string[] = []
     palette.map((e) => colorsPalette.push(e.hex))
-
     for (let i = 0; i < colorsPalette.length; i++) {
       if (colorsPalette.includes(e.palette[i]?.hex)) count++
       else break
     }
-    output.savedId = e.id
-    output.check = count === colorsPalette.length
+    if (count === colorsPalette.length && count === e.palette.length) {
+      check.push(true)
+      savedId = e.id
+    } else check.push(false)
     count = 0
   })
+  let newPalette: Saved[] = []
+  if (toEliminate && check.includes(true)) {
+    newPalette = saved.filter((e) => e.id !== savedId)
+  }
+
+  const output = {
+    checking: check.includes(true),
+    newSaved: newPalette,
+  }
   return output
 }
 
@@ -33,20 +38,20 @@ type savedPalette = {
 }
 
 export const savedColorPalette = ({ palette, saved }: SavedColorPalette): savedPalette => {
-  const { check, savedId } = checking({ palette, saved })
+  const data = checking({ palette, saved })
   let newSaved: Saved[] = []
-  if (!check) {
+  if (!data.checking) {
     const newPalette = {
       id: saved.length + 1,
       palette: palette,
     }
     newSaved = [...saved, newPalette]
   } else {
-    newSaved = saved.filter((e) => e.id !== savedId)
-    for (let i = 0; i < newSaved.length; i++) newSaved[i].id = i + 1
+    const data = checking({ palette, saved, toEliminate: true })
+    newSaved = [...data.newSaved]
   }
   const output = {
-    checking: check,
+    checking: data.checking,
     newSaved,
   }
   return output
