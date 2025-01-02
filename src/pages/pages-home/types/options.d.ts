@@ -1,14 +1,4 @@
-interface Palette {
-  id: number
-  hex: string
-}
-
-interface Saved {
-  id: number
-  palette: Palette[]
-}
-
-export type ReturnPalette = Palette[]
+import { Palette, Saved } from '../../../core/types/context'
 
 export type AddColor = {
   limit: number

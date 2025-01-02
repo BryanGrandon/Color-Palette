@@ -1,6 +1,11 @@
-export interface IColorPalette {
+export interface Palette {
   id: number
   hex: string
+}
+
+export interface Saved {
+  id: number
+  palette: Palette[]
 }
 
 type Modify = {
@@ -18,11 +23,6 @@ export type TheModal = {
   modify: () => void
 }
 
-export type Saved = {
-  id: number
-  palette: IColorPalette[]
-}
-
 type Options = {
   get: {
     limit: number
@@ -37,12 +37,8 @@ type Options = {
 }
 
 export type ColorPaletteType = {
-  colorLimit: number
-  colorPalette: IColorPalette[]
   modify: Modify
   notify: (text: string) => void
   theModal: TheModal
-  markedAsSaved: boolean
-  savedPalette: Saved[]
   options: Options
 }

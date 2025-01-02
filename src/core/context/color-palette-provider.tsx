@@ -1,15 +1,15 @@
-import React, { useState } from 'react'
-import { ColorPaletteContext } from './color-palette-context'
-import { IColorPalette, TheModal, Saved } from '../types/context'
-import { generateColorPalette } from '../functions/generate-color-palette'
-import { ModalShades } from '../components/layout/modal-shades'
-import { changeColor } from '../pages/pages-home/script/change-color'
-import { shadesColor } from '../pages/pages-home/script/shades-color'
-import { deleteColor } from '../pages/pages-home/script/delete-color'
-import { savedColorPalette } from '../pages/pages-home/script/saved-color-palette'
+import { useState } from 'react'
+import { TheModal, Saved, Palette } from '../types/context'
+import { generateColorPalette } from '../../functions/generate-color-palette'
+import { ModalShades } from '../../components/layout/modal-shades'
+import { changeColor } from '../../pages/pages-home/script/change-color'
+import { shadesColor } from '../../pages/pages-home/script/shades-color'
+import { deleteColor } from '../../pages/pages-home/script/delete-color'
+import { savedColorPalette } from '../../pages/pages-home/script/saved-color-palette'
 // react-toastify
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
+import { ColorPaletteContext } from './color-palette-context'
 
 type ProviderProps = {
   children: React.ReactNode
@@ -17,13 +17,12 @@ type ProviderProps = {
 
 const ColorPaletteProvider = ({ children }: ProviderProps) => {
   const [colorLimit, setColorLimit] = useState(5)
-  const [colorPalette, setColorPalette] = useState<IColorPalette[]>(generateColorPalette(colorLimit))
+  const [colorPalette, setColorPalette] = useState<Palette[]>(generateColorPalette(colorLimit))
   const [savedPalette, setSavedPalette] = useState<Saved[]>([])
 
   // Modal
   const [openModal, setOpenModal] = useState<boolean>(false)
   const [modalContent, setModalContent] = useState<JSX.Element>(<></>)
-  const [markedAsSaved, setMarkedAsSaved] = useState<boolean>(false)
 
   const theModal: TheModal = {
     isOpen: openModal,
@@ -39,7 +38,7 @@ const ColorPaletteProvider = ({ children }: ProviderProps) => {
     },
     update: {
       limit: (number: number) => setColorLimit(number),
-      palette: (palette: IColorPalette[]) => setColorPalette(palette),
+      palette: (palette: Palette[]) => setColorPalette(palette),
       saved: (saved: Saved[]) => setSavedPalette(saved),
     },
   }
@@ -50,12 +49,10 @@ const ColorPaletteProvider = ({ children }: ProviderProps) => {
       const data = deleteColor({ colorId: id, limit: colorLimit, palette: colorPalette })
       setColorLimit(data.limit)
       setColorPalette(data.palette)
-      setMarkedAsSaved(false)
     },
     change: (id: number, color: string) => {
       const data = changeColor({ colorId: id, color, palette: colorPalette })
       setColorPalette(data)
-      setMarkedAsSaved(false)
     },
     shades: (color: string, id: number) => {
       const handlerClickModalShades = (color: string) => {
@@ -81,9 +78,7 @@ const ColorPaletteProvider = ({ children }: ProviderProps) => {
   }
 
   return (
-    <ColorPaletteContext.Provider
-      value={{ options, savedPalette, markedAsSaved, colorPalette, colorLimit, modify, notify, theModal }}
-    >
+    <ColorPaletteContext.Provider value={{ options, modify, notify, theModal }}>
       <ToastContainer />
       {children}
     </ColorPaletteContext.Provider>

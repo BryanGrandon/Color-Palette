@@ -90,7 +90,7 @@ const RgbToHex = (args: number[]) => {
 
 // Shades
 
-const shades = (hsl: HSL, number: number) => {
+const shadesColor = (hsl: HSL, number: number) => {
   const array = []
   const limit = 100 / number
   let lighting = hsl.l === 100 ? 100 : 0
@@ -116,7 +116,7 @@ type Output = {
   color: string
 }
 
-export const colorShades = (text: string) => {
+export const shades = (text: string) => {
   const hex = text
     .split('')
     .filter((e) => e !== '#')
@@ -124,7 +124,7 @@ export const colorShades = (text: string) => {
   const rgb = hexToRgb(hex)
   const hsl = RgbToHsl(rgb)
   const output: Output[] = []
-  const array = shades(hsl, 10)
+  const array = shadesColor(hsl, 10)
 
   array.forEach((e) => {
     const rgb = HslToRgb(e.color.h, e.color.s, e.color.l)

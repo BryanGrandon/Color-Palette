@@ -1,4 +1,4 @@
-import { IColorPalette } from '../../types/context'
+import { IColorPalette } from '../../core/types/context'
 
 type SavedCard = {
   id?: number

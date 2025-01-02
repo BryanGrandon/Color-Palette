@@ -1,6 +1,6 @@
 import { useContext } from 'react'
 import ColorCard from '../components/ui/color-card'
-import { ColorPaletteContext } from '../context/color-palette-context'
+import { ColorPaletteContext } from '../core/context/color-palette-context'
 import IconsButtons from '../components/ui/icons-buttons'
 
 import { TbArrowsRandom } from 'react-icons/tb'

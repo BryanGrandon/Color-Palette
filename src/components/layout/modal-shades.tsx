@@ -1,4 +1,4 @@
-import { colorShades } from '../../functions/color-shades'
+import { shades } from '../../pages/pages-home/script/global/shades'
 
 type ModalShades = {
   color: string
@@ -6,10 +6,10 @@ type ModalShades = {
 }
 
 export const ModalShades = ({ color, onClick }: ModalShades) => {
-  const shades = colorShades(color)
+  const theShades = shades(color)
   return (
     <article className='modal-shades'>
-      {shades.map((e) => (
+      {theShades.map((e) => (
         <section key={e.id} className='modal-shades__main' onClick={() => onClick(e.color)}>
           <p className='modal-shades__color' style={{ background: e.color }}>
             <span className='modal-shades__hex'>{e.color}</span>

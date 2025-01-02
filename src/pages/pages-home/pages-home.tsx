@@ -1,8 +1,5 @@
-import { useContext } from 'react'
 import ColorCard from '../../components/ui/color-card'
-import { ColorPaletteContext } from '../../context/color-palette-context'
 import IconsButtons from '../../components/ui/icons-buttons'
-
 import { TbArrowsRandom } from 'react-icons/tb'
 import { IoBookmark, IoBookmarkOutline, IoReloadOutline } from 'react-icons/io5'
 import { IoIosAddCircleOutline, IoMdAddCircle } from 'react-icons/io'
@@ -10,10 +7,10 @@ import { contentHome } from '../../content/content-home'
 import { addColor } from './script/add-color'
 import { randomColorPalette } from './script/random-color-palette'
 import { savedColorPalette } from './script/saved-color-palette'
+import { useHookContext } from '../../hooks/hook-context'
 
 const PagesHome = () => {
-  const { modify, options } = useContext(ColorPaletteContext)
-
+  const { modify, options } = useHookContext()
   const { palette, limit, saved } = options.get
 
   const handlerClickAdd = (): void => {

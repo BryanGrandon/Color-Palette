@@ -1,4 +1,5 @@
-import { SavedColorPalette, Saved } from '../types/options'
+import { Saved } from '../../../core/types/context'
+import { SavedColorPalette } from '../types/options'
 
 type Checking = {
   check: boolean
@@ -7,7 +8,6 @@ type Checking = {
 
 const checking = ({ palette, saved }: SavedColorPalette): Checking => {
   let count = 0
-
   const output = {
     check: false,
     savedId: 0,
@@ -34,7 +34,6 @@ type savedPalette = {
 
 export const savedColorPalette = ({ palette, saved }: SavedColorPalette): savedPalette => {
   const { check, savedId } = checking({ palette, saved })
-
   let newSaved: Saved[] = []
   if (!check) {
     const newPalette = {
@@ -46,11 +45,9 @@ export const savedColorPalette = ({ palette, saved }: SavedColorPalette): savedP
     newSaved = saved.filter((e) => e.id !== savedId)
     for (let i = 0; i < newSaved.length; i++) newSaved[i].id = i + 1
   }
-
   const output = {
     checking: check,
     newSaved,
   }
-
   return output
 }

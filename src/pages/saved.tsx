@@ -1,13 +1,15 @@
 import { useContext } from 'react'
-import { ColorPaletteContext } from '../context/color-palette-context'
+import { ColorPaletteContext } from '../core/context/color-palette-context'
 import SavedCard from '../components/ui/saved-card'
+
 const Saved = () => {
-  const { savedPalette } = useContext(ColorPaletteContext)
+  const { options } = useContext(ColorPaletteContext)
+  const { saved } = options.get
 
   return (
     <main>
       <section>
-        {savedPalette.map((e) => (
+        {saved.map((e) => (
           <SavedCard key={e.id} id={e.id} colors={e.palette} />
         ))}
       </section>
