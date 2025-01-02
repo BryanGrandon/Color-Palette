@@ -1,5 +1,5 @@
 import { useContext } from 'react'
-import { ColorPaletteContext } from '../../core/context/color-palette-context'
+import { ColorPaletteContext } from '../../context/color-palette-context'
 import { MdClose } from 'react-icons/md'
 
 type Modal = {

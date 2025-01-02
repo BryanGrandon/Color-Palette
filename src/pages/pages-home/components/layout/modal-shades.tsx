@@ -1,4 +1,4 @@
-import { shades } from '../../pages/pages-home/script/global/shades'
+import { shades } from '../../script/global/shades'
 
 type ModalShades = {
   color: string

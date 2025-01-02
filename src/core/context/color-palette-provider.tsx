@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { TheModal, Saved, Palette } from '../types/context'
 import { generateColorPalette } from '../../functions/generate-color-palette'
-import { ModalShades } from '../../components/layout/modal-shades'
+import { ModalShades } from '../../pages/pages-home/components/layout/modal-shades'
 import { changeColor } from '../../pages/pages-home/script/change-color'
 import { shadesColor } from '../../pages/pages-home/script/shades-color'
 import { deleteColor } from '../../pages/pages-home/script/delete-color'

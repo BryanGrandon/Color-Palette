@@ -1,20 +1,16 @@
-// Base
+// // Base
 @use './base/reset-styles';
 @use './base/typography';
 @use './base/base';
-@use './base/media-queries';
 
-// Layout
+// // Layout
 @use './layout/header';
-@use './layout/home';
 @use './layout/modal';
 
-// Ui
-@use './ui/color-card';
-@use './ui/modal-shades';
+// // Ui
 @use './ui/icons-buttons';
 @use './ui/saved-card';
 
-// Utilities
+// // Utilities
 @use './utilities/mixin' as *;
 @use './utilities/variables' as *;

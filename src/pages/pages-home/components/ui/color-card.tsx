@@ -1,13 +1,13 @@
 import { useContext } from 'react'
-import { ColorPaletteContext } from '../../core/context/color-palette-context'
-import IconsButtons from './icons-buttons'
+import { ColorPaletteContext } from '../../../../core/context/color-palette-context'
+import IconsButtons from '../../../../core/components/ui/icons-buttons'
 // Icons
 import { FaPalette, FaExpandArrowsAlt } from 'react-icons/fa'
 import { IoClose, IoReloadOutline, IoCopyOutline, IoCopy } from 'react-icons/io5'
 import { IoIosClose } from 'react-icons/io'
 import { FaArrowsUpDown } from 'react-icons/fa6'
 import { TbArrowsRandom } from 'react-icons/tb'
-import { MINIMUM_COLORS } from '../../core/constants'
+import { MINIMUM_COLORS } from '../../../../core/constants'
 
 type Props = {
   id: number

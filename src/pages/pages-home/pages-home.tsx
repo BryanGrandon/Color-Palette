@@ -1,5 +1,5 @@
-import ColorCard from '../../components/ui/color-card'
-import IconsButtons from '../../components/ui/icons-buttons'
+import ColorCard from './components/ui/color-card'
+import IconsButtons from '../../core/components/ui/icons-buttons'
 import { TbArrowsRandom } from 'react-icons/tb'
 import { IoBookmark, IoBookmarkOutline, IoReloadOutline } from 'react-icons/io5'
 import { IoIosAddCircleOutline, IoMdAddCircle } from 'react-icons/io'

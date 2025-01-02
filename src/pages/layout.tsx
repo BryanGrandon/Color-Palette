@@ -1,6 +1,6 @@
 import { Outlet } from 'react-router-dom'
-import Header from '../components/layout/header'
-import { Modal } from '../components/layout/modal'
+import Header from '../core/components/layout/header'
+import { Modal } from '../core/components/layout/modal'
 import { useContext } from 'react'
 import { ColorPaletteContext } from '../core/context/color-palette-context'
 

@@ -1,11 +1,9 @@
-@use '../utilities/mixin' as *;
-@use '../utilities/variables' as *;
+@use '/src/core/scss/utilities/mixin' as *;
+@use '/src/core/scss/utilities/variables' as *;
 @use '../ui/color-card';
-@use '../layout/home';
+@use '../layout/pages-home';
 
 @media screen and (max-width: 1100px) {
-  // color-palette (home)
-
   .color-palette {
     display: flex;
     flex-direction: column;

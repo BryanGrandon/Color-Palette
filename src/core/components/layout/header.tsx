@@ -16,7 +16,10 @@ const Header = () => {
   }
 
   return (
-    <header className='header-main' onClick={(e) => ((e.target as HTMLElement).className == 'header' ? setIsActive(false) : null)}>
+    <header
+      className='header-main'
+      onClick={(e) => ((e.target as HTMLElement).className == 'header' ? setIsActive(false) : null)}
+    >
       <article className='header'>
         <button onClick={() => navigate('../')}>Colors</button>
         <nav className='header__nav'>

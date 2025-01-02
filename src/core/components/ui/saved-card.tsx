@@ -1,8 +1,8 @@
-import { IColorPalette } from '../../core/types/context'
+import { Palette } from '../../core/types/context'
 
 type SavedCard = {
   id?: number
-  colors: IColorPalette[]
+  colors: Palette[]
 }
 
 const SavedCard = ({ colors }: SavedCard) => {

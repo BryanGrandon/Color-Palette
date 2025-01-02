@@ -1,5 +1,5 @@
-@use '../utilities/mixin' as *;
-@use '../utilities/variables' as *;
+@use '/src/core/scss/utilities/mixin' as *;
+@use '/src/core/scss/utilities/variables' as *;
 
 .color-card {
   @include flexbox(column, nowrap, space-between, center);
