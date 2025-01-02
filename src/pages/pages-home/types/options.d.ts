@@ -3,6 +3,11 @@ interface Palette {
   hex: string
 }
 
+interface Saved {
+  id: number
+  palette: Palette[]
+}
+
 export type ReturnPalette = Palette[]
 
 export type AddColor = {
@@ -22,7 +27,12 @@ export type ChangeColor = {
   palette: Palette[]
 }
 
-type ShadesColor = {
+export type SavedColorPalette = {
+  palette: Palette[]
+  saved: Saved[]
+}
+
+export type ShadesColor = {
   colorId: number
   color: string
   palette: Palette[]

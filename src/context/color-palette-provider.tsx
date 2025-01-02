@@ -6,6 +6,7 @@ import { ModalShades } from '../components/layout/modal-shades'
 import { changeColor } from '../pages/pages-home/script/change-color'
 import { shadesColor } from '../pages/pages-home/script/shades-color'
 import { deleteColor } from '../pages/pages-home/script/delete-color'
+import { savedColorPalette } from '../pages/pages-home/script/saved-color-palette'
 // react-toastify
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
@@ -30,35 +31,16 @@ const ColorPaletteProvider = ({ children }: ProviderProps) => {
     modify: () => setOpenModal(!openModal),
   }
 
-  const modifySaved = (): void => {
-    const verification = checkSaved()
-    setMarkedAsSaved(!markedAsSaved)
-
-    if (!verification) {
-      const palette: IColorPalette[] = []
-      colorPalette.map((e) => {
-        const newColor = {
-          id: e.id,
-          hex: e.hex,
-        }
-        palette.push(newColor)
-      })
-      const newPalette = {
-        id: savedPalette.length + 1,
-        color: palette,
-      }
-      setSavedPalette([newPalette, ...savedPalette])
-    }
-  }
-
   const options = {
     get: {
       limit: colorLimit,
       palette: colorPalette,
+      saved: savedPalette,
     },
     update: {
       limit: (number: number) => setColorLimit(number),
       palette: (palette: IColorPalette[]) => setColorPalette(palette),
+      saved: (saved: Saved[]) => setSavedPalette(saved),
     },
   }
 
@@ -86,32 +68,9 @@ const ColorPaletteProvider = ({ children }: ProviderProps) => {
     },
     random: () => {},
     saved: () => {
-      modifySaved()
+      const data = savedColorPalette({ palette: colorPalette, saved: savedPalette })
+      setSavedPalette(data.newSaved)
     },
-  }
-
-  const checkSaved = () => {
-    let output: boolean = false
-    let count = 0
-
-    savedPalette.map((e) => {
-      const id = e.id
-      const array: string[] = []
-      colorPalette.map((e) => array.push(e.hex))
-
-      for (let i = 0; i < array.length; i++) {
-        const color = e.color[i]
-        if (array.includes(color?.hex)) count += 1
-        else break
-      }
-      if (count === array.length) {
-        output = true
-        const result = savedPalette.filter((e) => e.id !== id)
-        for (let i = 0; i < result.length; i++) result[i].id = i
-        setSavedPalette([...savedPalette, ...result])
-      }
-    })
-    return output
   }
 
   const notify = (text: string): void => {

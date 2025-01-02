@@ -8,7 +8,7 @@ const Saved = () => {
     <main>
       <section>
         {savedPalette.map((e) => (
-          <SavedCard key={e.id} id={e.id} colors={e.color} />
+          <SavedCard key={e.id} id={e.id} colors={e.palette} />
         ))}
       </section>
     </main>

@@ -20,17 +20,19 @@ export type TheModal = {
 
 export type Saved = {
   id: number
-  color: IColorPalette[]
+  palette: IColorPalette[]
 }
 
 type Options = {
   get: {
     limit: number
     palette: IColorPalette[]
+    saved: Saved[]
   }
   update: {
     limit: (number: number) => void
     palette: (palette: IColorPalette[]) => void
+    saved: (saved: Saved[]) => void
   }
 }
 

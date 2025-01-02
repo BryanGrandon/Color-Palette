@@ -9,11 +9,12 @@ import { IoIosAddCircleOutline, IoMdAddCircle } from 'react-icons/io'
 import { contentHome } from '../../content/content-home'
 import { addColor } from './script/add-color'
 import { randomColorPalette } from './script/random-color-palette'
+import { savedColorPalette } from './script/saved-color-palette'
 
 const PagesHome = () => {
-  const { modify, markedAsSaved, options } = useContext(ColorPaletteContext)
+  const { modify, options } = useContext(ColorPaletteContext)
 
-  const { palette, limit } = options.get
+  const { palette, limit, saved } = options.get
 
   const handlerClickAdd = (): void => {
     const { limit, palette } = options.get
@@ -28,6 +29,11 @@ const PagesHome = () => {
     options.update?.palette(data)
   }
 
+  const markedSaved = () => {
+    const { checking } = savedColorPalette({ palette, saved })
+    return checking
+  }
+
   const handlerClickSaved = () => modify.saved()
 
   return (
@@ -36,7 +42,7 @@ const PagesHome = () => {
         <IconsButtons selected={<TbArrowsRandom />} deselected={<IoReloadOutline />} onClick={handlerClickRandom} />
         <IconsButtons selected={<IoMdAddCircle />} deselected={<IoIosAddCircleOutline />} onClick={handlerClickAdd} />
         <button className='icons-buttons' onClick={handlerClickSaved}>
-          {markedAsSaved ? <IoBookmark /> : <IoBookmarkOutline />}
+          {markedSaved() ? <IoBookmark /> : <IoBookmarkOutline />}
         </button>
       </article>
 
