@@ -24,13 +24,15 @@ const PagesHome = () => {
     const { palette } = options.get
     const data = randomColorPalette(palette)
     options.update?.palette(data)
+    console.log('ss')
   }
 
   const handlerClickSaved = () => {
     const { newSaved } = savedColorPalette({ palette, saved })
-    options.update?.saved(newSaved)
+    options.update?.saved([...newSaved])
   }
-  const markedSaved = () => {
+
+  const markSaved = (): boolean => {
     const { checking } = savedColorPalette({ palette, saved })
     return checking
   }
@@ -40,8 +42,8 @@ const PagesHome = () => {
       <article className='home__options'>
         <IconsButtons selected={<TbArrowsRandom />} deselected={<IoReloadOutline />} onClick={handlerClickRandom} />
         <IconsButtons selected={<IoMdAddCircle />} deselected={<IoIosAddCircleOutline />} onClick={handlerClickAdd} />
-        <button className='icons-buttons' onClick={handlerClickSaved}>
-          {markedSaved() ? <IoBookmark /> : <IoBookmarkOutline />}
+        <button className='icons-buttons' onClick={() => handlerClickSaved()}>
+          {markSaved() ? <IoBookmark /> : <IoBookmarkOutline />}
         </button>
       </article>
 

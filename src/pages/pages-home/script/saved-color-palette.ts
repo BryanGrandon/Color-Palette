@@ -24,7 +24,6 @@ const checking = ({ palette, saved, toEliminate }: Checking): savedPalette => {
   if (toEliminate && check.includes(true)) {
     newPalette = saved.filter((e) => e.id !== savedId)
   }
-
   const output = {
     checking: check.includes(true),
     newSaved: newPalette,
@@ -40,10 +39,12 @@ type savedPalette = {
 export const savedColorPalette = ({ palette, saved }: SavedColorPalette): savedPalette => {
   const data = checking({ palette, saved })
   let newSaved: Saved[] = []
+
   if (!data.checking) {
+    const thePalette = palette.map((e) => ({ id: e.id, hex: e.hex }))
     const newPalette = {
       id: saved.length + 1,
-      palette: palette,
+      palette: thePalette,
     }
     newSaved = [...saved, newPalette]
   } else {

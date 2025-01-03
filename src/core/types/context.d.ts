@@ -8,15 +8,6 @@ export interface Saved {
   palette: Palette[]
 }
 
-type Modify = {
-  add: () => void
-  delete: (id: number) => void
-  change: (id: number, color: string) => void
-  shades: (color: string, id: number) => void
-  random: () => void
-  saved: () => void
-}
-
 export type TheModal = {
   isOpen: boolean
   content: JSX.Element
@@ -37,7 +28,6 @@ type Options = {
 }
 
 export type ColorPaletteType = {
-  modify: Modify
   notify: (text: string) => void
   theModal: TheModal
   options: Options

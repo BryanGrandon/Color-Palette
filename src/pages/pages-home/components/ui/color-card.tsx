@@ -9,6 +9,8 @@ import { FaArrowsUpDown } from 'react-icons/fa6'
 import { TbArrowsRandom } from 'react-icons/tb'
 import { MINIMUM_COLORS } from '../../../../core/constants'
 import { deleteColor } from '../../script/delete-color'
+import { changeColor } from '../../script/change-color'
+import { shadesColor } from '../../script/shades-color'
 
 type Props = {
   id: number
@@ -16,7 +18,7 @@ type Props = {
 }
 
 const ColorCard = ({ color, id }: Props): JSX.Element => {
-  const { modify, options, notify } = useContext(ColorPaletteContext)
+  const { options, notify } = useContext(ColorPaletteContext)
   const { limit, palette } = options.get
 
   const handlerClickDelete = (id: number): void => {
@@ -30,6 +32,22 @@ const ColorCard = ({ color, id }: Props): JSX.Element => {
     navigator.clipboard.writeText(color)
   }
 
+  const handlerChangeColor = (e: React.FormEvent): void => {
+    const color = (e.target as HTMLTextAreaElement).value
+    const data = changeColor({ colorId: id, color, palette })
+    options.update?.palette(data)
+  }
+
+  const handlerClickShades = (color: string, id: number): void => {
+    const data = shadesColor({ color, colorId: id, palette })
+    options.update?.palette(data)
+  }
+
+  const handlerClickRandomColor = (color: string) => {
+    const data = changeColor({ colorId: id, color, palette })
+    options.update?.palette(data)
+  }
+
   return (
     <section className='color-card' style={{ background: color }}>
       <h2 className='color-card__title'>{color}</h2>
@@ -38,7 +56,7 @@ const ColorCard = ({ color, id }: Props): JSX.Element => {
         <label
           className='not-on-mobile'
           onClick={(e) => ((e.target as HTMLTextAreaElement).value = color)}
-          onChange={(e) => modify.change(id, (e.target as HTMLTextAreaElement).value)}
+          onChange={(e) => handlerChangeColor(e)}
         >
           <FaPalette />
           <input type='color' className='color-card__input' />
@@ -48,9 +66,13 @@ const ColorCard = ({ color, id }: Props): JSX.Element => {
           className='not-on-mobile'
           selected={<FaExpandArrowsAlt />}
           deselected={<FaArrowsUpDown />}
-          onClick={() => modify.shades(color, id)}
+          onClick={() => handlerClickShades(color, id)}
         />
-        <IconsButtons selected={<TbArrowsRandom />} deselected={<IoReloadOutline />} onClick={() => modify.change(id, '')} />
+        <IconsButtons
+          selected={<TbArrowsRandom />}
+          deselected={<IoReloadOutline />}
+          onClick={() => handlerClickRandomColor('')}
+        />
         {limit > MINIMUM_COLORS ? (
           <IconsButtons selected={<IoIosClose />} deselected={<IoClose />} onClick={() => handlerClickDelete(id)} />
         ) : null}
