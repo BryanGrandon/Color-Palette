@@ -2,9 +2,11 @@
 @use '/src/core/scss/utilities/variables' as *;
 
 .color-palette {
+  position: relative;
   padding: 1rem;
   display: grid;
-  position: relative;
+  grid-template-columns: repeat(auto-fit, minmax(8rem, 1fr));
+
   gap: 0.3rem;
 }
 

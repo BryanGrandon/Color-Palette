@@ -11,7 +11,7 @@ import { useHookContext } from '../../hooks/hook-context'
 
 const PagesHome = () => {
   const { options } = useHookContext()
-  const { palette, limit, saved } = options.get
+  const { palette, saved } = options.get
 
   const handlerClickAdd = (): void => {
     const { limit, palette } = options.get
@@ -47,7 +47,7 @@ const PagesHome = () => {
         </button>
       </article>
 
-      <article className='color-palette' style={{ gridTemplateColumns: `repeat(${limit}, 1fr)` }}>
+      <article className='color-palette'>
         {palette.map((e) => (
           <ColorCard key={e.id} id={e.id} color={e.hex} />
         ))}
