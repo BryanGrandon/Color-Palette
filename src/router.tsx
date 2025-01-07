@@ -22,7 +22,7 @@ const router = createHashRouter(
         {
           path: 'saved',
           lazy: async () => {
-            const Saved = await import('./pages/saved')
+            const Saved = await import('./pages/pages-saved/pages-saved')
             return { Component: Saved.default }
           },
           hydrateFallbackElement: TheFallback('Loading saved'),

@@ -1,10 +1,10 @@
-import { useContext } from 'react'
-import { ColorPaletteContext } from '../core/context/color-palette-context'
-import SavedCard from '../core/components/ui/saved-card'
+import { useHookContext } from '../../hooks/hook-context'
+import SavedCard from './components/ui/saved-card'
 
 const Saved = () => {
-  const { options } = useContext(ColorPaletteContext)
+  const { options } = useHookContext()
   const { saved } = options.get
+  console.log(saved)
 
   return (
     <main>
