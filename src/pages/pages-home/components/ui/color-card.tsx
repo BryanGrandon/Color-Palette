@@ -11,6 +11,7 @@ import { MINIMUM_COLORS } from '../../../../core/constants'
 import { deleteColor } from '../../script/delete-color'
 import { changeColor } from '../../script/change-color'
 import { shadesColor } from '../../script/shades-color'
+import { ModalShades } from '../layout/modal-shades'
 
 type Props = {
   id: number
@@ -18,7 +19,7 @@ type Props = {
 }
 
 const ColorCard = ({ color, id }: Props): JSX.Element => {
-  const { options, notify } = useContext(ColorPaletteContext)
+  const { options, notify, theModal } = useContext(ColorPaletteContext)
   const { limit, palette } = options.get
 
   const handlerClickDelete = (id: number): void => {
@@ -38,9 +39,14 @@ const ColorCard = ({ color, id }: Props): JSX.Element => {
     options.update?.palette(data)
   }
 
-  const handlerClickShades = (color: string, id: number): void => {
-    const data = shadesColor({ color, colorId: id, palette })
-    options.update?.palette(data)
+  const handlerClickShades = (color: string) => {
+    const handlerModal = (color: string): void => {
+      const data = shadesColor({ color, colorId: id, palette })
+      options.update?.palette(data)
+      theModal.modify.open(false)
+    }
+    theModal.modify.content(<ModalShades color={color} onClick={handlerModal} />)
+    theModal.modify.open(true)
   }
 
   const handlerClickRandomColor = (color: string) => {
@@ -66,7 +72,7 @@ const ColorCard = ({ color, id }: Props): JSX.Element => {
           className='not-on-mobile'
           selected={<FaExpandArrowsAlt />}
           deselected={<FaArrowsUpDown />}
-          onClick={() => handlerClickShades(color, id)}
+          onClick={() => handlerClickShades(color)}
         />
         <IconsButtons
           selected={<TbArrowsRandom />}

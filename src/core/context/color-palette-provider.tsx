@@ -1,13 +1,19 @@
 import { useState } from 'react'
 import { ColorPaletteContext } from './color-palette-context'
 import { TheModal, Saved, Palette } from '../types/context'
-import { generateColorPalette } from '../../functions/generate-color-palette'
 // react-toastify
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
+import { randomColor } from '../script/random-color'
 
 type ProviderProps = {
   children: React.ReactNode
+}
+
+const generateColorPalette = (limit: number = 1) => {
+  const palette: Palette[] = []
+  for (let i = 1; i <= limit; i++) palette.push({ id: i, hex: randomColor() })
+  return palette
 }
 
 const ColorPaletteProvider = ({ children }: ProviderProps) => {
@@ -17,12 +23,17 @@ const ColorPaletteProvider = ({ children }: ProviderProps) => {
 
   // Modal
   const [openModal, setOpenModal] = useState<boolean>(false)
-  const [modalContent] = useState<JSX.Element>(<></>)
+  const [modalContent, setModalContent] = useState<JSX.Element>(<></>)
 
   const theModal: TheModal = {
-    isOpen: openModal,
-    content: modalContent,
-    modify: () => setOpenModal(!openModal),
+    get: {
+      open: openModal,
+      content: modalContent,
+    },
+    modify: {
+      open: (boolean) => setOpenModal(boolean),
+      content: (content) => setModalContent(content),
+    },
   }
 
   const options = {

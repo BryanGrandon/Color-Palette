@@ -9,9 +9,14 @@ export interface Saved {
 }
 
 export type TheModal = {
-  isOpen: boolean
-  content: JSX.Element
-  modify: () => void
+  get: {
+    open: boolean
+    content: JSX.Element
+  }
+  modify: {
+    open: (boolean: boolean) => void
+    content: (content: JSX.Element) => void
+  }
 }
 
 type Options = {

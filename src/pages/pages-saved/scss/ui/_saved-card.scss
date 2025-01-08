@@ -3,7 +3,6 @@
 
 .saved-card {
   @include flexbox(row, nowrap, normal, normal);
-  border: 1px solid #f00;
   border-radius: 0.5rem;
   overflow: hidden;
 

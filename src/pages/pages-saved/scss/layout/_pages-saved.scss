@@ -1,0 +1,18 @@
+@use '/src/core/scss/utilities/mixin' as *;
+@use '/src/core/scss/utilities/variables' as *;
+
+.pages-saved {
+  background-image: url('https://cdn.pixabay.com/photo/2023/02/27/15/15/abstract-7818693_1280.jpg');
+  height: 100vh;
+  background-size: cover;
+  @include overlay(#0000008c);
+}
+
+.saved {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+  gap: 1rem;
+  border: 1px solid #f00;
+  position: relative;
+  padding: 1rem;
+}
