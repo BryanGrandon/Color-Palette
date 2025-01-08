@@ -22,7 +22,7 @@ export type SavedColorPalette = {
   saved: Saved[]
 }
 
-export type ShadesColor = {
+export type Shades = {
   colorId: number
   color: string
   palette: Palette[]
