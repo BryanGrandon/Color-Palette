@@ -1,5 +1,5 @@
 import { Saved } from '../../../core/types/context'
-import { SavedColorPalette } from '../types/options'
+import { SavedColorPalette } from '../types/website features'
 
 type Checking = SavedColorPalette & { toEliminate?: boolean }
 

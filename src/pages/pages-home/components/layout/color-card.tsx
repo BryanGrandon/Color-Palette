@@ -3,15 +3,14 @@ import { ColorPaletteContext } from '../../../../core/context/color-palette-cont
 import IconsButtons from '../../../../core/components/ui/icons-buttons'
 // Icons
 import { FaPalette, FaExpandArrowsAlt } from 'react-icons/fa'
-import { IoClose, IoReloadOutline, IoCopyOutline, IoCopy } from 'react-icons/io5'
-import { IoIosClose } from 'react-icons/io'
+import { IoReloadOutline, IoCopyOutline, IoCopy } from 'react-icons/io5'
 import { FaArrowsUpDown } from 'react-icons/fa6'
 import { TbArrowsRandom } from 'react-icons/tb'
 import { MINIMUM_COLORS } from '../../../../core/constants'
-import { deleteColor } from '../../script/delete-color'
 import { changeColor } from '../../script/change-color'
 import { shadesColor } from '../../script/shades-color'
-import { ModalShades } from '../layout/modal-shades'
+import { ModalShades } from './modal-shades'
+import DeleteColor from '../ui/delete-color'
 
 type Props = {
   id: number
@@ -21,12 +20,6 @@ type Props = {
 const ColorCard = ({ color, id }: Props): JSX.Element => {
   const { options, notify, theModal } = useContext(ColorPaletteContext)
   const { limit, palette } = options.get
-
-  const handlerClickDelete = (id: number): void => {
-    const data = deleteColor({ colorId: id, limit, palette })
-    options.update?.limit(data.limit)
-    options.update?.palette(data.palette)
-  }
 
   const handlerClickCopy = (): void => {
     notify(`Color copied!`)
@@ -79,9 +72,7 @@ const ColorCard = ({ color, id }: Props): JSX.Element => {
           deselected={<IoReloadOutline />}
           onClick={() => handlerClickRandomColor('')}
         />
-        {limit > MINIMUM_COLORS ? (
-          <IconsButtons selected={<IoIosClose />} deselected={<IoClose />} onClick={() => handlerClickDelete(id)} />
-        ) : null}
+        {limit > MINIMUM_COLORS ? <DeleteColor id={id} /> : null}
       </section>
     </section>
   )

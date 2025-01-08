@@ -1,6 +1,6 @@
 import { MAXIMUM_COLORS } from '../../../core/constants'
 import { randomColor } from '../../../core/script/random-color'
-import { AddColor } from '../types/options'
+import { AddColor } from '../types/website features'
 
 export const addColor = ({ limit, palette }: AddColor) => {
   if (limit < MAXIMUM_COLORS) {

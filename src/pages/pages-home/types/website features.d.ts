@@ -5,7 +5,7 @@ export type AddColor = {
   palette: Palette[]
 }
 
-export type DeleteColor = {
+export type Remove_Color = {
   colorId: number
   limit: number
   palette: Palette[]
