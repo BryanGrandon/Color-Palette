@@ -10,13 +10,14 @@ import { IoReloadOutline, IoCopyOutline, IoCopy } from 'react-icons/io5'
 import { TbArrowsRandom } from 'react-icons/tb'
 import { MINIMUM_COLORS } from '../../../../core/constants'
 import { changeColor } from '../../script/change-color'
+import HexInput from '../ui/hex-input'
 
-type Props = {
+type Color_Card = {
   id: number
   color: string
 }
 
-const ColorCard = ({ color, id }: Props): JSX.Element => {
+const ColorCard = ({ color, id }: Color_Card): JSX.Element => {
   const { options, notify } = useContext(ColorPaletteContext)
   const { limit, palette } = options.get
 
@@ -27,18 +28,19 @@ const ColorCard = ({ color, id }: Props): JSX.Element => {
 
   const handlerChangeColor = (e: React.FormEvent): void => {
     const color = (e.target as HTMLTextAreaElement).value
-    const data = changeColor({ colorId: id, color, palette })
+    const data = changeColor({ colorId: id, color, palette, isRandom: false })
     options.update?.palette(data)
   }
 
   const handlerClickRandomColor = () => {
-    const data = changeColor({ colorId: id, palette })
+    const data = changeColor({ colorId: id, palette, isRandom: true })
     options.update?.palette(data)
   }
 
   return (
     <section className='color-card' style={{ background: color }}>
-      <h2 className='color-card__title'>{color}</h2>
+      <HexInput color={color} id={id} />
+
       <section className='color-card__options'>
         <IconsButtons selected={<IoCopy />} deselected={<IoCopyOutline />} onClick={handlerClickCopy} />
         <label

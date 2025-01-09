@@ -11,12 +11,6 @@ const PagesHome = () => {
   const { options } = useHookContext()
   const { palette, saved } = options.get
 
-  // const handlerClickRandom = () => {
-  //   const { palette } = options.get
-  //   const data = randomColorPalette(palette)
-  //   options.update?.palette(data)
-  // }
-
   const handlerClickSaved = () => {
     const { newSaved } = savedColorPalette({ palette, saved })
     options.update?.saved([...newSaved])

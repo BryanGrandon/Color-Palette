@@ -1,0 +1,12 @@
+@use '/src/core/scss/utilities/mixin' as *;
+@use '/src/core/scss/utilities/variables' as *;
+
+.hex-input {
+  color: $white;
+  border-radius: 0.4rem;
+  padding: 0.1rem 0.5rem;
+  background: #00000052;
+  box-shadow: 0 4px 30px #0000001a;
+  border: 1px solid #ffffff4d;
+  width: 5.5rem;
+}

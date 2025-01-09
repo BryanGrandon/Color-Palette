@@ -11,9 +11,10 @@ export type Remove_Color = {
   palette: Palette[]
 }
 
-export type ChangeColor = {
+export type Change_Color = {
   colorId: number
   color?: string
+  isRandom: boolean
   palette: Palette[]
 }
 
