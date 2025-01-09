@@ -1,6 +1,6 @@
 import { Palette, Saved } from '../../../core/types/context'
 
-export type AddColor = {
+export type Add_Color = {
   limit: number
   palette: Palette[]
 }
@@ -13,7 +13,7 @@ export type Remove_Color = {
 
 export type ChangeColor = {
   colorId: number
-  color: string
+  color?: string
   palette: Palette[]
 }
 

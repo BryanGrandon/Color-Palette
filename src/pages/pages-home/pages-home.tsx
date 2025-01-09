@@ -2,29 +2,20 @@ import ColorCard from './components/layout/color-card'
 import IconsButtons from '../../core/components/ui/icons-buttons'
 import { TbArrowsRandom } from 'react-icons/tb'
 import { IoBookmark, IoBookmarkOutline, IoReloadOutline } from 'react-icons/io5'
-import { IoIosAddCircleOutline, IoMdAddCircle } from 'react-icons/io'
 import { contentHome } from '../../content/content-home'
-import { addColor } from './script/add-color'
 import { randomColorPalette } from './script/random-color-palette'
 import { savedColorPalette } from './script/saved-color-palette'
 import { useHookContext } from '../../hooks/hook-context'
+import AddColorPalette from './components/ui/add-color-palette'
 
 const PagesHome = () => {
   const { options } = useHookContext()
   const { palette, saved } = options.get
 
-  const handlerClickAdd = (): void => {
-    const { limit, palette } = options.get
-    const data = addColor({ limit, palette })
-    options.update?.limit(data.limit)
-    options.update?.palette(data.palette)
-  }
-
   const handlerClickRandom = () => {
     const { palette } = options.get
     const data = randomColorPalette(palette)
     options.update?.palette(data)
-    console.log('ss')
   }
 
   const handlerClickSaved = () => {
@@ -41,7 +32,7 @@ const PagesHome = () => {
     <main className='home'>
       <article className='home__options'>
         <IconsButtons selected={<TbArrowsRandom />} deselected={<IoReloadOutline />} onClick={handlerClickRandom} />
-        <IconsButtons selected={<IoMdAddCircle />} deselected={<IoIosAddCircleOutline />} onClick={handlerClickAdd} />
+        <AddColorPalette />
         <button className='icons-buttons' onClick={() => handlerClickSaved()}>
           {markSaved() ? <IoBookmark /> : <IoBookmarkOutline />}
         </button>

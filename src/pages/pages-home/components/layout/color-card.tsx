@@ -31,8 +31,8 @@ const ColorCard = ({ color, id }: Props): JSX.Element => {
     options.update?.palette(data)
   }
 
-  const handlerClickRandomColor = (color: string) => {
-    const data = changeColor({ colorId: id, color, palette })
+  const handlerClickRandomColor = () => {
+    const data = changeColor({ colorId: id, palette })
     options.update?.palette(data)
   }
 
@@ -52,11 +52,7 @@ const ColorCard = ({ color, id }: Props): JSX.Element => {
 
         <ShadesColor color={color} id={id} />
 
-        <IconsButtons
-          selected={<TbArrowsRandom />}
-          deselected={<IoReloadOutline />}
-          onClick={() => handlerClickRandomColor('')}
-        />
+        <IconsButtons selected={<TbArrowsRandom />} deselected={<IoReloadOutline />} onClick={() => handlerClickRandomColor()} />
         {limit > MINIMUM_COLORS ? <DeleteColor id={id} /> : null}
       </section>
     </section>
