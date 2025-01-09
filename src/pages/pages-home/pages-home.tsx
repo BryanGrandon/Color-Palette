@@ -1,22 +1,21 @@
 import ColorCard from './components/layout/color-card'
-import IconsButtons from '../../core/components/ui/icons-buttons'
-import { TbArrowsRandom } from 'react-icons/tb'
-import { IoBookmark, IoBookmarkOutline, IoReloadOutline } from 'react-icons/io5'
+
+import { IoBookmark, IoBookmarkOutline } from 'react-icons/io5'
 import { contentHome } from '../../content/content-home'
-import { randomColorPalette } from './script/random-color-palette'
 import { savedColorPalette } from './script/saved-color-palette'
 import { useHookContext } from '../../hooks/hook-context'
 import AddColorPalette from './components/ui/add-color-palette'
+import RandomColorPalette from './components/ui/random-color-palette'
 
 const PagesHome = () => {
   const { options } = useHookContext()
   const { palette, saved } = options.get
 
-  const handlerClickRandom = () => {
-    const { palette } = options.get
-    const data = randomColorPalette(palette)
-    options.update?.palette(data)
-  }
+  // const handlerClickRandom = () => {
+  //   const { palette } = options.get
+  //   const data = randomColorPalette(palette)
+  //   options.update?.palette(data)
+  // }
 
   const handlerClickSaved = () => {
     const { newSaved } = savedColorPalette({ palette, saved })
@@ -27,11 +26,10 @@ const PagesHome = () => {
     const { checking } = savedColorPalette({ palette, saved })
     return checking
   }
-
   return (
     <main className='home'>
       <article className='home__options'>
-        <IconsButtons selected={<TbArrowsRandom />} deselected={<IoReloadOutline />} onClick={handlerClickRandom} />
+        <RandomColorPalette />
         <AddColorPalette />
         <button className='icons-buttons' onClick={() => handlerClickSaved()}>
           {markSaved() ? <IoBookmark /> : <IoBookmarkOutline />}
