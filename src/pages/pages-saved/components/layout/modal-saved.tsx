@@ -1,7 +1,6 @@
-import IconsButtons from '../../../../core/components/ui/icons-buttons'
+import ColorCopied from '../../../../core/components/ui/color-copied'
 import { Palette } from '../../../../core/types/context'
 import { useHookContext } from '../../../../hooks/hook-context'
-import { IoCopyOutline, IoCopy } from 'react-icons/io5'
 
 type Modal_Saved = {
   id: number
@@ -9,18 +8,12 @@ type Modal_Saved = {
 }
 
 const ModalSaved = ({ colors, id }: Modal_Saved) => {
-  const { notify, options, theModal } = useHookContext()
+  const { options, theModal } = useHookContext()
   const { saved } = options.get
-
-  const handlerClickCopy = (color: string): void => {
-    notify(`Color copied!`)
-    navigator.clipboard.writeText(color)
-  }
 
   const removePalette = (paletteId: number) => {
     const output = saved.filter((e) => e.id !== paletteId)
     for (let i = 0; i < output.length; i++) output[i].id = i + 1
-
     return output
   }
 
@@ -37,7 +30,7 @@ const ModalSaved = ({ colors, id }: Modal_Saved) => {
           <section className='modal-saved__info' key={e.id}>
             <p style={{ background: e.hex }} className='modal-saved__color'></p>
             <p>{e.hex}</p>
-            <IconsButtons selected={<IoCopy />} deselected={<IoCopyOutline />} onClick={() => handlerClickCopy(e.hex)} />
+            <ColorCopied color={e.hex} />
           </section>
         ))}
       </section>

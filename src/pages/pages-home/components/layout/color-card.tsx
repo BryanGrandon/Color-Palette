@@ -1,14 +1,15 @@
 import { useHookContext } from '../../../../hooks/hook-context'
-import IconsButtons from '../../../../core/components/ui/icons-buttons'
 import { MINIMUM_COLORS } from '../../../../core/constants'
 import { changeColor } from '../../script/change-color'
 // ui
+import ColorCopied from '../../../../core/components/ui/color-copied'
+import IconsButtons from '../../../../core/components/ui/icons-buttons'
 import DeleteColor from '../ui/delete-color'
 import ShadesColor from '../ui/shades-color'
 import HexInput from '../ui/hex-input'
 // Icons
 import { FaPalette } from 'react-icons/fa'
-import { IoReloadOutline, IoCopyOutline, IoCopy } from 'react-icons/io5'
+import { IoReloadOutline } from 'react-icons/io5'
 import { TbArrowsRandom } from 'react-icons/tb'
 
 type Color_Card = {
@@ -17,13 +18,8 @@ type Color_Card = {
 }
 
 const ColorCard = ({ color, id }: Color_Card): JSX.Element => {
-  const { options, notify } = useHookContext()
+  const { options } = useHookContext()
   const { limit, palette } = options.get
-
-  const handlerClickCopy = (): void => {
-    notify(`Color copied!`)
-    navigator.clipboard.writeText(color)
-  }
 
   const handlerChangeColor = (color: string): void => {
     const data = changeColor({ colorId: id, color, palette, isRandom: false })
@@ -40,7 +36,7 @@ const ColorCard = ({ color, id }: Color_Card): JSX.Element => {
       <HexInput color={color} id={id} />
 
       <section className='color-card__options'>
-        <IconsButtons selected={<IoCopy />} deselected={<IoCopyOutline />} onClick={handlerClickCopy} />
+        <ColorCopied color={color} />
         <label
           className='not-on-mobile'
           onClick={(e) => ((e.target as HTMLTextAreaElement).value = color)}
