@@ -5,7 +5,6 @@ import SavedCard from './components/ui/saved-card'
 const PagesSaved = () => {
   const { options } = useHookContext()
   const { saved } = options.get
-  console.log(saved)
 
   return (
     <main className='pages-saved'>

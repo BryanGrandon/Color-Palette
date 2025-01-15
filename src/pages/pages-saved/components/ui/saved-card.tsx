@@ -1,14 +1,21 @@
-import { Palette } from '../../core/types/context'
+import { Palette } from '../../../../core/types/context'
+import { useHookContext } from '../../../../hooks/hook-context'
+import ModalSaved from '../layout/modal-saved'
 
 type SavedCard = {
   id?: number
   colors: Palette[]
 }
 
-const SavedCard = ({ colors }: SavedCard) => {
+const SavedCard = ({ colors, id = 0 }: SavedCard) => {
   const limit = colors.length
+  const { theModal } = useHookContext()
+  const click = () => {
+    console.log(id, colors)
+    theModal.modify.content(<ModalSaved colors={colors} id={id} />)
+    theModal.modify.open(true)
+  }
 
-  const click = () => {}
   return (
     <article className='saved-card' style={{ gridTemplateColumns: limit }} onClick={click}>
       {colors.map((e) => (

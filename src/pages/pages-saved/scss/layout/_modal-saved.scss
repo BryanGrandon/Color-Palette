@@ -1,0 +1,31 @@
+@use '/src/core/scss/utilities/mixin' as *;
+@use '/src/core/scss/utilities/variables' as *;
+
+.modal-saved {
+  @include flexbox(column, nowrap, normal, normal);
+  gap: 2rem;
+  padding: 1rem;
+
+  &__colors {
+    @include flexbox(column, nowrap, normal, normal);
+    gap: 0.6rem;
+  }
+
+  &__info {
+    @include flexbox(row, nowrap, normal, center);
+    gap: 1rem;
+  }
+
+  &__color {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 2rem;
+    box-shadow: 3px 3px 8px #000000;
+  }
+
+  &__delete {
+    border: 1px solid #f00;
+    border-radius: 0.5rem;
+    padding: 0.2rem 1rem;
+  }
+}

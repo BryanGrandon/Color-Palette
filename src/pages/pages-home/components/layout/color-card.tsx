@@ -1,16 +1,15 @@
-import { useContext } from 'react'
-import { ColorPaletteContext } from '../../../../core/context/color-palette-context'
+import { useHookContext } from '../../../../hooks/hook-context'
 import IconsButtons from '../../../../core/components/ui/icons-buttons'
+import { MINIMUM_COLORS } from '../../../../core/constants'
+import { changeColor } from '../../script/change-color'
 // ui
 import DeleteColor from '../ui/delete-color'
 import ShadesColor from '../ui/shades-color'
+import HexInput from '../ui/hex-input'
 // Icons
 import { FaPalette } from 'react-icons/fa'
 import { IoReloadOutline, IoCopyOutline, IoCopy } from 'react-icons/io5'
 import { TbArrowsRandom } from 'react-icons/tb'
-import { MINIMUM_COLORS } from '../../../../core/constants'
-import { changeColor } from '../../script/change-color'
-import HexInput from '../ui/hex-input'
 
 type Color_Card = {
   id: number
@@ -18,7 +17,7 @@ type Color_Card = {
 }
 
 const ColorCard = ({ color, id }: Color_Card): JSX.Element => {
-  const { options, notify } = useContext(ColorPaletteContext)
+  const { options, notify } = useHookContext()
   const { limit, palette } = options.get
 
   const handlerClickCopy = (): void => {
@@ -26,8 +25,7 @@ const ColorCard = ({ color, id }: Color_Card): JSX.Element => {
     navigator.clipboard.writeText(color)
   }
 
-  const handlerChangeColor = (e: React.FormEvent): void => {
-    const color = (e.target as HTMLTextAreaElement).value
+  const handlerChangeColor = (color: string): void => {
     const data = changeColor({ colorId: id, color, palette, isRandom: false })
     options.update?.palette(data)
   }
@@ -46,7 +44,7 @@ const ColorCard = ({ color, id }: Color_Card): JSX.Element => {
         <label
           className='not-on-mobile'
           onClick={(e) => ((e.target as HTMLTextAreaElement).value = color)}
-          onChange={(e) => handlerChangeColor(e)}
+          onChange={(e) => handlerChangeColor((e.target as HTMLTextAreaElement).value)}
         >
           <FaPalette />
           <input type='color' className='color-card__input' />
