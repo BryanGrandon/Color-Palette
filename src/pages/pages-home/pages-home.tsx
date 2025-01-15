@@ -9,7 +9,7 @@ import RandomColorPalette from './components/ui/random-color-palette'
 
 const PagesHome = () => {
   const { options } = useHookContext()
-  const { palette, saved } = options.get
+  const { palette, saved, limit } = options.get
 
   const handlerClickSaved = () => {
     const { newSaved } = savedColorPalette({ palette, saved })
@@ -24,7 +24,7 @@ const PagesHome = () => {
     <main className='home'>
       <article className='home__options'>
         <RandomColorPalette />
-        <AddColorPalette />
+        {limit == 9 ? null : <AddColorPalette />}
         <button className='icons-buttons' onClick={() => handlerClickSaved()}>
           {markSaved() ? <IoBookmark /> : <IoBookmarkOutline />}
         </button>

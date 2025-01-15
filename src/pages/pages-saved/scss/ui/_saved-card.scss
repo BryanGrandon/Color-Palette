@@ -2,9 +2,12 @@
 @use '/src/core/scss/utilities/variables' as *;
 
 .saved-card {
+  cursor: pointer;
   @include flexbox(row, nowrap, normal, normal);
   border-radius: 0.5rem;
   overflow: hidden;
+  border: 1px solid #ffffff4d;
+  box-shadow: 2px 2px 6px #1f1235;
 
   &__color {
     width: 100%;
