@@ -1,0 +1,19 @@
+@use '/src/core/scss/utilities/mixin' as *;
+@use '/src/core/scss/utilities/variables' as *;
+
+.button {
+  cursor: pointer;
+  border: 2px solid $main;
+  border-radius: 0.5rem;
+  padding: 0.3rem 1.5rem;
+  box-shadow: 2px 2px 8px #1f1235;
+  transition: background ease-in 0.3s;
+
+  &:hover {
+    background-color: $main;
+  }
+
+  &:active {
+    box-shadow: 2px 2px 8px #1f1235 inset;
+  }
+}
