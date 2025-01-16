@@ -1,6 +1,8 @@
+import { useNavigate } from 'react-router-dom'
 import ColorCopied from '../../../../core/components/ui/color-copied'
 import { Palette } from '../../../../core/types/context'
 import { useHookContext } from '../../../../hooks/hook-context'
+import Button from '../../../../core/components/ui/button'
 
 type Modal_Saved = {
   id: number
@@ -17,10 +19,23 @@ const ModalSaved = ({ colors, id }: Modal_Saved) => {
     return output
   }
 
-  const handlerClickDelete = () => {
-    const data = removePalette(id)
-    options.update?.saved(data)
+  const handlerClickDeletePalette = () => {
+    const confirmDelete = confirm('Do you wish to delete the color palette?')
+    if (confirmDelete) {
+      const data = removePalette(id)
+      options.update?.saved(data)
+      theModal.modify.open(false)
+    }
+  }
+
+  const navigate = useNavigate()
+
+  const handlerClickModifyPalette = () => {
+    const thePalette = colors.map((e) => ({ id: e.id, hex: e.hex }))
+    options.update?.limit(colors.length)
+    options.update?.palette([...thePalette])
     theModal.modify.open(false)
+    navigate('../')
   }
 
   return (
@@ -34,9 +49,10 @@ const ModalSaved = ({ colors, id }: Modal_Saved) => {
           </section>
         ))}
       </section>
-      <button className='modal-saved__delete' onClick={handlerClickDelete}>
-        Delete Palette
-      </button>
+      <section className='modal-saved__buttons'>
+        <Button text='Modify Palette' onClick={handlerClickModifyPalette} />
+        <Button className='modal-saved__buttons-delete' text='Delete Palette' onClick={handlerClickDeletePalette} />
+      </section>
     </article>
   )
 }

@@ -3,7 +3,7 @@
 
 .modal-saved {
   @include flexbox(column, nowrap, normal, normal);
-  gap: 2rem;
+  gap: 1.2rem;
   padding: 1rem;
 
   &__colors {
@@ -12,7 +12,7 @@
   }
 
   &__info {
-    @include flexbox(row, nowrap, normal, center);
+    @include flexbox(row, nowrap, space-between, center);
     gap: 1rem;
   }
 
@@ -23,9 +23,15 @@
     box-shadow: 3px 3px 8px #000000;
   }
 
-  &__delete {
-    border: 1px solid #f00;
-    border-radius: 0.5rem;
-    padding: 0.2rem 1rem;
+  &__buttons {
+    @include flexbox(column, nowrap, normal, normal);
+    gap: 0.8rem;
+
+    &-delete {
+      border-color: #f00;
+      &:hover {
+        background-color: #f00;
+      }
+    }
   }
 }
