@@ -44,11 +44,6 @@
     }
   }
 
-  &__title {
-    font-size: 2rem;
-    text-align: center;
-  }
-
   &__list {
     @include flexbox(column, nowrap, normal, normal);
     gap: 0.5rem;

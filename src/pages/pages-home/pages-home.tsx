@@ -6,6 +6,7 @@ import { savedColorPalette } from './script/saved-color-palette'
 import { useHookContext } from '../../hooks/hook-context'
 import AddColorPalette from './components/ui/add-color-palette'
 import RandomColorPalette from './components/ui/random-color-palette'
+import Title from '../../core/components/ui/title'
 
 const PagesHome = () => {
   const { options } = useHookContext()
@@ -38,7 +39,8 @@ const PagesHome = () => {
 
       <article className='home__content'>
         <section className='home__content__header'>
-          <h2 className='home__title'>Color Palette</h2>
+          <Title text='Color Palette' />
+
           <p>Generate your perfect color palette for each project or illustration.</p>
           <p>It has a maximum limit of 9 colors and a minimum of 2 colors.</p>
         </section>

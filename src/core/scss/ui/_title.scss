@@ -1,0 +1,8 @@
+.title {
+  font-size: 2rem;
+  text-align: center;
+
+  &::first-letter {
+    text-transform: uppercase;
+  }
+}
