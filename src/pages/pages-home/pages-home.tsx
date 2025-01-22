@@ -1,12 +1,14 @@
-import ColorCard from './components/layout/color-card'
-
-import { IoBookmark, IoBookmarkOutline } from 'react-icons/io5'
-import { contentHome } from '../../content/content-home'
-import { savedColorPalette } from './script/saved-color-palette'
 import { useHookContext } from '../../hooks/hook-context'
+import { savedColorPalette } from './script/saved-color-palette'
+import { MAXIMUM_COLORS } from '../../core/constants'
+// UI OR Layout
+import ColorCard from './components/layout/color-card'
 import AddColorPalette from './components/ui/add-color-palette'
 import RandomColorPalette from './components/ui/random-color-palette'
 import Title from '../../core/components/ui/title'
+// icons
+import { IoBookmark, IoBookmarkOutline } from 'react-icons/io5'
+import { contentHome } from '../../content/content-home'
 
 const PagesHome = () => {
   const { options } = useHookContext()
@@ -25,8 +27,8 @@ const PagesHome = () => {
     <main className='home'>
       <article className='home__options'>
         <RandomColorPalette />
-        {limit == 9 ? null : <AddColorPalette />}
-        <button className='icons-buttons' onClick={() => handlerClickSaved()}>
+        {limit == MAXIMUM_COLORS ? null : <AddColorPalette />}
+        <button className='icons-buttons' onClick={handlerClickSaved}>
           {markSaved() ? <IoBookmark /> : <IoBookmarkOutline />}
         </button>
       </article>
@@ -40,7 +42,6 @@ const PagesHome = () => {
       <article className='home__content'>
         <section className='home__content__header'>
           <Title text='Color Palette' />
-
           <p>Generate your perfect color palette for each project or illustration.</p>
           <p>It has a maximum limit of 9 colors and a minimum of 2 colors.</p>
         </section>

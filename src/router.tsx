@@ -38,7 +38,7 @@ const router = createHashRouter(
         {
           path: 'palette-from-image',
           lazy: async () => {
-            const PaletteFromImage = await import('./pages/palette-from-image')
+            const PaletteFromImage = await import('./pages/pages-image-palette/pages-image-palette')
             return { Component: PaletteFromImage.default }
           },
           hydrateFallbackElement: TheFallback('Loading Palette from Image'),
