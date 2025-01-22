@@ -1,1 +1,64 @@
+@use '/src/core/scss/utilities/mixin' as *;
+@use '/src/core/scss/utilities/variables' as *;
 
+.image-palette {
+  @include overlay(#0000008c);
+  @include flexbox(column, nowrap, normal, normal);
+  gap: 5rem;
+  color: $white;
+  padding: 1rem;
+  min-height: 100vh;
+  background-image: url('/src/assets/other-pages.jpg');
+  background-size: cover;
+
+  &__info {
+    @include flexbox(column, nowrap, center, center);
+    position: relative;
+    gap: 0.5rem;
+  }
+  &__img {
+    position: relative;
+    cursor: pointer;
+    display: block;
+    max-width: 25rem;
+    border-radius: 1rem;
+    overflow: hidden;
+    border: 1px solid $main;
+    box-shadow: 2px 2px 4px #1f1235;
+  }
+  &__file {
+    @include flexbox(column, nowrap, center, center);
+    gap: 1.5rem;
+    color: $main;
+    position: relative;
+  }
+}
+
+.select-file {
+  &__icon {
+    font-size: 3rem;
+    margin: 0.5rem auto;
+    color: #b9b9b9;
+  }
+  &__text {
+    font-size: 1.3rem;
+    font-style: italic;
+    text-align: center;
+  }
+  &__btn {
+    cursor: pointer;
+    padding: 0.3rem 2rem;
+    border-radius: 0.5rem;
+    background: $main;
+    color: $black;
+
+    &:hover {
+      background: $secondary;
+      color: $white;
+    }
+    &:active {
+      box-shadow: 2px 2px 4px #1f1235 inset;
+      border: none;
+    }
+  }
+}
