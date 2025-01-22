@@ -1,0 +1,32 @@
+@use '/src/core/scss/utilities/mixin' as *;
+@use '/src/core/scss/utilities/variables' as *;
+
+.drop-zone {
+  @include flexbox(column, nowrap, center, center);
+  @include overlay(#00000052);
+  position: relative;
+  border: 4px dashed $main;
+  border-style: dashed;
+  border-radius: 1rem;
+  padding: 1rem;
+  max-width: 900px;
+  height: 15rem;
+  overflow: hidden;
+
+  &__text {
+    font-size: 1.2rem;
+  }
+
+  &__icon {
+    margin: 2rem;
+    font-size: 3rem;
+  }
+
+  &__img {
+    position: absolute;
+    display: block;
+    height: 100%;
+    object-fit: cover;
+    object-fit: contain;
+  }
+}
