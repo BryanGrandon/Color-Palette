@@ -3,7 +3,6 @@
 
 .image-color {
   @include flexbox(row, nowrap, space-evenly, center);
-
   position: relative;
   gap: 0.5rem;
 

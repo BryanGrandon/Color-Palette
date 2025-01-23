@@ -2,9 +2,9 @@
 @use './base/media-queries';
 
 // UI
-@use './ui/color-card';
 @use './ui/modal-shades';
 @use './ui/hex-input';
 
 // Layout
 @use './layout/pages-home';
+@use './layout/main-color-card';

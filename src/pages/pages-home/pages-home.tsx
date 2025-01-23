@@ -2,7 +2,7 @@ import { useHookContext } from '../../hooks/hook-context'
 import { savedColorPalette } from './script/saved-color-palette'
 import { MAXIMUM_COLORS } from '../../core/constants'
 // UI OR Layout
-import ColorCard from './components/layout/color-card'
+import MainColorCard from './components/layout/main-color-card'
 import AddColorPalette from './components/ui/add-color-palette'
 import RandomColorPalette from './components/ui/random-color-palette'
 import Title from '../../core/components/ui/title'
@@ -35,7 +35,7 @@ const PagesHome = () => {
 
       <article className='color-palette'>
         {palette.map((e) => (
-          <ColorCard key={e.id} id={e.id} color={e.hex} />
+          <MainColorCard key={e.id} id={e.id} color={e.hex} />
         ))}
       </article>
 

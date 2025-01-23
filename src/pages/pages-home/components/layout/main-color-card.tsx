@@ -12,12 +12,12 @@ import { FaPalette } from 'react-icons/fa'
 import { IoReloadOutline } from 'react-icons/io5'
 import { TbArrowsRandom } from 'react-icons/tb'
 
-type Color_Card = {
+type Main_Color_Card = {
   id: number
   color: string
 }
 
-const ColorCard = ({ color, id }: Color_Card): JSX.Element => {
+const MainColorCard = ({ color, id }: Main_Color_Card): JSX.Element => {
   const { options } = useHookContext()
   const { limit, palette } = options.get
 
@@ -32,10 +32,10 @@ const ColorCard = ({ color, id }: Color_Card): JSX.Element => {
   }
 
   return (
-    <section className='color-card' style={{ background: color }}>
+    <section className='main-color-card' style={{ background: color }}>
       <HexInput color={color} id={id} />
 
-      <section className='color-card__options'>
+      <section className='main-color-card__options'>
         <ColorCopied color={color} />
         <label
           className='not-on-mobile'
@@ -43,7 +43,7 @@ const ColorCard = ({ color, id }: Color_Card): JSX.Element => {
           onChange={(e) => handlerChangeColor((e.target as HTMLTextAreaElement).value)}
         >
           <FaPalette />
-          <input type='color' className='color-card__input' />
+          <input type='color' className='main-color-card__input' />
         </label>
 
         <ShadesColor color={color} id={id} />
@@ -55,4 +55,4 @@ const ColorCard = ({ color, id }: Color_Card): JSX.Element => {
   )
 }
 
-export default ColorCard
+export default MainColorCard

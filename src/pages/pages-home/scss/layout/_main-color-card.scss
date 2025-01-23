@@ -1,7 +1,7 @@
 @use '/src/core/scss/utilities/mixin' as *;
 @use '/src/core/scss/utilities/variables' as *;
 
-.color-card {
+.main-color-card {
   @include flexbox(column, nowrap, space-between, center);
   padding: 1rem 0 2rem;
   height: 20rem;
