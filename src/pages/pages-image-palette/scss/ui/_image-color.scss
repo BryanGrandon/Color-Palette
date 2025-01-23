@@ -1,0 +1,20 @@
+@use '/src/core/scss/utilities/mixin' as *;
+@use '/src/core/scss/utilities/variables' as *;
+
+.image-color {
+  @include flexbox(row, nowrap, space-evenly, center);
+
+  position: relative;
+  gap: 0.5rem;
+
+  &__color {
+    height: 2rem;
+    width: 2rem;
+    border-radius: 1rem;
+    border: 1px solid #ffffff4d;
+  }
+
+  &__text {
+    text-transform: uppercase;
+  }
+}

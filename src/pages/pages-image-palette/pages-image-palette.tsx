@@ -1,16 +1,30 @@
 import { useState } from 'react'
-import Title from '../../core/components/ui/title'
 import { extractColors } from 'extract-colors'
-import { FinalColor } from 'extract-colors/lib/types/Color'
+import { Palette } from '../../core/types/context'
+import { MAXIMUM_COLORS } from '../../core/constants'
+// Icon
 import { FaCloudUploadAlt } from 'react-icons/fa'
+// UI
+import Title from '../../core/components/ui/title'
+import ImageColor from './components/ui/image-color'
 
 const PagesImagePalette = () => {
-  const [imageColor, setImageColor] = useState<FinalColor[]>()
+  const [paletteImageColor, setPaletteImageColor] = useState<Palette[]>()
   const [srcImage, setSrcImg] = useState('')
 
   const extractColorsFromTheImage = async (img: string) => {
-    const output = await extractColors(img)
-    setImageColor(output)
+    const result = await extractColors(img)
+    const output = []
+    for (let i = 0; i < result.length; i++) {
+      if (output.length <= MAXIMUM_COLORS) {
+        const newColor = {
+          id: i + 1,
+          hex: result[i].hex,
+        }
+        output.push(newColor)
+      }
+      setPaletteImageColor(output)
+    }
   }
 
   const runFileReader = (reader: FileReader) => {
@@ -32,11 +46,9 @@ const PagesImagePalette = () => {
 
   const handlerOnDrop = (ev: React.DragEvent) => {
     ev.preventDefault()
-
     let TheFile: File | null | Blob = null
     const transferListItems = [...ev.dataTransfer.items]
     const transferListFiles = [...ev.dataTransfer.files]
-
     if (ev.dataTransfer.items) {
       transferListItems.forEach((item) => {
         if (item.kind === 'file') TheFile = item.getAsFile()
@@ -47,19 +59,18 @@ const PagesImagePalette = () => {
     if (TheFile) reader.readAsDataURL(TheFile)
   }
 
-  const handlerDragOver = (ev: React.DragEvent) => ev.preventDefault()
+  // const handlerDragOver = (ev: React.DragEvent) => ev.preventDefault()
 
   return (
-    <main className='image-palette' onDrop={(ev) => handlerOnDrop(ev)} onDragOver={(ev) => handlerDragOver(ev)}>
+    <main className='image-palette' onDrop={(ev) => handlerOnDrop(ev)} onDragOver={(ev) => ev.preventDefault()}>
       <section className='image-palette__info'>
         <Title text='Palette from an image' />
         <p>Here you can pass an image to get your color palette </p>
       </section>
-
       <section className='image-palette__file'>
         {srcImage ? (
           <label htmlFor='select-file' className='image-palette__img'>
-            <img src={srcImage} alt='' />
+            <img src={srcImage} alt={srcImage} />
           </label>
         ) : (
           <>
@@ -73,14 +84,11 @@ const PagesImagePalette = () => {
           </>
         )}
       </section>
-
       <input type='file' id='select-file' style={{ display: 'none' }} onChange={(ev) => handlerClick(ev)} />
 
       <section>
-        {imageColor?.map((e) => (
-          <p key={Math.random() * 100} style={{ backgroundColor: `${e.hex}` }} className='colors'>
-            {e.hex}
-          </p>
+        {paletteImageColor?.map((e) => (
+          <ImageColor key={e.id} hex={e.hex} />
         ))}
       </section>
     </main>
