@@ -1,8 +1,8 @@
 import { useNavigate } from 'react-router-dom'
-import ColorCopied from '../../../../core/components/ui/color-copied'
 import { Palette } from '../../../../core/types/context'
 import { useHookContext } from '../../../../hooks/hook-context'
 import Button from '../../../../core/components/ui/button'
+import ColorCard from '../../../../core/components/ui/color-card'
 
 type Modal_Saved = {
   id: number
@@ -42,11 +42,7 @@ const ModalSaved = ({ colors, id }: Modal_Saved) => {
     <article className='modal-saved'>
       <section className='modal-saved__colors'>
         {colors.map((e) => (
-          <section className='modal-saved__info' key={e.id}>
-            <p style={{ background: e.hex }} className='modal-saved__color'></p>
-            <p>{e.hex}</p>
-            <ColorCopied color={e.hex} />
-          </section>
+          <ColorCard hex={e.hex} key={e.id} />
         ))}
       </section>
       <section className='modal-saved__buttons'>

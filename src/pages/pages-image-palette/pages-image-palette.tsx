@@ -6,7 +6,7 @@ import { MAXIMUM_COLORS } from '../../core/constants'
 import { FaCloudUploadAlt } from 'react-icons/fa'
 // UI
 import Title from '../../core/components/ui/title'
-import ImageColor from './components/ui/image-color'
+import ColorCard from '../../core/components/ui/color-card'
 
 const PagesImagePalette = () => {
   const [paletteImageColor, setPaletteImageColor] = useState<Palette[]>()
@@ -59,8 +59,6 @@ const PagesImagePalette = () => {
     if (TheFile) reader.readAsDataURL(TheFile)
   }
 
-  // const handlerDragOver = (ev: React.DragEvent) => ev.preventDefault()
-
   return (
     <main className='image-palette' onDrop={(ev) => handlerOnDrop(ev)} onDragOver={(ev) => ev.preventDefault()}>
       <section className='image-palette__info'>
@@ -88,7 +86,7 @@ const PagesImagePalette = () => {
 
       <section>
         {paletteImageColor?.map((e) => (
-          <ImageColor key={e.id} hex={e.hex} />
+          <ColorCard key={e.id} hex={e.hex} />
         ))}
       </section>
     </main>

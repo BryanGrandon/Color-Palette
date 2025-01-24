@@ -9,7 +9,7 @@
   overflow: hidden;
   box-shadow: 2px 2px 4px #000000;
 
-  &:hover > .color-card__options {
+  &:hover > .main-color-card__options {
     display: flex;
   }
 
@@ -26,5 +26,28 @@
   &__input {
     width: 0;
     height: 0;
+  }
+}
+
+@media screen and (max-width: 485px) {
+  .main-color-card {
+    flex-direction: row;
+    gap: 1rem;
+    padding: 1.4rem 1rem;
+    height: auto;
+
+    &__options {
+      flex-direction: row;
+      background: #00000052;
+      padding: 0.2rem 1rem;
+      border-radius: 0.5rem;
+    }
+    &:hover {
+      @include overlay(#00000000);
+    }
+  }
+
+  .not-on-mobile {
+    display: none;
   }
 }

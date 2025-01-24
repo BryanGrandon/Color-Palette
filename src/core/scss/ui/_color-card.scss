@@ -1,16 +1,18 @@
 @use '/src/core/scss/utilities/mixin' as *;
 @use '/src/core/scss/utilities/variables' as *;
 
-.image-color {
-  @include flexbox(row, nowrap, space-evenly, center);
+.color-card {
+  @include flexbox(row, nowrap, space-between, center);
   position: relative;
   gap: 0.5rem;
+  width: 100%;
 
   &__color {
     height: 2rem;
     width: 2rem;
     border-radius: 1rem;
     border: 1px solid #ffffff4d;
+    box-shadow: 3px 3px 8px #000000;
   }
 
   &__text {

@@ -1,32 +1,10 @@
 @use '/src/core/scss/utilities/mixin' as *;
 @use '/src/core/scss/utilities/variables' as *;
-@use '../ui/color-card';
 @use '../layout/pages-home';
 
 @media screen and (max-width: 485px) {
   .color-palette {
     grid-template-columns: 100%;
     grid-auto-rows: 4rem;
-  }
-
-  .color-card {
-    flex-direction: row;
-    gap: 1rem;
-    padding: 1.4rem 1rem;
-    height: auto;
-
-    &__options {
-      flex-direction: row;
-      background: #00000052;
-      padding: 0.2rem 1rem;
-      border-radius: 0.5rem;
-    }
-    &:hover {
-      @include overlay(#00000000);
-    }
-  }
-
-  .not-on-mobile {
-    display: none;
   }
 }
