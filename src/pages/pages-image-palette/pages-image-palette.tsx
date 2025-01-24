@@ -84,10 +84,12 @@ const PagesImagePalette = () => {
       </section>
       <input type='file' id='select-file' style={{ display: 'none' }} onChange={(ev) => handlerClick(ev)} />
 
-      <section>
-        {paletteImageColor?.map((e) => (
-          <ColorCard key={e.id} hex={e.hex} />
-        ))}
+      <section className='image-palette__container'>
+        <section className='image-palette__colors'>
+          {paletteImageColor?.map((e) => (
+            <ColorCard key={e.id} hex={e.hex} />
+          ))}
+        </section>
       </section>
     </main>
   )

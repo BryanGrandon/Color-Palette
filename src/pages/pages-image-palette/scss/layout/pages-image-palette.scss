@@ -4,7 +4,7 @@
 .image-palette {
   @include overlay(#0000008c);
   @include flexbox(column, nowrap, normal, normal);
-  gap: 5rem;
+  gap: 2rem;
   color: $white;
   padding: 1rem;
   min-height: 100vh;
@@ -13,12 +13,13 @@
 
   &__info {
     @include flexbox(column, nowrap, center, center);
-    position: relative;
     gap: 0.5rem;
+    position: relative;
+    margin: 0 0 3rem 0;
   }
   &__img {
-    position: relative;
     cursor: pointer;
+    position: relative;
     display: block;
     max-width: 25rem;
     border-radius: 1rem;
@@ -27,10 +28,24 @@
     box-shadow: 2px 2px 4px #1f1235;
   }
   &__file {
+    position: relative;
     @include flexbox(column, nowrap, center, center);
     gap: 1.5rem;
     color: $main;
     position: relative;
+  }
+
+  &__container {
+    display: flex;
+    position: relative;
+  }
+
+  &__colors {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+    gap: 1rem 4rem;
+    width: 30rem;
+    margin: auto;
   }
 }
 
