@@ -37,8 +37,6 @@
 
   &__container {
     display: flex;
-    @include flexbox(column, nowrap, center, center);
-    gap: 1rem;
     position: relative;
   }
 
@@ -48,6 +46,10 @@
     gap: 1rem 4rem;
     width: 30rem;
     margin: auto;
+  }
+
+  &__saved {
+    @include flexbox(column, nowrap, center, center);
   }
 }
 

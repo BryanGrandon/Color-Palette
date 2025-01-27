@@ -83,7 +83,13 @@ const PagesImagePalette = () => {
           </>
         )}
       </section>
-      <input type='file' id='select-file' style={{ display: 'none' }} onChange={(ev) => handlerChangeInput(ev)} />
+      <input
+        type='file'
+        id='select-file'
+        style={{ display: 'none' }}
+        accept='image/png, image/jpeg'
+        onChange={(ev) => handlerChangeInput(ev)}
+      />
 
       <section className='image-palette__container'>
         <section className='image-palette__colors'>
@@ -91,6 +97,8 @@ const PagesImagePalette = () => {
             <ColorCard key={e.id} hex={e.hex} />
           ))}
         </section>
+      </section>
+      <section className='image-palette__saved'>
         {paletteImageColor ? <SavedButtons palette={paletteImageColor} /> : null}
       </section>
     </main>
