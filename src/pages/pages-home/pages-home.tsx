@@ -1,5 +1,4 @@
 import { useHookContext } from '../../hooks/hook-context'
-import { savedColorPalette } from './script/saved-color-palette'
 import { MAXIMUM_COLORS } from '../../core/constants'
 // UI OR Layout
 import MainColorCard from './components/layout/main-color-card'
@@ -7,30 +6,19 @@ import AddColorPalette from './components/ui/add-color-palette'
 import RandomColorPalette from './components/ui/random-color-palette'
 import Title from '../../core/components/ui/title'
 // icons
-import { IoBookmark, IoBookmarkOutline } from 'react-icons/io5'
 import { contentHome } from '../../content/content-home'
+import SavedButtons from '../../core/components/ui/saved-buttons'
 
 const PagesHome = () => {
   const { options } = useHookContext()
-  const { palette, saved, limit } = options.get
+  const { palette, limit } = options.get
 
-  const handlerClickSaved = () => {
-    const { newSaved } = savedColorPalette({ palette, saved })
-    options.update?.saved([...newSaved])
-  }
-
-  const markSaved = (): boolean => {
-    const { checking } = savedColorPalette({ palette, saved })
-    return checking
-  }
   return (
     <main className='home'>
       <article className='home__options'>
         <RandomColorPalette />
         {limit == MAXIMUM_COLORS ? null : <AddColorPalette />}
-        <button className='icons-buttons' onClick={handlerClickSaved}>
-          {markSaved() ? <IoBookmark /> : <IoBookmarkOutline />}
-        </button>
+        <SavedButtons palette={palette} />
       </article>
 
       <article className='color-palette'>

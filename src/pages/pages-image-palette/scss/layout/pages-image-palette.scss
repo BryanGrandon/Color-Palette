@@ -31,12 +31,14 @@
     position: relative;
     @include flexbox(column, nowrap, center, center);
     gap: 1.5rem;
-    color: $main;
+    // color: $main;
     position: relative;
   }
 
   &__container {
     display: flex;
+    @include flexbox(column, nowrap, center, center);
+    gap: 1rem;
     position: relative;
   }
 
@@ -59,6 +61,7 @@
     font-size: 1.3rem;
     font-style: italic;
     text-align: center;
+    color: $main;
   }
   &__btn {
     cursor: pointer;

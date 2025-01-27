@@ -2,11 +2,12 @@ import { useState } from 'react'
 import { extractColors } from 'extract-colors'
 import { Palette } from '../../core/types/context'
 import { MAXIMUM_COLORS } from '../../core/constants'
-// Icon
-import { FaCloudUploadAlt } from 'react-icons/fa'
 // UI
 import Title from '../../core/components/ui/title'
 import ColorCard from '../../core/components/ui/color-card'
+// Icon
+import { FaCloudUploadAlt } from 'react-icons/fa'
+import SavedButtons from '../../core/components/ui/saved-buttons'
 
 const PagesImagePalette = () => {
   const [paletteImageColor, setPaletteImageColor] = useState<Palette[]>()
@@ -38,7 +39,7 @@ const PagesImagePalette = () => {
     }
   }
 
-  const handlerClick = async (ev: React.ChangeEvent<HTMLInputElement>) => {
+  const handlerChangeInput = async (ev: React.ChangeEvent<HTMLInputElement>) => {
     const reader = new FileReader()
     runFileReader(reader)
     if (ev.target.files) reader.readAsDataURL(ev.target.files[0])
@@ -82,7 +83,7 @@ const PagesImagePalette = () => {
           </>
         )}
       </section>
-      <input type='file' id='select-file' style={{ display: 'none' }} onChange={(ev) => handlerClick(ev)} />
+      <input type='file' id='select-file' style={{ display: 'none' }} onChange={(ev) => handlerChangeInput(ev)} />
 
       <section className='image-palette__container'>
         <section className='image-palette__colors'>
@@ -90,6 +91,7 @@ const PagesImagePalette = () => {
             <ColorCard key={e.id} hex={e.hex} />
           ))}
         </section>
+        {paletteImageColor ? <SavedButtons palette={paletteImageColor} /> : null}
       </section>
     </main>
   )
