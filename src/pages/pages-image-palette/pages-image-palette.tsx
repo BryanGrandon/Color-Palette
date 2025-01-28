@@ -6,8 +6,9 @@ import { MAXIMUM_COLORS } from '../../core/constants'
 import Title from '../../core/components/ui/title'
 import ColorCard from '../../core/components/ui/color-card'
 // Icon
-import { FaCloudUploadAlt } from 'react-icons/fa'
+// import { FaCloudUploadAlt } from 'react-icons/fa'
 import SavedButtons from '../../core/components/ui/saved-buttons'
+import SelectFile from './components/ui/select-file'
 
 const PagesImagePalette = () => {
   const [paletteImageColor, setPaletteImageColor] = useState<Palette[]>()
@@ -59,30 +60,14 @@ const PagesImagePalette = () => {
     runFileReader(reader)
     if (TheFile) reader.readAsDataURL(TheFile)
   }
-
   return (
     <main className='image-palette' onDrop={(ev) => handlerOnDrop(ev)} onDragOver={(ev) => ev.preventDefault()}>
       <section className='image-palette__info'>
         <Title text='Palette from an image' />
         <p>Here you can pass an image to get your color palette </p>
       </section>
-      <section className='image-palette__file'>
-        {srcImage ? (
-          <label htmlFor='select-file' className='image-palette__img'>
-            <img src={srcImage} alt={srcImage} />
-          </label>
-        ) : (
-          <>
-            <section>
-              <p className='select-file__text'>Drag & Drop an image file here</p>
-              <FaCloudUploadAlt className='select-file__icon' />
-            </section>
-            <label htmlFor='select-file' className='select-file__btn'>
-              Select File
-            </label>
-          </>
-        )}
-      </section>
+
+      <SelectFile image={srcImage} htmlFor='select-file' />
       <input
         type='file'
         id='select-file'
