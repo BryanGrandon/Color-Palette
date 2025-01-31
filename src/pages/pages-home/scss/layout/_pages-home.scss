@@ -6,20 +6,16 @@
   padding: 1rem;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(8rem, 1fr));
-
   gap: 0.3rem;
 }
 
 .home {
-  background-image: url('/src/assets/home.jpg');
-
-  background-size: cover;
-  background-position: center;
-  @include overlay(#0000008c);
+  @include configureImage('/src/assets/home.jpg', cover, center);
+  @include overlay($overlay-dark);
 
   &__options {
-    position: relative;
     @include flexbox(row, nowrap, end, center);
+    position: relative;
     color: $white;
     gap: 1rem;
     padding: 1rem 1.5rem;
@@ -27,8 +23,8 @@
   }
 
   &__content {
-    position: relative;
     @include flexbox(column, nowrap, normal, normal);
+    position: relative;
     gap: 2rem;
     padding: 1rem;
     color: $white;

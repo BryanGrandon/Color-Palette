@@ -30,7 +30,7 @@ const router = createHashRouter(
         {
           path: 'color-palettes',
           lazy: async () => {
-            const ColorPalettes = await import('./pages/color-palettes')
+            const ColorPalettes = await import('./pages/pages-color-palettes/pages-color-palettes')
             return { Component: ColorPalettes.default }
           },
           hydrateFallbackElement: TheFallback('Loading Color Palettes'),

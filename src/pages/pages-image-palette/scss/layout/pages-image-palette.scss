@@ -2,14 +2,13 @@
 @use '/src/core/scss/utilities/variables' as *;
 
 .image-palette {
-  @include overlay(#0000008c);
+  @include overlay($overlay-dark);
   @include flexbox(column, nowrap, normal, normal);
+  @include configureImage('/src/assets/other-pages.jpg', cover, center);
   gap: 2rem;
   color: $white;
   padding: 1rem;
-  min-height: 100vh;
-  background-image: url('/src/assets/other-pages.jpg');
-  background-size: cover;
+  min-height: $pages-min-height;
 
   &__info {
     @include flexbox(column, nowrap, center, center);
