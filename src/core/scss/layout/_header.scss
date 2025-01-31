@@ -13,16 +13,21 @@
   padding: 1rem 2rem;
   position: relative;
 
-  &__nav {
-    @include flexbox(row, nowrap, space-between, center);
-    gap: 2rem;
-    font-size: 0.9rem;
-    font-weight: bold;
-  }
-
   &__buttons {
     @include flexbox(row, nowrap, space-between, center);
     gap: 3rem;
+  }
+
+  &__dropdown {
+    position: absolute;
+    left: 0;
+    z-index: 2;
+    width: 100%;
+    transition: all 0.3s ease-in-out;
+
+    &--hidden {
+      left: -100%;
+    }
   }
 }
 
@@ -31,46 +36,17 @@
   gap: 0.5rem;
 }
 
-.nav {
-  &-dropdown {
-    @include flexbox(column, nowrap, center, center);
-    gap: 1.5rem;
-    padding: 1.5rem 1rem;
-    position: absolute;
-    width: 100%;
-    z-index: 2;
-    background-color: #000000b4;
-  }
-  &-link {
-    text-transform: capitalize;
-    text-align: center;
-    cursor: pointer;
-    &:hover {
-      color: $main;
-    }
-  }
-  &-btn {
-    display: none;
-    font-size: 1.2rem;
-  }
+.nav-btn {
+  display: none;
+  font-size: 1.2rem;
 }
 
-@media screen and (max-width: 800px) {
-  .header {
-    &__nav {
-      display: none;
-    }
-    &__buttons {
-      gap: 1rem;
-    }
+@media screen and (max-width: 950px) {
+  .header__buttons {
+    gap: 1rem;
   }
-  .nav {
-    &-link {
-      width: 100%;
-    }
-    &-btn {
-      display: block;
-    }
+  .nav-btn {
+    display: block;
   }
   .btn-github {
     font-size: 1.2rem;

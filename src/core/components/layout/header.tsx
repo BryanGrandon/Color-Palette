@@ -6,7 +6,6 @@ import NavList from '../ui/nav-list'
 
 const Header = () => {
   const [isActive, setIsActive] = useState(false)
-
   const navigate = useNavigate()
 
   const handlerClickNavList = (router: string, inDropdown: boolean): void => {
@@ -15,16 +14,18 @@ const Header = () => {
     else navigate(router)
   }
 
+  document.addEventListener('click', (e) => {
+    if ((e.target as HTMLElement).parentElement?.classList.value !== 'nav-btn') {
+      setIsActive(false)
+    }
+  })
+
   return (
-    <header
-      className='header-main'
-      onClick={(e) => ((e.target as HTMLElement).className == 'header' ? setIsActive(false) : null)}
-    >
+    <header className='header-main'>
       <article className='header'>
         <button onClick={() => navigate('../')}>Colors</button>
-        <nav className='header__nav'>
-          <NavList onClick={handlerClickNavList} isExternal={false} className='nav-link' />
-        </nav>
+
+        <NavList onClick={handlerClickNavList} isExternal={false} />
 
         <section className='header__buttons'>
           <a href='https://github.com/BryanGrandon/Color-Palette' target='__blank' className='btn-github'>
@@ -32,15 +33,14 @@ const Header = () => {
             <p className='btn-github__text'>Github</p>
           </a>
           <button className='nav-btn' onClick={() => setIsActive(!isActive)}>
-            <RxHamburgerMenu />
+            <RxHamburgerMenu className='nav-btn' />
           </button>
         </section>
       </article>
-      {isActive ? (
-        <section className='nav-dropdown'>
-          <NavList onClick={handlerClickNavList} isExternal={true} className='nav-link' />
-        </section>
-      ) : null}
+
+      <section className={isActive ? 'header__dropdown' : 'header__dropdown header__dropdown--hidden'}>
+        <NavList onClick={handlerClickNavList} isExternal={true} />
+      </section>
     </header>
   )
 }

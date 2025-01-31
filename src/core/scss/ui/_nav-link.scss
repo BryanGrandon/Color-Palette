@@ -1,0 +1,62 @@
+@use '/src/core/scss/utilities/mixin' as *;
+@use '/src/core/scss/utilities/variables' as *;
+
+.nav-list {
+  @include flexbox(row, nowrap, space-between, center);
+  gap: 1.5rem;
+  font-size: 0.9rem;
+  font-weight: bold;
+  transition: all 0.3s;
+
+  &__link {
+    position: relative;
+    text-transform: capitalize;
+    text-align: center;
+    cursor: pointer;
+    &:hover {
+      color: $main;
+    }
+
+    &--active {
+      border-bottom: 2px solid $main;
+      padding: 0 0.3rem;
+    }
+  }
+}
+
+.nav-dropdown {
+  @include flexbox(column, nowrap, center, center);
+  gap: 1.5rem;
+  padding: 1.5rem 1rem;
+  border: 1px solid $secondary;
+  background-color: #000000b0;
+  background-image: url('/src/assets/other-pages.jpg');
+  -webkit-backdrop-filter: blur(0.5rem);
+  backdrop-filter: blur(0.1rem);
+  border-radius: 0rem 1rem 1rem 0;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #000000c5;
+  }
+}
+
+.nav-dropdown > .nav-list__link {
+  width: 100%;
+  &--active {
+    color: $main;
+    border: none;
+  }
+}
+
+@media screen and (max-width: 950px) {
+  .nav-list {
+    display: none;
+  }
+}

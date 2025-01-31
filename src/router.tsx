@@ -20,7 +20,7 @@ const router = createHashRouter(
           hydrateFallbackElement: TheFallback('Loading Home'),
         },
         {
-          path: 'saved',
+          path: 'saved-color-palettes',
           lazy: async () => {
             const Saved = await import('./pages/pages-saved/pages-saved')
             return { Component: Saved.default }
@@ -36,7 +36,7 @@ const router = createHashRouter(
           hydrateFallbackElement: TheFallback('Loading Color Palettes'),
         },
         {
-          path: 'palette-from-image',
+          path: 'palette-from-an-image',
           lazy: async () => {
             const PaletteFromImage = await import('./pages/pages-image-palette/pages-image-palette')
             return { Component: PaletteFromImage.default }
