@@ -2,7 +2,7 @@
 @use '/src/core/scss/utilities/variables' as *;
 
 .color-palettes {
-  @include configureImage('/src/assets/other-pages.jpg', cover, center);
+  @include configureImage('/src/assets/other-pages.jpg', contain, center);
   @include overlay($overlay-dark);
-  height: $pages-min-height;
+  min-height: $pages-min-height;
 }

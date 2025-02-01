@@ -24,11 +24,13 @@ type Options = {
     limit: number
     palette: IColorPalette[]
     saved: Saved[]
+    colorPalettes: Saved[]
   }
   update: {
     limit: (number: number) => void
     palette: (palette: IColorPalette[]) => void
     saved: (saved: Saved[]) => void
+    colorPalettes: (colorsNumbers: number, isRandom: boolean) => void
   }
 }
 
