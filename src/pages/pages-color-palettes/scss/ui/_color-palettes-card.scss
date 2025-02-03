@@ -3,18 +3,35 @@
 
 .color-palettes-card {
   position: relative;
+  @include flexbox(column, nowrap, normal, normal);
+  gap: 0.5rem;
   border: 1px solid #ffffff4d;
+  background-color: #0000003b;
+  border-radius: 0.5rem;
   box-shadow: 2px 2px 6px #1f1235;
-  padding: 1rem;
+  padding: 1rem 1rem 0.5rem 1rem;
+  color: $white;
 
   &__palette {
     @include flexbox(column, nowrap, normal, normal);
-    border-radius: 0.2rem;
+    gap: 0.2rem;
+    border-radius: 0.3rem;
     overflow: hidden;
   }
 
+  &__content {
+    @include flexbox(row, nowrap, normal, center);
+    gap: 0.5rem;
+  }
+
   &__color {
+    @include flexbox(column, nowrap, end, start);
+    height: 1.5rem;
     width: 100%;
-    height: 2rem;
+    border-radius: 1rem;
+  }
+
+  &__buttons {
+    @include flexbox(row, nowrap, end, center);
   }
 }

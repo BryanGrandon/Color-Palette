@@ -8,13 +8,15 @@ const ColorPalettesCard = ({ colors }: Color_Palettes_Card) => {
     <article className='color-palettes-card'>
       <section className='color-palettes-card__palette'>
         {colors.map((e) => (
-          <div className='color-palettes-card__color' key={e.id} style={{ backgroundColor: e.hex }}>
-            {e.hex}
+          <div className='color-palettes-card__content' key={e.id}>
+            <p className='color-palettes-card__color' style={{ backgroundColor: e.hex }}></p>
+            <p>{e.hex}</p>
           </div>
         ))}
       </section>
-
-      <SavedButtons palette={colors} />
+      <section className='color-palettes-card__buttons'>
+        <SavedButtons palette={colors} />
+      </section>
     </article>
   )
 }

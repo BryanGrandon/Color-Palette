@@ -14,8 +14,8 @@ const PagesColorPalettes = () => {
         <p> - colors number</p>
         <p> - color ?</p>
       </article>
-      <article>
-        <h3>Color Palettes Generate</h3>
+      <h3>Color Palettes Generate</h3>
+      <article className='color-palettes__cards'>
         {colorPalettes.map((e) => (
           <ColorPalettesCard key={e.id} colors={e.palette} />
         ))}
