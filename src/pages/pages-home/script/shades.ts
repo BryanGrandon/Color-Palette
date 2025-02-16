@@ -124,7 +124,7 @@ export const shades = (text: string) => {
   const rgb = hexToRgb(hex)
   const hsl = RgbToHsl(rgb)
   const output: Output[] = []
-  const array = shadesColor(hsl, 10)
+  const array = shadesColor(hsl, 20)
 
   array.forEach((e) => {
     const rgb = HslToRgb(e.color.h, e.color.s, e.color.l)

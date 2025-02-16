@@ -2,15 +2,21 @@
 @use '/src/core/scss/utilities/variables' as *;
 
 .color-palettes {
-  @include configureImage('/src/assets/other-pages.jpg', contain, center);
-  // @include configureImage('/src/assets/home.jpg', contain, center);
+  @include configureImage('/src/assets/other-pages.jpg', contain, top);
   @include overlay($overlay-dark);
   min-height: $pages-min-height;
   padding: 1rem;
 
   &__cards {
+    position: relative;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
     gap: 1rem;
+  }
+
+  &__buttons {
+    position: relative;
+    padding: 1.5rem;
+    @include flexbox(row, nowrap, center, center);
   }
 }

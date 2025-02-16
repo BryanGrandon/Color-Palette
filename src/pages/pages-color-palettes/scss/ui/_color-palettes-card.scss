@@ -2,11 +2,10 @@
 @use '/src/core/scss/utilities/variables' as *;
 
 .color-palettes-card {
-  position: relative;
   @include flexbox(column, nowrap, normal, normal);
   gap: 0.5rem;
   border: 1px solid #ffffff4d;
-  background-color: #0000003b;
+  background-color: #0000009c;
   border-radius: 0.5rem;
   box-shadow: 2px 2px 6px #1f1235;
   padding: 1rem 1rem 0.5rem 1rem;

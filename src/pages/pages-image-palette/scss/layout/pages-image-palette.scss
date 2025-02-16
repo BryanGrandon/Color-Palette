@@ -4,7 +4,7 @@
 .image-palette {
   @include overlay($overlay-dark);
   @include flexbox(column, nowrap, normal, normal);
-  @include configureImage('/src/assets/other-pages.jpg', cover, center);
+  @include configureImage('/src/assets/other-pages.jpg', cover, top);
   gap: 2rem;
   color: $white;
   padding: 1rem;
@@ -30,7 +30,6 @@
     position: relative;
     @include flexbox(column, nowrap, center, center);
     gap: 1.5rem;
-    // color: $main;
     position: relative;
   }
 

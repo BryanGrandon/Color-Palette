@@ -2,9 +2,9 @@
 @use '/src/core/scss/utilities/variables' as *;
 
 .pages-saved {
-  @include configureImage('/src/assets/other-pages.jpg', cover, center);
+  @include configureImage('/src/assets/other-pages.jpg', contain, top);
   @include overlay($overlay-dark);
-  height: $pages-min-height;
+  min-height: $pages-min-height;
 
   &__text {
     position: relative;

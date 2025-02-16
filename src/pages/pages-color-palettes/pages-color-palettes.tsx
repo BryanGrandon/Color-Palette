@@ -1,10 +1,14 @@
 import ColorPalettesCard from './components/ui/color-palettes-card'
 import { useHookContext } from '../../hooks/hook-context'
+import Button from '../../core/components/ui/button'
+import { useState } from 'react'
 
 const PagesColorPalettes = () => {
-  // const [colorsNumbers] = useState<number>(5)
+  const [colorsNumbers] = useState<number>(5)
   const { options } = useHookContext()
   const { colorPalettes } = options.get
+
+  const handlerClickButton = () => options.update.colorPalettes(colorsNumbers, false)
 
   return (
     <main className='color-palettes'>
@@ -20,6 +24,9 @@ const PagesColorPalettes = () => {
           <ColorPalettesCard key={e.id} colors={e.palette} />
         ))}
       </article>
+      <section className='color-palettes__buttons'>
+        <Button text='More color palettes' onClick={handlerClickButton} />
+      </section>
     </main>
   )
 }
