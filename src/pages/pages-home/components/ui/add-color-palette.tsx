@@ -24,7 +24,11 @@ const AddColorPalette = () => {
     options.update?.limit(data.limit)
     options.update?.palette(data.palette)
   }
-  return <IconsButtons selected={<IoMdAddCircle />} deselected={<IoIosAddCircleOutline />} onClick={handlerClick} />
+  return (
+    <abbr title='Add a new random color'>
+      <IconsButtons selected={<IoMdAddCircle />} deselected={<IoIosAddCircleOutline />} onClick={handlerClick} />
+    </abbr>
+  )
 }
 
 export default AddColorPalette

@@ -37,18 +37,28 @@ const MainColorCard = ({ color, id }: Main_Color_Card): JSX.Element => {
 
       <section className='main-color-card__options'>
         <ColorCopied color={color} />
-        <label
-          className='not-on-mobile'
-          onClick={(e) => ((e.target as HTMLTextAreaElement).value = color)}
-          onChange={(e) => handlerChangeColor((e.target as HTMLTextAreaElement).value)}
-        >
-          <FaPalette />
-          <input type='color' className='main-color-card__input' />
-        </label>
+
+        <abbr title='Change color'>
+          <label
+            className='not-on-mobile'
+            onClick={(e) => ((e.target as HTMLTextAreaElement).value = color)}
+            onChange={(e) => handlerChangeColor((e.target as HTMLTextAreaElement).value)}
+          >
+            <FaPalette />
+            <input type='color' className='main-color-card__input' />
+          </label>
+        </abbr>
 
         <ShadesColor color={color} id={id} />
 
-        <IconsButtons selected={<TbArrowsRandom />} deselected={<IoReloadOutline />} onClick={() => handlerClickRandomColor()} />
+        <abbr title='Generate a random color'>
+          <IconsButtons
+            selected={<TbArrowsRandom />}
+            deselected={<IoReloadOutline />}
+            onClick={() => handlerClickRandomColor()}
+          />
+        </abbr>
+
         {limit > MINIMUM_COLORS ? <DeleteColor id={id} /> : null}
       </section>
     </section>

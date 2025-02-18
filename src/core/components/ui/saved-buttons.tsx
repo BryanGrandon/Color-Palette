@@ -21,9 +21,11 @@ const SavedButtons = ({ palette }: Saved_Buttons) => {
     return checking
   }
   return (
-    <button className='icons-buttons' onClick={handlerClickSaved}>
-      {markSaved() ? <IoBookmark /> : <IoBookmarkOutline />}
-    </button>
+    <abbr title='Save color palette'>
+      <button className='icons-buttons' onClick={handlerClickSaved}>
+        {markSaved() ? <IoBookmark /> : <IoBookmarkOutline />}
+      </button>
+    </abbr>
   )
 }
 

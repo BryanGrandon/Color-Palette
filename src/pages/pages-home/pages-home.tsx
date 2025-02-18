@@ -1,13 +1,14 @@
 import { useHookContext } from '../../hooks/hook-context'
 import { MAXIMUM_COLORS } from '../../core/constants'
 // UI OR Layout
-import MainColorCard from './components/layout/main-color-card'
-import AddColorPalette from './components/ui/add-color-palette'
-import RandomColorPalette from './components/ui/random-color-palette'
 import Title from '../../core/components/ui/title'
-// icons
-import { contentHome } from '../../content/content-home'
 import SavedButtons from '../../core/components/ui/saved-buttons'
+import RandomColorPalette from './components/ui/random-color-palette'
+import AddColorPalette from './components/ui/add-color-palette'
+import MainColorCard from './components/layout/main-color-card'
+// Icons
+import { GrFormSubtract } from 'react-icons/gr'
+import { contentHome } from '../../content/content-home'
 
 const PagesHome = () => {
   const { options } = useHookContext()
@@ -17,7 +18,7 @@ const PagesHome = () => {
     <main className='home'>
       <article className='home__options'>
         <RandomColorPalette />
-        {limit == MAXIMUM_COLORS ? null : <AddColorPalette />}
+        {limit == MAXIMUM_COLORS ? <GrFormSubtract className='transparent' /> : <AddColorPalette />}
         <SavedButtons palette={palette} />
       </article>
 

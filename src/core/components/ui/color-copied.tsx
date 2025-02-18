@@ -12,7 +12,11 @@ const ColorCopied = ({ color }: Color_Copied) => {
     notify(`Color copied!`)
     navigator.clipboard.writeText(color)
   }
-  return <IconsButtons selected={<IoCopy />} deselected={<IoCopyOutline />} onClick={handlerClick} />
+  return (
+    <abbr title='Color copied'>
+      <IconsButtons selected={<IoCopy />} deselected={<IoCopyOutline />} onClick={handlerClick} />
+    </abbr>
+  )
 }
 
 export default ColorCopied

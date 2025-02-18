@@ -28,6 +28,9 @@
     height: 0;
   }
 }
+.not-on-mobile {
+  cursor: pointer;
+}
 
 @media screen and (max-width: 485px) {
   .main-color-card {

@@ -23,7 +23,11 @@ const RandomColorPalette = () => {
     options.update?.palette(data)
   }
 
-  return <IconsButtons selected={<TbArrowsRandom />} deselected={<IoReloadOutline />} onClick={handlerClick} />
+  return (
+    <abbr title='Generate Random Color Palette'>
+      <IconsButtons selected={<TbArrowsRandom />} deselected={<IoReloadOutline />} onClick={handlerClick} />
+    </abbr>
+  )
 }
 
 export default RandomColorPalette

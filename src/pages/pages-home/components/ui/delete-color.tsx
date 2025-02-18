@@ -31,7 +31,11 @@ const DeleteColor = ({ id }: Delete_Color) => {
     options.update?.palette(data.palette)
   }
 
-  return <IconsButtons selected={<IoIosClose />} deselected={<IoClose />} onClick={handlerClickDelete} />
+  return (
+    <abbr title='Delete color'>
+      <IconsButtons selected={<IoIosClose />} deselected={<IoClose />} onClick={handlerClickDelete} />
+    </abbr>
+  )
 }
 
 export default DeleteColor
