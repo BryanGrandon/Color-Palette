@@ -1,0 +1,52 @@
+@use '/src/core/scss/utilities/mixin' as *;
+@use '/src/core/scss/utilities/variables' as *;
+
+.confirm-deletion {
+  position: fixed;
+  top: 1vw;
+  left: 32vw;
+  right: 32vw;
+  border: 1px solid #fffb04;
+  border-radius: 1rem;
+  display: flex;
+  gap: 1rem;
+  padding: 1rem;
+  background-color: $black;
+  color: $white;
+  z-index: 2;
+
+  &__content {
+    @include flexbox(column, nowrap, center, normal);
+    gap: 1rem;
+  }
+
+  &__icon {
+    color: #fffb04;
+    font-size: 2rem;
+  }
+
+  &__title {
+    font-size: 1.2rem;
+  }
+
+  &__buttons {
+    @include flexbox(row, nowrap, end, normal);
+    gap: 1rem;
+  }
+}
+
+.button {
+  &--cancel {
+    border-color: #5f5f5f;
+    &:hover {
+      background-color: #5f5f5f;
+    }
+  }
+
+  &--delete {
+    border-color: #b10f0f;
+    &:hover {
+      background-color: #b10f0f;
+    }
+  }
+}

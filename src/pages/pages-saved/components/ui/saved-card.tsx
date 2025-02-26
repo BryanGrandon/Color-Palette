@@ -11,7 +11,6 @@ const SavedCard = ({ colors, id = 0 }: SavedCard) => {
   const limit = colors.length
   const { theModal } = useHookContext()
   const click = () => {
-    console.log(id, colors)
     theModal.modify.content(<ModalSaved colors={colors} id={id} />)
     theModal.modify.open(true)
   }

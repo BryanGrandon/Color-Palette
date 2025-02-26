@@ -1,8 +1,10 @@
+import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Palette } from '../../../../core/types/context'
 import { useHookContext } from '../../../../hooks/hook-context'
 import Button from '../../../../core/components/ui/button'
 import ColorCard from '../../../../core/components/ui/color-card'
+import ConfirmDeletion from '../ui/confirm-deletion'
 
 type Modal_Saved = {
   id: number
@@ -10,6 +12,8 @@ type Modal_Saved = {
 }
 
 const ModalSaved = ({ colors, id }: Modal_Saved) => {
+  const [confirmDelete, setConfirmDelete] = useState(false)
+
   const { options, theModal } = useHookContext()
   const { saved } = options.get
 
@@ -17,15 +21,6 @@ const ModalSaved = ({ colors, id }: Modal_Saved) => {
     const output = saved.filter((e) => e.id !== paletteId)
     for (let i = 0; i < output.length; i++) output[i].id = i + 1
     return output
-  }
-
-  const handlerClickDeletePalette = () => {
-    const confirmDelete = confirm('Do you wish to delete the color palette?')
-    if (confirmDelete) {
-      const data = removePalette(id)
-      options.update?.saved(data)
-      theModal.modify.open(false)
-    }
   }
 
   const navigate = useNavigate()
@@ -38,18 +33,30 @@ const ModalSaved = ({ colors, id }: Modal_Saved) => {
     navigate('../')
   }
 
+  const handlerClickConfirmDeletion = (confirm: boolean) => {
+    if (confirm) {
+      const data = removePalette(id)
+      options.update?.saved(data)
+      theModal.modify.open(false)
+    }
+    setConfirmDelete(false)
+  }
+
   return (
-    <article className='modal-saved'>
-      <section className='modal-saved__colors'>
-        {colors.map((e) => (
-          <ColorCard hex={e.hex} key={e.id} />
-        ))}
-      </section>
-      <section className='modal-saved__buttons'>
-        <Button text='Modify Palette' onClick={handlerClickModifyPalette} />
-        <Button className='modal-saved__buttons-delete' text='Delete Palette' onClick={handlerClickDeletePalette} />
-      </section>
-    </article>
+    <>
+      {confirmDelete ? <ConfirmDeletion onClick={handlerClickConfirmDeletion} /> : null}
+      <article className='modal-saved'>
+        <section className='modal-saved__colors'>
+          {colors.map((e) => (
+            <ColorCard hex={e.hex} key={e.id} />
+          ))}
+        </section>
+        <section className='modal-saved__buttons'>
+          <Button text='Modify Palette' onClick={handlerClickModifyPalette} />
+          <Button className='modal-saved__buttons-delete' text='Delete Palette' onClick={() => setConfirmDelete(true)} />
+        </section>
+      </article>
+    </>
   )
 }
 
