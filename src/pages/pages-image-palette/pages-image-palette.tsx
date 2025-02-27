@@ -16,13 +16,17 @@ const PagesImagePalette = () => {
 
   const extractColorsFromTheImage = async (img: string) => {
     const result = await extractColors(img)
-    const output = []
+    type Color = { id: number; hex: string }
+    const output: Color[] = []
+    console.log(result)
+
     for (let i = 0; i < result.length; i++) {
-      if (output.length <= MAXIMUM_COLORS) {
+      if (output.length + 1 <= MAXIMUM_COLORS) {
         const newColor = {
           id: i + 1,
           hex: result[i].hex,
         }
+        console.log(newColor)
         output.push(newColor)
       }
       setPaletteImageColor(output)
@@ -64,7 +68,7 @@ const PagesImagePalette = () => {
     <main className='image-palette' onDrop={(ev) => handlerOnDrop(ev)} onDragOver={(ev) => ev.preventDefault()}>
       <section className='image-palette__info'>
         <Title text='Palette from an image' />
-        <p>Here you can pass an image to get your color palette </p>
+        <p>Select an image to have a color palette generated from the image.</p>
       </section>
 
       <SelectFile image={srcImage} htmlFor='select-file' />

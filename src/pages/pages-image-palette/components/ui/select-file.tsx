@@ -4,10 +4,13 @@ type Select_File = { image: string; htmlFor: string }
 
 const SelectFile = ({ image, htmlFor }: Select_File) => {
   return (
-    <section className='image-palette__file'>
+    <section className='select-file'>
       {image ? (
-        <label htmlFor={htmlFor} className='image-palette__img'>
+        <label htmlFor={htmlFor} className='select-file__img'>
           <img src={image} alt={image} />
+          <section className='select-file__hover'>
+            <p>Click to select the desired image</p>
+          </section>
         </label>
       ) : (
         <>

@@ -2,6 +2,41 @@
 @use '/src/core/scss/utilities/variables' as *;
 
 .select-file {
+  @include flexbox(column, nowrap, center, center);
+  gap: 1.5rem;
+  position: relative;
+
+  &__img {
+    cursor: pointer;
+    position: relative;
+    display: block;
+    max-width: 25rem;
+    border-radius: 1rem;
+    overflow: hidden;
+    border: 1px solid $main;
+    box-shadow: 2px 2px 4px #1f1235;
+  }
+
+  &__hover {
+    @include flexbox(row, nowrap, center, center);
+    text-align: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #000000a1;
+    border-radius: 1rem;
+    opacity: 0;
+    transition: all 0.3s ease-in-out;
+    font-size: 1.1rem;
+    font-weight: bolder;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+
   &__icon {
     font-size: 3rem;
     margin: 0.5rem auto;

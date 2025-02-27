@@ -16,22 +16,6 @@
     position: relative;
     margin: 0 0 3rem 0;
   }
-  &__img {
-    cursor: pointer;
-    position: relative;
-    display: block;
-    max-width: 25rem;
-    border-radius: 1rem;
-    overflow: hidden;
-    border: 1px solid $main;
-    box-shadow: 2px 2px 4px #1f1235;
-  }
-  &__file {
-    position: relative;
-    @include flexbox(column, nowrap, center, center);
-    gap: 1.5rem;
-    position: relative;
-  }
 
   &__container {
     display: flex;
