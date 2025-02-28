@@ -9,7 +9,7 @@ const SelectFile = ({ image, htmlFor }: Select_File) => {
         <label htmlFor={htmlFor} className='select-file__img'>
           <img src={image} alt={image} />
           <section className='select-file__hover'>
-            <p>Click to select the desired image</p>
+            <p>Click to select the desired image or drag & Drop an image file </p>
           </section>
         </label>
       ) : (

@@ -19,4 +19,19 @@
     padding: 1.5rem;
     @include flexbox(row, nowrap, center, center);
   }
+
+  &__header {
+    position: relative;
+    padding: 1.5rem;
+  }
+
+  &__info {
+    @include flexbox(column, nowrap, center, center);
+    gap: 1rem;
+  }
+
+  &__range {
+    border: 1px solid $main;
+    border-radius: 1rem;
+  }
 }

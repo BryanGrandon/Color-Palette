@@ -31,6 +31,7 @@
     transition: all 0.3s ease-in-out;
     font-size: 1.1rem;
     font-weight: bolder;
+    padding: 1rem;
 
     &:hover {
       opacity: 1;
@@ -46,7 +47,6 @@
     font-size: 1.3rem;
     font-style: italic;
     text-align: center;
-    color: $main;
   }
   &__btn {
     cursor: pointer;
