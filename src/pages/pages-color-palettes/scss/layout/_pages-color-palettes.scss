@@ -22,12 +22,23 @@
 
   &__header {
     position: relative;
+    @include flexbox(column, nowrap, center, center);
+    gap: 1rem;
     padding: 1.5rem;
   }
 
-  &__info {
-    @include flexbox(column, nowrap, center, center);
+  &__controls {
+    @include flexbox(row, nowrap, center, center);
     gap: 1rem;
+
+    &-btn {
+      font-size: 1.2rem;
+      cursor: pointer;
+
+      &:hover {
+        color: $main;
+      }
+    }
   }
 
   &__range {

@@ -1,9 +1,12 @@
-import ColorPalettesCard from './components/ui/color-palettes-card'
-import { useHookContext } from '../../hooks/hook-context'
-import Button from '../../core/components/ui/button'
 import { useState } from 'react'
-import Title from '../../core/components/ui/title'
+import { useHookContext } from '../../hooks/hook-context'
 import { MAXIMUM_COLORS, MINIMUM_COLORS } from '../../core/constants'
+// UI
+import ColorPalettesCard from './components/ui/color-palettes-card'
+import Button from '../../core/components/ui/button'
+import Title from '../../core/components/ui/title'
+// Icons
+import { FaMinus, FaPlus } from 'react-icons/fa6'
 
 const PagesColorPalettes = () => {
   const [colorsNumbers, setColorsNumbers] = useState<number>(5)
@@ -16,13 +19,27 @@ const PagesColorPalettes = () => {
     options.update.colorPalettes(Number(ev.target.value), true)
     setColorsNumbers(Number(ev.target.value))
   }
-
+  const handlerClickLess = () => {
+    if (colorsNumbers > MINIMUM_COLORS) {
+      options.update.colorPalettes(colorsNumbers - 1, true)
+      setColorsNumbers(colorsNumbers - 1)
+    }
+  }
+  const handlerClickMore = () => {
+    if (colorsNumbers < MAXIMUM_COLORS) {
+      options.update.colorPalettes(colorsNumbers + 1, true)
+      setColorsNumbers(colorsNumbers + 1)
+    }
+  }
   return (
     <main className='color-palettes'>
       <article className='color-palettes__header'>
         <Title text='Color Palettes' />
-        <section className='color-palettes__info'>
-          <p>Number of colors: {colorsNumbers}</p>
+        <p>Number of colors: {colorsNumbers}</p>
+        <section className='color-palettes__controls'>
+          <button className='color-palettes__controls-btn' onClick={handlerClickLess}>
+            <FaMinus />
+          </button>
           <input
             className='color-palettes__range'
             type='range'
@@ -31,6 +48,9 @@ const PagesColorPalettes = () => {
             max={MAXIMUM_COLORS}
             onChange={(e) => handlerChange(e)}
           />
+          <button className='color-palettes__controls-btn' onClick={handlerClickMore}>
+            <FaPlus />
+          </button>
         </section>
       </article>
       <article className='color-palettes__cards'>
