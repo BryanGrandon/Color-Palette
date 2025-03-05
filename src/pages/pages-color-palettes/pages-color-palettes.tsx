@@ -9,9 +9,11 @@ import Title from '../../core/components/ui/title'
 import { FaMinus, FaPlus } from 'react-icons/fa6'
 
 const PagesColorPalettes = () => {
-  const [colorsNumbers, setColorsNumbers] = useState<number>(5)
   const { options } = useHookContext()
   const { colorPalettes } = options.get
+  const paletteLength = colorPalettes.length > 0 ? colorPalettes[0].palette.length : 0
+
+  const [colorsNumbers, setColorsNumbers] = useState<number>(paletteLength)
 
   const handlerClickButton = () => options.update.colorPalettes(colorsNumbers, false)
 
@@ -35,7 +37,7 @@ const PagesColorPalettes = () => {
     <main className='color-palettes'>
       <article className='color-palettes__header'>
         <Title text='Color Palettes' />
-        <p>Number of colors: {colorsNumbers}</p>
+        <p>Number of colors: {paletteLength}</p>
         <section className='color-palettes__controls'>
           <button className='color-palettes__controls-btn' onClick={handlerClickLess}>
             <FaMinus />
@@ -43,7 +45,7 @@ const PagesColorPalettes = () => {
           <input
             className='color-palettes__range'
             type='range'
-            value={colorsNumbers}
+            value={paletteLength}
             min={MINIMUM_COLORS}
             max={MAXIMUM_COLORS}
             onChange={(e) => handlerChange(e)}

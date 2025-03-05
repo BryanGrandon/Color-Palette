@@ -19,4 +19,4 @@ $modal: #000000a9;
 $overlay-dark: #0000008c;
 
 // Sizes
-$pages-min-height: 91.73vh;
+$pages-min-height: calc(100vh - 61px);

@@ -8,7 +8,6 @@ import AddColorPalette from './components/ui/add-color-palette'
 import MainColorCard from './components/layout/main-color-card'
 // Icons
 import { GrFormSubtract } from 'react-icons/gr'
-import { contentHome } from '../../content/content-home'
 
 const PagesHome = () => {
   const { options } = useHookContext()
@@ -28,32 +27,21 @@ const PagesHome = () => {
         ))}
       </article>
 
-      <article className='home__content'>
-        <section className='home__content__header'>
+      <article className='home__info'>
+        <section className='home__description'>
           <Title text='Color Palette' />
           <p>Generate your perfect color palette for each project or illustration.</p>
           <p>It has a maximum limit of 9 colors and a minimum of 2 colors.</p>
         </section>
-        <section className='home__content__section'>
-          <p>Main options: </p>
-          <ul className='home__list'>
-            {contentHome.main.map((e) => (
-              <li className='home__list__element' key={e.id}>
-                {e.icon} <p>{e.text}</p>
-              </li>
-            ))}
-          </ul>
-        </section>
-
-        <section className='home__content__section'>
-          <p>Card options:</p>
-          <ul className='home__list'>
-            {contentHome.card.map((e) => (
-              <li className='home__list__element' key={e.id}>
-                {e.icon} <p>{e.text}</p>
-              </li>
-            ))}
-          </ul>
+        <section className='home__paragraph'>
+          <p>
+            The general functions allow you to generate a random color palette, to add one more color to the color palette and to
+            save the color palette.
+          </p>
+          <p>
+            The individual functions allow you to copy the color in hexadecimal format, select the desired color, select the color
+            in different shades, generate a random color and remove the color from the color palette.
+          </p>
         </section>
       </article>
     </main>

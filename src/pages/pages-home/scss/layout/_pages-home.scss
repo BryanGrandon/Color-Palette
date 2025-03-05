@@ -12,6 +12,8 @@
 .home {
   @include configureImage('/src/assets/home.jpg', cover, center);
   @include overlay($overlay-dark);
+  min-height: $pages-min-height;
+  padding: 1rem;
 
   &__options {
     @include flexbox(row, nowrap, end, center);
@@ -28,27 +30,22 @@
     gap: 2rem;
     padding: 1rem;
     color: $white;
-
-    &__header {
-      @include flexbox(column, nowrap, normal, center);
-      gap: 0.3rem;
-    }
-    &__section {
-      max-width: 1200px;
-      width: 100%;
-      margin: auto;
-    }
   }
 
-  &__list {
+  &__info {
+    @include flexbox(column, nowrap, center, center);
+    position: relative;
+    gap: 2rem;
+    max-width: 1300px;
+    margin: 0 auto;
+  }
+  &__description {
+    text-align: center;
+  }
+  &__paragraph {
     @include flexbox(column, nowrap, normal, normal);
     gap: 0.5rem;
-    padding: 1rem;
-
-    &__element {
-      @include flexbox(row, nowrap, normal, center);
-      gap: 1rem;
-    }
+    font-size: 1.1rem;
   }
 }
 
