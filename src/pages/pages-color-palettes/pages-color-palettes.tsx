@@ -7,12 +7,12 @@ import Button from '../../core/components/ui/button'
 import Title from '../../core/components/ui/title'
 // Icons
 import { FaMinus, FaPlus } from 'react-icons/fa6'
+import { IoIosArrowUp } from 'react-icons/io'
 
 const PagesColorPalettes = () => {
   const { options } = useHookContext()
   const { colorPalettes } = options.get
   const paletteLength = colorPalettes.length > 0 ? colorPalettes[0].palette.length : 0
-
   const [colorsNumbers, setColorsNumbers] = useState<number>(paletteLength)
 
   const handlerClickButton = () => options.update.colorPalettes(colorsNumbers, false)
@@ -63,6 +63,10 @@ const PagesColorPalettes = () => {
       <section className='color-palettes__buttons'>
         <Button text='More color palettes' onClick={handlerClickButton} />
       </section>
+
+      <button onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className='color-palettes__top'>
+        <IoIosArrowUp />
+      </button>
     </main>
   )
 }

@@ -42,7 +42,11 @@ const ColorPaletteProvider = ({ children }: ProviderProps) => {
   const updateColorPalette = (colorsNumbers: number, isRandom: boolean) => {
     const newColorPalettes = generateColorPalettes({ colorsNumbers })
     if (isRandom) setGeneratePalettes(newColorPalettes)
-    else setGeneratePalettes([...generatePalettes, ...newColorPalettes])
+    else {
+      const together = [...generatePalettes, ...newColorPalettes]
+      for (let i = 0; i < together.length; i++) together[i].id = i + 1
+      setGeneratePalettes(together)
+    }
   }
 
   const options = {
