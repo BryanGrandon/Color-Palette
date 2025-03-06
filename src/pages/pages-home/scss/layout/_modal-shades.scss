@@ -4,7 +4,7 @@
 .modal-shades {
   @include flexbox(column, nowrap, normal, normal);
   overflow: auto;
-  height: 90vh;
+  max-height: 85vh;
   padding: 0.5rem;
 
   &__main {
@@ -13,12 +13,13 @@
     justify-items: center;
     align-items: center;
     gap: 0.5rem;
+    cursor: pointer;
 
     &:hover > .modal-shades__hex {
-      color: #f00;
+      color: $secondary;
     }
     &:hover > .modal-shades__lighting {
-      color: #f00;
+      color: $secondary;
     }
   }
   &__color {

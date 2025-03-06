@@ -39,13 +39,8 @@ const ShadesColor = ({ id, color }: Shades_Color): JSX.Element => {
   }
 
   return (
-    <abbr title='Color shades'>
-      <IconsButtons
-        className='not-on-mobile'
-        selected={<FaExpandArrowsAlt />}
-        deselected={<FaArrowsUpDown />}
-        onClick={handlerClickShades}
-      />
+    <abbr title='Color shades' className='not-on-mobile'>
+      <IconsButtons selected={<FaExpandArrowsAlt />} deselected={<FaArrowsUpDown />} onClick={handlerClickShades} />
     </abbr>
   )
 }

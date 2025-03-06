@@ -38,9 +38,8 @@ const MainColorCard = ({ color, id }: Main_Color_Card): JSX.Element => {
       <section className='main-color-card__options'>
         <ColorCopied color={color} />
 
-        <abbr title='Change color'>
+        <abbr title='Change color' className='not-on-mobile'>
           <label
-            className='not-on-mobile'
             onClick={(e) => ((e.target as HTMLTextAreaElement).value = color)}
             onChange={(e) => handlerChangeColor((e.target as HTMLTextAreaElement).value)}
           >
