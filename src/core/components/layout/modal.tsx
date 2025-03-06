@@ -1,5 +1,5 @@
-import { MdClose } from 'react-icons/md'
 import { useHookContext } from '../../../hooks/hook-context'
+import { MdClose } from 'react-icons/md'
 
 type Modal = {
   children: JSX.Element
@@ -11,12 +11,12 @@ const Modal = ({ children }: Modal): JSX.Element => {
 
   return (
     <article className='modal' onClick={(e) => ((e.target as HTMLElement).className == 'modal' ? handlerClose() : null)}>
-      <section className='modal__main'>
-        <button className='modal__btn' onClick={handlerClose}>
-          <MdClose />
-        </button>
+      <article className='modal__content'>
+        <header className='modal__header'>
+          <MdClose className='modal__btn-close' onClick={handlerClose} />
+        </header>
         {children}
-      </section>
+      </article>
     </article>
   )
 }

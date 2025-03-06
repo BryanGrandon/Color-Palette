@@ -5,27 +5,20 @@
   @include flexbox(column, nowrap, normal, normal);
   overflow: auto;
   max-height: 85vh;
-  padding: 0.5rem;
+  border-radius: 1rem;
 
-  &__main {
+  &__color {
     display: grid;
-    grid-template-columns: minmax(6rem, 20rem) 2.5rem;
     justify-items: center;
     align-items: center;
-    gap: 0.5rem;
+    grid-template-columns: minmax(6rem, 20rem);
     cursor: pointer;
+    gap: 1rem;
+    padding: 0.2rem;
 
-    &:hover > .modal-shades__hex {
+    &:hover {
       color: $secondary;
     }
-    &:hover > .modal-shades__lighting {
-      color: $secondary;
-    }
-  }
-  &__color {
-    @include flexbox(column, nowrap, center, center);
-    height: 2rem;
-    width: 100%;
   }
   &__hex {
     border-radius: 0.4rem;
