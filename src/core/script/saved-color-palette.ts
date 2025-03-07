@@ -7,9 +7,10 @@ const checking = ({ palette, saved, toEliminate }: Checking): savedPalette => {
   let count = 0
   let savedId = 0
   const check: boolean[] = []
+
   saved.map((e) => {
-    const colorsPalette: string[] = []
-    palette.map((e) => colorsPalette.push(e.hex))
+    const colorsPalette: string[] = palette.map((e) => e.hex)
+
     for (let i = 0; i < colorsPalette.length; i++) {
       if (colorsPalette.includes(e.palette[i]?.hex)) count++
       else break
@@ -38,22 +39,22 @@ type savedPalette = {
 
 export const savedColorPalette = ({ palette, saved }: SavedColorPalette): savedPalette => {
   const data = checking({ palette, saved })
-  let newSaved: Saved[] = []
+  const newSaved: Saved[] = []
 
-  if (!data.checking) {
-    const thePalette = palette.map((e) => ({ id: e.id, hex: e.hex }))
-    const newPalette = {
-      id: saved.length + 1,
-      palette: thePalette,
-    }
-    newSaved = [...saved, newPalette]
-  } else {
-    const data = checking({ palette, saved, toEliminate: true })
-    newSaved = [...data.newSaved]
-  }
   const output = {
     checking: data.checking,
     newSaved,
   }
+
+  if (!data.checking) {
+    const newPalette = {
+      id: saved.length + 1,
+      palette: palette.map((e) => ({ id: e.id, hex: e.hex })),
+    }
+    output.newSaved = [...saved, newPalette]
+  } else {
+    output.newSaved = checking({ palette, saved, toEliminate: true }).newSaved
+  }
+
   return output
 }

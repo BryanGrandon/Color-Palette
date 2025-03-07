@@ -1,11 +1,7 @@
 import { Saved } from '../types/context'
 import { randomColor } from './random-color'
 
-type generate_Colors_Palettes = {
-  colorsNumbers: number
-}
-
-const generateColorPalettes = ({ colorsNumbers }: generate_Colors_Palettes): Saved[] => {
+const generateColorPalettes = (colorsNumbers: number = 2): Saved[] => {
   const palettes = []
   for (let i = 0; i < 20; i++) {
     const newColors: Saved = {

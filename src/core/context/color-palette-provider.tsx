@@ -1,11 +1,10 @@
 import { useState } from 'react'
 import { ColorPaletteContext } from './color-palette-context'
 import { TheModal, Saved, Palette } from '../types/context'
-// react-toastify
-import { ToastContainer, toast } from 'react-toastify'
-import 'react-toastify/dist/ReactToastify.css'
 import { randomColor } from '../script/random-color'
 import { generateColorPalettes } from '../script/generate-color-palettes'
+import { ToastContainer, toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 type ProviderProps = {
   children: React.ReactNode
@@ -17,10 +16,15 @@ const generateColors = (limit: number = 1) => {
   return palette
 }
 
+const getLocalStorage = (string: string) => {
+  return JSON.parse(String(localStorage.getItem(string)))
+}
+
 const ColorPaletteProvider = ({ children }: ProviderProps) => {
   const [colorLimit, setColorLimit] = useState(5)
   const [colorPalette, setColorPalette] = useState<Palette[]>(generateColors(colorLimit))
-  const [savedPalette, setSavedPalette] = useState<Saved[]>([])
+  const theSaved = getLocalStorage('palettes')
+  const [savedPalette, setSavedPalette] = useState<Saved[]>(theSaved != null && theSaved.length > 0 ? theSaved : [])
 
   // Modal
   const [openModal, setOpenModal] = useState<boolean>(false)
@@ -37,10 +41,10 @@ const ColorPaletteProvider = ({ children }: ProviderProps) => {
     },
   }
 
-  const [generatePalettes, setGeneratePalettes] = useState<Saved[]>(generateColorPalettes({ colorsNumbers: 5 }))
+  const [generatePalettes, setGeneratePalettes] = useState<Saved[]>(generateColorPalettes(5))
 
   const updateColorPalette = (colorsNumbers: number, isRandom: boolean) => {
-    const newColorPalettes = generateColorPalettes({ colorsNumbers })
+    const newColorPalettes = generateColorPalettes(colorsNumbers)
     if (isRandom) setGeneratePalettes(newColorPalettes)
     else {
       const together = [...generatePalettes, ...newColorPalettes]
@@ -48,7 +52,10 @@ const ColorPaletteProvider = ({ children }: ProviderProps) => {
       setGeneratePalettes(together)
     }
   }
-
+  const updateSavedPalette = (newSavedPalette: Saved[]) => {
+    setSavedPalette(newSavedPalette)
+    localStorage.setItem('palettes', JSON.stringify(newSavedPalette))
+  }
   const options = {
     get: {
       limit: colorLimit,
@@ -59,18 +66,16 @@ const ColorPaletteProvider = ({ children }: ProviderProps) => {
     update: {
       limit: (number: number) => setColorLimit(number),
       palette: (palette: Palette[]) => setColorPalette(palette),
-      saved: (saved: Saved[]) => setSavedPalette(saved),
+      saved: (saved: Saved[]) => updateSavedPalette(saved),
       colorPalettes: (colorsNumbers: number, isRandom: boolean) => updateColorPalette(colorsNumbers, isRandom),
     },
   }
-
   const notify = (text: string): void => {
     toast.success(text, {
       autoClose: 1500,
       theme: 'dark',
     })
   }
-
   return (
     <ColorPaletteContext.Provider value={{ options, notify, theModal }}>
       <ToastContainer />

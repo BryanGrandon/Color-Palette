@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { randomColor } from '../../core/script/random-color'
+import { randomColor } from '../../script/random-color'
 
 describe('Random Color', () => {
   it('should return a string with a length of 7 if provided is false', (): void => {
