@@ -1,9 +1,9 @@
-import IconsButtons from '../../../../core/components/ui/icons-buttons'
-import { IoIosAddCircleOutline, IoMdAddCircle } from 'react-icons/io'
 import { useHookContext } from '../../../../hooks/hook-context'
-import { MAXIMUM_COLORS } from '../../../../core/constants'
 import { randomColor } from '../../../../core/script/random-color'
+import { MAXIMUM_COLORS } from '../../../../core/constants'
+import ButtonIcons from '../../../../core/components/ui/button-icons'
 import { Add_Color } from '../../types/website features'
+import { IoIosAddCircleOutline, IoMdAddCircle } from 'react-icons/io'
 
 const addColor = ({ limit, palette }: Add_Color) => {
   if (limit < MAXIMUM_COLORS) {
@@ -26,7 +26,7 @@ const AddColorPalette = () => {
   }
   return (
     <abbr title='Add a new random color'>
-      <IconsButtons selected={<IoMdAddCircle />} deselected={<IoIosAddCircleOutline />} onClick={handlerClick} />
+      <ButtonIcons selected={<IoMdAddCircle />} deselected={<IoIosAddCircleOutline />} onClick={handlerClick} />
     </abbr>
   )
 }

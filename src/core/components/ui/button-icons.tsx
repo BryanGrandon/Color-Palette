@@ -1,11 +1,11 @@
-type IconsButtons = {
+type Button_Icons = {
   deselected: JSX.Element
   selected: JSX.Element
   className?: string
   onClick: () => void
 }
 
-const IconsButtons = ({ deselected, selected, className, onClick }: IconsButtons) => {
+const ButtonIcons = ({ deselected, selected, className = '', onClick }: Button_Icons) => {
   return (
     <button onClick={onClick} className={`${className} icons-buttons`}>
       <span className='icons-buttons__deselected'>{deselected}</span>
@@ -14,4 +14,4 @@ const IconsButtons = ({ deselected, selected, className, onClick }: IconsButtons
   )
 }
 
-export default IconsButtons
+export default ButtonIcons

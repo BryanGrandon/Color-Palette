@@ -1,6 +1,6 @@
-import IconsButtons from '../../../../core/components/ui/icons-buttons'
 import { useHookContext } from '../../../../hooks/hook-context'
 import { MINIMUM_COLORS, MAXIMUM_COLORS } from '../../../../core/constants'
+import ButtonIcons from '../../../../core/components/ui/button-icons'
 import { Remove_Color } from '../../types/website features'
 // icons
 import { IoClose } from 'react-icons/io5'
@@ -30,10 +30,9 @@ const DeleteColor = ({ id }: Delete_Color) => {
     options.update?.limit(data.limit)
     options.update?.palette(data.palette)
   }
-
   return (
     <abbr title='Delete color'>
-      <IconsButtons selected={<IoIosClose />} deselected={<IoClose />} onClick={handlerClickDelete} />
+      <ButtonIcons selected={<IoIosClose />} deselected={<IoClose />} onClick={handlerClickDelete} />
     </abbr>
   )
 }

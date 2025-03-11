@@ -3,7 +3,7 @@ import { MINIMUM_COLORS } from '../../../../core/constants'
 import { changeColor } from '../../script/change-color'
 // ui
 import CopyColorButton from '../../../../core/components/ui/copy-color-button'
-import IconsButtons from '../../../../core/components/ui/icons-buttons'
+import ButtonIcons from '../../../../core/components/ui/button-icons'
 import DeleteColor from '../ui/delete-color'
 import ShadesColor from '../ui/shades-color'
 import HexInput from '../ui/hex-input'
@@ -30,7 +30,6 @@ const MainColorCard = ({ color, id }: Main_Color_Card): JSX.Element => {
     const data = changeColor({ colorId: id, palette, isRandom: true })
     options.update?.palette(data)
   }
-
   return (
     <section className='main-color-card' style={{ background: color }}>
       <HexInput color={color} id={id} />
@@ -51,11 +50,7 @@ const MainColorCard = ({ color, id }: Main_Color_Card): JSX.Element => {
         <ShadesColor color={color} id={id} />
 
         <abbr title='Generate a random color'>
-          <IconsButtons
-            selected={<TbArrowsRandom />}
-            deselected={<IoReloadOutline />}
-            onClick={() => handlerClickRandomColor()}
-          />
+          <ButtonIcons selected={<TbArrowsRandom />} deselected={<IoReloadOutline />} onClick={() => handlerClickRandomColor()} />
         </abbr>
 
         {limit > MINIMUM_COLORS ? <DeleteColor id={id} /> : null}

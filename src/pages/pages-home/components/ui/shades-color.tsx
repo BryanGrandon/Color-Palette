@@ -1,9 +1,8 @@
 import { useHookContext } from '../../../../hooks/hook-context'
-import IconsButtons from '../../../../core/components/ui/icons-buttons'
 import { ModalShades } from '../layout/modal-shades'
-// Types
 import { Shades } from '../../types/website features'
 import { Palette } from '../../../../core/types/context'
+import ButtonIcons from '../../../../core/components/ui/button-icons'
 // Icons
 import { FaArrowsUpDown } from 'react-icons/fa6'
 import { FaExpandArrowsAlt } from 'react-icons/fa'
@@ -37,10 +36,9 @@ const ShadesColor = ({ id, color }: Shades_Color): JSX.Element => {
     theModal.modify.content(<ModalShades color={color} onClick={handlerModal} />)
     theModal.modify.open(true)
   }
-
   return (
     <abbr title='Color shades' className='not-on-mobile'>
-      <IconsButtons selected={<FaExpandArrowsAlt />} deselected={<FaArrowsUpDown />} onClick={handlerClickShades} />
+      <ButtonIcons selected={<FaExpandArrowsAlt />} deselected={<FaArrowsUpDown />} onClick={handlerClickShades} />
     </abbr>
   )
 }
