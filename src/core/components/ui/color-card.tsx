@@ -1,4 +1,4 @@
-import ColorCopied from './color-copied'
+import CopyColorButton from './copy-color-button'
 
 type Color_Card = {
   hex: string
@@ -12,7 +12,7 @@ const ColorCard = ({ hex }: Color_Card) => {
     <section className='color-card'>
       <p className='color-card__color' style={{ background: color }}></p>
       <p className='color-card__text'>{color}</p>
-      <ColorCopied color={color} />
+      <CopyColorButton color={color} />
     </section>
   )
 }

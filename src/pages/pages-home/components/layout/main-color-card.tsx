@@ -2,7 +2,7 @@ import { useHookContext } from '../../../../hooks/hook-context'
 import { MINIMUM_COLORS } from '../../../../core/constants'
 import { changeColor } from '../../script/change-color'
 // ui
-import ColorCopied from '../../../../core/components/ui/color-copied'
+import CopyColorButton from '../../../../core/components/ui/copy-color-button'
 import IconsButtons from '../../../../core/components/ui/icons-buttons'
 import DeleteColor from '../ui/delete-color'
 import ShadesColor from '../ui/shades-color'
@@ -36,7 +36,7 @@ const MainColorCard = ({ color, id }: Main_Color_Card): JSX.Element => {
       <HexInput color={color} id={id} />
 
       <section className='main-color-card__options'>
-        <ColorCopied color={color} />
+        <CopyColorButton color={color} />
 
         <abbr title='Change color' className='not-on-mobile'>
           <label
