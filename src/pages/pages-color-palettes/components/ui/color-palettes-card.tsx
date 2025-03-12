@@ -1,4 +1,4 @@
-import SavedButtons from '../../../../core/components/ui/saved-buttons'
+import SaveButton from '../../../../core/components/ui/save-button'
 import { Palette } from '../../../../core/types/context'
 
 type Color_Palettes_Card = { colors: Palette[] }
@@ -15,7 +15,7 @@ const ColorPalettesCard = ({ colors }: Color_Palettes_Card) => {
         ))}
       </section>
       <section className='color-palettes-card__buttons'>
-        <SavedButtons palette={colors} />
+        <SaveButton palette={colors} />
       </section>
     </article>
   )

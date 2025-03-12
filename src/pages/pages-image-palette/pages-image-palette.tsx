@@ -5,9 +5,7 @@ import { MAXIMUM_COLORS } from '../../core/constants'
 // UI
 import Title from '../../core/components/ui/title'
 import ColorCard from '../../core/components/ui/color-card'
-// Icon
-// import { FaCloudUploadAlt } from 'react-icons/fa'
-import SavedButtons from '../../core/components/ui/saved-buttons'
+import SaveButton from '../../core/components/ui/save-button'
 import SelectFile from './components/ui/select-file'
 
 const PagesImagePalette = () => {
@@ -18,7 +16,6 @@ const PagesImagePalette = () => {
     const result = await extractColors(img)
     type Color = { id: number; hex: string }
     const output: Color[] = []
-    console.log(result)
 
     for (let i = 0; i < result.length; i++) {
       if (output.length + 1 <= MAXIMUM_COLORS) {
@@ -26,7 +23,6 @@ const PagesImagePalette = () => {
           id: i + 1,
           hex: result[i].hex,
         }
-        console.log(newColor)
         output.push(newColor)
       }
       setPaletteImageColor(output)
@@ -87,9 +83,7 @@ const PagesImagePalette = () => {
           ))}
         </section>
       </section>
-      <section className='image-palette__saved'>
-        {paletteImageColor ? <SavedButtons palette={paletteImageColor} /> : null}
-      </section>
+      <section className='image-palette__saved'>{paletteImageColor ? <SaveButton palette={paletteImageColor} /> : null}</section>
     </main>
   )
 }

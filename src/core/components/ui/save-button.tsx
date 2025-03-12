@@ -3,13 +3,13 @@ import { useHookContext } from '../../../hooks/hook-context'
 import { savedColorPalette } from '../../script/saved-color-palette'
 import { Palette } from '../../types/context'
 
-type Saved_Buttons = {
+type Save_Button = {
   palette: Palette[]
 }
 
-const SavedButtons = ({ palette }: Saved_Buttons) => {
+const SaveButton = ({ palette }: Save_Button) => {
   const { options } = useHookContext()
-  const { saved } = options.get
+  const saved = options.get.saved
 
   const handlerClickSaved = () => {
     const { newSaved } = savedColorPalette({ palette, saved })
@@ -29,4 +29,4 @@ const SavedButtons = ({ palette }: Saved_Buttons) => {
   )
 }
 
-export default SavedButtons
+export default SaveButton
