@@ -1,19 +1,7 @@
 import { useHookContext } from '../../../../hooks/hook-context'
-import { randomColor } from '../../../../core/script/random-color'
-import { MAXIMUM_COLORS } from '../../../../core/constants'
 import ButtonIcons from '../../../../core/components/ui/button-icons'
-import { Add_Color } from '../../types/website features'
 import { IoIosAddCircleOutline, IoMdAddCircle } from 'react-icons/io'
-
-const addColor = ({ limit, palette }: Add_Color) => {
-  if (limit < MAXIMUM_COLORS) {
-    const output = {
-      limit: limit + 1,
-      palette: [...palette, { id: limit + 1, hex: randomColor() }],
-    }
-    return output
-  } else return { limit, palette }
-}
+import { addColor } from '../../script/add-color'
 
 const AddColorPalette = () => {
   const { options } = useHookContext()

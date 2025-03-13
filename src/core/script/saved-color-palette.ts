@@ -1,5 +1,9 @@
-import { SavedColorPalette } from '../../pages/pages-home/types/website features'
-import { Saved } from '../types/context'
+import { Palette, Saved } from '../types/context'
+
+export type SavedColorPalette = {
+  palette: Palette[]
+  saved: Saved[]
+}
 
 type Checking = SavedColorPalette & { toEliminate?: boolean }
 

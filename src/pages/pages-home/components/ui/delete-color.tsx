@@ -1,21 +1,9 @@
 import { useHookContext } from '../../../../hooks/hook-context'
-import { MINIMUM_COLORS, MAXIMUM_COLORS } from '../../../../core/constants'
 import ButtonIcons from '../../../../core/components/ui/button-icons'
-import { Remove_Color } from '../../types/website features'
+import { removeColor } from '../../script/delete-color'
 // icons
 import { IoClose } from 'react-icons/io5'
 import { IoIosClose } from 'react-icons/io'
-
-const removeColor = ({ limit, palette, colorId }: Remove_Color) => {
-  if (limit <= MAXIMUM_COLORS && limit > MINIMUM_COLORS) {
-    const output = {
-      limit: limit - 1,
-      palette: palette.filter((e) => e.id !== colorId),
-    }
-    for (let i = 0; i < output.palette.length; i++) output.palette[i].id = i + 1
-    return output
-  } else return { limit, palette }
-}
 
 type Delete_Color = {
   id: number
