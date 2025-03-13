@@ -8,11 +8,11 @@
 @use './layout/modal';
 
 // Ui
-@use './ui/nav-link';
 @use './ui/button';
-@use './ui/title';
+@use './ui/button-icons';
 @use './ui/color-card';
-@use './ui/icons-buttons';
+@use './ui/nav-link';
+@use './ui/title';
 
 // Utilities
 @use './utilities/mixin' as *;

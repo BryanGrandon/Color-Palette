@@ -1,4 +1,4 @@
-.icons-buttons {
+.button-icons {
   font-size: 1.4rem;
   cursor: pointer;
   filter: drop-shadow(1px 1px 3px #2e2e2e);
@@ -10,7 +10,7 @@
       display: none;
     }
 
-    &:active + .icons-buttons__selected {
+    &:active + .button-icons__selected {
       display: block;
     }
   }
