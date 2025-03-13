@@ -1,0 +1,34 @@
+@use '../utilities/mixin' as *;
+@use '../utilities/variables' as *;
+
+.footer-main {
+  @include overlay(#0000008c);
+  background-image: url('https://images.pexels.com/photos/1694000/pexels-photo-1694000.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
+  background-size: cover;
+}
+
+.footer {
+  position: relative;
+  @include flexbox(column, nowrap, center, center);
+  gap: 1rem;
+  padding: 2rem 0;
+
+  &__text {
+    max-width: 1400px;
+    text-align: center;
+    color: $white;
+  }
+  &__social {
+    @include flexbox(row, nowrap, normal, center);
+    gap: 1.5rem;
+
+    &-icon {
+      cursor: pointer;
+      font-size: 1.2rem;
+      color: $main;
+      &:hover {
+        color: $secondary;
+      }
+    }
+  }
+}
