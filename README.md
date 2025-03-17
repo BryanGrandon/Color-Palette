@@ -13,6 +13,9 @@ Generate your color palette for your projects
 [![React-icons](https://img.shields.io/badge/React_icons-2D3136.svg?style=flat&logo=react&logoColor=white)](https://www.npmjs.com/package/react-icons)
 [![React router dom](https://img.shields.io/badge/-React%20Router-CA4245??style=flat&logo=react-router&logoColor=white)](https://reactrouter.com/en/main)
 [![Vitest](https://img.shields.io/badge/vitest-6E9F18?style=flat&logo=vitest&logoColor=white)](https://vitest.dev/)
+[![React-Toastify](https://img.shields.io/badge/React_Toastify-2D3136.svg?style=flat&logo=react&logoColor=white)](https://fkhadra.github.io/react-toastify/introduction/)
+[![Extract Colors](https://img.shields.io/badge/Extract_Colors-2D3136.svg?style=flat&logo=npm&logoColor=white)](https://vitest.dev/)
+
 
 ## ⚙️ Installation
 
