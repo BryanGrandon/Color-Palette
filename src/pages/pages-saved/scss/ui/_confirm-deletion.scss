@@ -1,11 +1,19 @@
 @use '/src/core/scss/utilities/mixin' as *;
 @use '/src/core/scss/utilities/variables' as *;
 
-.confirm-deletion {
+.notify-card {
+  width: 100%;
   position: fixed;
   top: 1vw;
-  left: 32vw;
-  right: 32vw;
+  left: 1vw;
+  right: 1vw;
+  z-index: 2;
+  @include flexbox(column, nowrap, center, center);
+  padding: 0.5rem;
+}
+
+.confirm-deletion {
+  max-width: max-content;
   border: 1px solid #fffb04;
   border-radius: 1rem;
   display: flex;
@@ -13,7 +21,6 @@
   padding: 1rem;
   background-color: $black;
   color: $white;
-  z-index: 2;
 
   &__content {
     @include flexbox(column, nowrap, center, normal);
