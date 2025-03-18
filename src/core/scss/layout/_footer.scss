@@ -12,7 +12,7 @@
   border-top: 1px solid $main;
   @include flexbox(column, nowrap, center, center);
   gap: 1rem;
-  padding: 2rem 0;
+  padding: 2rem 1rem;
 
   &__text {
     max-width: 1400px;
