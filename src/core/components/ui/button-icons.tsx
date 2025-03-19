@@ -1,5 +1,5 @@
 type Button_Icons = {
-  ariaLabel: string
+  ariaLabel?: string
   deselected: JSX.Element
   selected: JSX.Element
   className?: string
