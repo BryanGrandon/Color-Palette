@@ -1,16 +1,13 @@
 import { useHookContext } from '../../../../hooks/hook-context'
 import { MINIMUM_COLORS } from '../../../../core/constants'
 import { changeColor } from '../../script/change-color'
-// ui
 import CopyColorButton from '../../../../core/components/ui/copy-color-button'
 import ButtonIcons from '../../../../core/components/ui/button-icons'
 import DeleteColor from '../ui/delete-color'
 import ShadesColor from '../ui/shades-color'
 import HexInput from '../ui/hex-input'
-// Icons
-import { FaPalette } from 'react-icons/fa'
-import { IoReloadOutline } from 'react-icons/io5'
-import { TbArrowsRandom } from 'react-icons/tb'
+import { IArrowPath, IArrowRandom } from '../../../../core/components/icons/i-arrows'
+import { IPalette } from '../../../../core/components/icons/i-palette'
 
 type Main_Color_Card = {
   id: number
@@ -30,6 +27,7 @@ const MainColorCard = ({ color, id }: Main_Color_Card): JSX.Element => {
     const data = changeColor({ colorId: id, palette, isRandom: true })
     options.update?.palette(data)
   }
+
   return (
     <section className='main-color-card' style={{ background: color }}>
       <HexInput color={color} id={id} />
@@ -42,7 +40,7 @@ const MainColorCard = ({ color, id }: Main_Color_Card): JSX.Element => {
             onClick={(e) => ((e.target as HTMLTextAreaElement).value = color)}
             onChange={(e) => handlerChangeColor((e.target as HTMLTextAreaElement).value)}
           >
-            <FaPalette />
+            <IPalette />
             <input type='color' className='main-color-card__input' />
           </label>
         </abbr>
@@ -50,7 +48,12 @@ const MainColorCard = ({ color, id }: Main_Color_Card): JSX.Element => {
         <ShadesColor color={color} id={id} />
 
         <abbr title='Generate a random color'>
-          <ButtonIcons selected={<TbArrowsRandom />} deselected={<IoReloadOutline />} onClick={() => handlerClickRandomColor()} />
+          <ButtonIcons
+            selected={<IArrowRandom />}
+            deselected={<IArrowPath />}
+            onClick={() => handlerClickRandomColor()}
+            ariaLabel='Generate a random color'
+          />
         </abbr>
 
         {limit > MINIMUM_COLORS ? <DeleteColor id={id} /> : null}

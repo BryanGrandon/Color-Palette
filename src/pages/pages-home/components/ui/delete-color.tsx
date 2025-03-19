@@ -1,9 +1,7 @@
 import { useHookContext } from '../../../../hooks/hook-context'
 import ButtonIcons from '../../../../core/components/ui/button-icons'
 import { removeColor } from '../../script/delete-color'
-// icons
-import { IoClose } from 'react-icons/io5'
-import { IoIosClose } from 'react-icons/io'
+import { IXMark } from '../../../../core/components/icons/i-x-mark'
 
 type Delete_Color = {
   id: number
@@ -18,9 +16,10 @@ const DeleteColor = ({ id }: Delete_Color) => {
     options.update?.limit(data.limit)
     options.update?.palette(data.palette)
   }
+
   return (
     <abbr title='Delete color'>
-      <ButtonIcons selected={<IoIosClose />} deselected={<IoClose />} onClick={handlerClickDelete} />
+      <ButtonIcons selected={<IXMark />} deselected={<IXMark />} onClick={handlerClickDelete} ariaLabel='delete color' />
     </abbr>
   )
 }

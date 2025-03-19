@@ -6,8 +6,7 @@ import SaveButton from '../../core/components/ui/save-button'
 import RandomColorPalette from './components/ui/random-color-palette'
 import AddColorPalette from './components/ui/add-color-palette'
 import MainColorCard from './components/layout/main-color-card'
-// Icons
-import { GrFormSubtract } from 'react-icons/gr'
+import { IXMark } from '../../core/components/icons/i-x-mark'
 
 const PagesHome = () => {
   const { options } = useHookContext()
@@ -17,7 +16,7 @@ const PagesHome = () => {
     <main className='home'>
       <article className='home__options'>
         <RandomColorPalette />
-        {limit == MAXIMUM_COLORS ? <GrFormSubtract className='transparent' /> : <AddColorPalette />}
+        {limit == MAXIMUM_COLORS ? <IXMark className='transparent' /> : <AddColorPalette />}
         <SaveButton palette={palette} />
       </article>
 

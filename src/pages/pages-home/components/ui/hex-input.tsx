@@ -20,7 +20,18 @@ const HexInput = ({ color, id }: Hex_Input) => {
     setValue(newColor)
   }
 
-  return <input className='hex-input' maxLength={7} type='text' value={value} onChange={(e) => handlerChange(e.target.value)} />
+  return (
+    <label>
+      <input
+        className='hex-input'
+        maxLength={7}
+        type='text'
+        value={value}
+        onChange={(e) => handlerChange(e.target.value)}
+        aria-label='hexadecimal input'
+      />
+    </label>
+  )
 }
 
 export default HexInput

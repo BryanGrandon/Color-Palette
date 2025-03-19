@@ -1,5 +1,5 @@
 import { createHashRouter, RouterProvider } from 'react-router-dom'
-import Layout from './pages/layout'
+import Layout from './pages/layout/layout'
 
 const TheFallback = (text: string) => {
   return <p>{text}</p>

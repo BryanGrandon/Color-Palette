@@ -52,8 +52,13 @@ const ModalSaved = ({ colors, id }: Modal_Saved) => {
           ))}
         </section>
         <section className='modal-saved__buttons'>
-          <Button text='Modify Palette' onClick={handlerClickModifyPalette} />
-          <Button className='modal-saved__buttons-delete' text='Delete Palette' onClick={() => setConfirmDelete(true)} />
+          <Button text='Modify Palette' onClick={handlerClickModifyPalette} ariaLabel='modify palette' />
+          <Button
+            className='modal-saved__buttons-delete'
+            text='Delete Palette'
+            onClick={() => setConfirmDelete(true)}
+            ariaLabel='delete palette'
+          />
         </section>
       </article>
     </>

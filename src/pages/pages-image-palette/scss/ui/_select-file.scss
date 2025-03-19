@@ -39,9 +39,9 @@
   }
 
   &__icon {
-    font-size: 3rem;
+    height: 3.5rem;
     margin: 0.5rem auto;
-    color: #b9b9b9;
+    color: #ffffff;
   }
   &__text {
     font-size: 1.3rem;
@@ -53,11 +53,10 @@
     padding: 0.3rem 2rem;
     border-radius: 0.5rem;
     background: $main;
-    color: $black;
+    color: $white;
 
     &:hover {
       background: $secondary;
-      color: $white;
     }
     &:active {
       box-shadow: 2px 2px 4px #1f1235 inset;

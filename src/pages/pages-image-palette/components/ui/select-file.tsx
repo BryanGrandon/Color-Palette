@@ -1,4 +1,4 @@
-import { FaCloudUploadAlt } from 'react-icons/fa'
+import { ICloudArrowUp } from '../../../../core/components/icons/i-cloud-arrow-up'
 
 type Select_File = { image: string; htmlFor: string }
 
@@ -16,7 +16,7 @@ const SelectFile = ({ image, htmlFor }: Select_File) => {
         <>
           <section>
             <p className='select-file__text'>Drag & Drop an image file here</p>
-            <FaCloudUploadAlt className='select-file__icon' />
+            <ICloudArrowUp className='select-file__icon' />
           </section>
           <label htmlFor={htmlFor} className='select-file__btn'>
             Select File

@@ -1,13 +1,11 @@
 import { useState } from 'react'
 import { useHookContext } from '../../hooks/hook-context'
 import { MAXIMUM_COLORS, MINIMUM_COLORS } from '../../core/constants'
-// UI
 import ColorPalettesCard from './components/ui/color-palettes-card'
 import Button from '../../core/components/ui/button'
 import Title from '../../core/components/ui/title'
-// Icons
-import { FaMinus, FaPlus } from 'react-icons/fa6'
-import { IoIosArrowUp } from 'react-icons/io'
+import { IMinus, IPlus } from '../../core/components/icons/i-min-max'
+import { IArrowUp } from '../../core/components/icons/i-arrows'
 
 const PagesColorPalettes = () => {
   const { options } = useHookContext()
@@ -33,14 +31,15 @@ const PagesColorPalettes = () => {
       setColorsNumbers(colorsNumbers + 1)
     }
   }
+
   return (
     <main className='color-palettes'>
       <article className='color-palettes__header'>
         <Title text='Color Palettes' />
         <p>Number of colors: {paletteLength}</p>
         <section className='color-palettes__controls'>
-          <button className='color-palettes__controls-btn' onClick={handlerClickLess}>
-            <FaMinus />
+          <button className='color-palettes__controls-btn' onClick={handlerClickLess} aria-label='minus 1 color'>
+            <IMinus />
           </button>
           <input
             className='color-palettes__range'
@@ -50,8 +49,8 @@ const PagesColorPalettes = () => {
             max={MAXIMUM_COLORS}
             onChange={(e) => handlerChange(e)}
           />
-          <button className='color-palettes__controls-btn' onClick={handlerClickMore}>
-            <FaPlus />
+          <button className='color-palettes__controls-btn' onClick={handlerClickMore} aria-label='plus 1 color'>
+            <IPlus />
           </button>
         </section>
       </article>
@@ -61,11 +60,15 @@ const PagesColorPalettes = () => {
         ))}
       </article>
       <section className='color-palettes__buttons'>
-        <Button text='More color palettes' onClick={handlerClickButton} />
+        <Button text='More color palettes' onClick={handlerClickButton} ariaLabel='more color palette' />
       </section>
 
-      <button onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className='color-palettes__top'>
-        <IoIosArrowUp />
+      <button
+        onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+        className='color-palettes__top'
+        aria-label='scrollTo top 0'
+      >
+        <IArrowUp />
       </button>
     </main>
   )

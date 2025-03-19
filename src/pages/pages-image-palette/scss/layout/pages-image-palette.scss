@@ -4,7 +4,7 @@
 .image-palette {
   @include overlay($overlay-dark);
   @include flexbox(column, nowrap, normal, normal);
-  @include configureImage('/src/assets/other-pages.jpg', cover, top);
+  @include configureImage('/src/assets/other-pages.webp', cover, top);
   gap: 2rem;
   color: $white;
   padding: 1rem;

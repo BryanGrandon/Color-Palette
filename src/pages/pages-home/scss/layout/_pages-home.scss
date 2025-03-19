@@ -10,7 +10,7 @@
 }
 
 .home {
-  @include configureImage('/src/assets/home.jpg', cover, center);
+  @include configureImage('/src/assets/home.webp', cover, center);
   @include overlay($overlay-dark);
   min-height: $pages-min-height;
   padding: 1rem;

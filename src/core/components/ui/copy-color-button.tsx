@@ -1,6 +1,6 @@
 import { useHookContext } from '../../../hooks/hook-context'
-import { IoCopyOutline, IoCopy } from 'react-icons/io5'
 import ButtonIcons from './button-icons'
+import { ICopy, ICopyOutline } from '../icons/i-copy'
 
 type Copy_Color_Button = {
   color: string
@@ -15,7 +15,7 @@ const CopyColorButton = ({ color }: Copy_Color_Button) => {
   }
   return (
     <abbr title='Color copied'>
-      <ButtonIcons selected={<IoCopy />} deselected={<IoCopyOutline />} onClick={handlerClickCopyColor} />
+      <ButtonIcons selected={<ICopy />} deselected={<ICopyOutline />} onClick={handlerClickCopyColor} ariaLabel='Color copied' />
     </abbr>
   )
 }

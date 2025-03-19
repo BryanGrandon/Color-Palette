@@ -37,8 +37,9 @@
 }
 
 .nav-btn {
+  cursor: pointer;
   display: none;
-  font-size: 1.2rem;
+  height: 1.5rem;
 }
 
 @media screen and (max-width: 950px) {

@@ -2,9 +2,7 @@ import { useHookContext } from '../../../../hooks/hook-context'
 import { ModalShades } from '../layout/modal-shades'
 import ButtonIcons from '../../../../core/components/ui/button-icons'
 import { shadesColor } from '../../script/shades-color'
-// Icons
-import { FaArrowsUpDown } from 'react-icons/fa6'
-import { FaExpandArrowsAlt } from 'react-icons/fa'
+import { IArrowExpanded, IArrowUpDown } from '../../../../core/components/icons/i-arrows'
 
 type Shades_Color = {
   color: string
@@ -24,9 +22,15 @@ const ShadesColor = ({ id, color }: Shades_Color): JSX.Element => {
     theModal.modify.content(<ModalShades color={color} onClick={handlerModal} />)
     theModal.modify.open(true)
   }
+
   return (
     <abbr title='Color shades' className='not-on-mobile'>
-      <ButtonIcons selected={<FaExpandArrowsAlt />} deselected={<FaArrowsUpDown />} onClick={handlerClickShades} />
+      <ButtonIcons
+        selected={<IArrowExpanded />}
+        deselected={<IArrowUpDown />}
+        onClick={handlerClickShades}
+        ariaLabel='Color shades'
+      />
     </abbr>
   )
 }

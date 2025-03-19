@@ -2,7 +2,7 @@
 @use '/src/core/scss/utilities/variables' as *;
 
 .pages-saved {
-  @include configureImage('/src/assets/other-pages.jpg', cover, top);
+  @include configureImage('/src/assets/other-pages.webp', cover, top);
   @include overlay($overlay-dark);
   min-height: $pages-min-height;
 
