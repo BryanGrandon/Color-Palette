@@ -12,6 +12,7 @@
   gap: 1rem;
   padding: 1rem 2rem;
   position: relative;
+  color: $white;
 
   &__buttons {
     @include flexbox(row, nowrap, space-between, center);

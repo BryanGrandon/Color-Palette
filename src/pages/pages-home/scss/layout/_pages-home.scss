@@ -7,6 +7,7 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(8rem, 1fr));
   gap: 0.3rem;
+  color: $white;
 }
 
 .home {
@@ -14,6 +15,7 @@
   @include overlay($overlay-dark);
   min-height: $pages-min-height;
   padding: 1rem;
+  color: $white;
 
   &__options {
     @include flexbox(row, nowrap, end, center);

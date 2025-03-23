@@ -6,6 +6,7 @@
   @include overlay($overlay-dark);
   min-height: $pages-min-height;
   padding: 1rem;
+  color: $white;
 
   &__cards {
     position: relative;

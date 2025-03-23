@@ -5,6 +5,7 @@
   @include configureImage('/src/assets/other-pages.webp', cover, top);
   @include overlay($overlay-dark);
   min-height: $pages-min-height;
+  color: $white;
 
   &__text {
     position: relative;
