@@ -1,6 +1,6 @@
 # Color Palette
 
-Generate your color palette for your projects
+Color-Palette is a web tool for quickly and intuitively generating color palettes, ideal for web design and visual projects.
 
 - [🌐 Website Demo.](https://bryangrandon.github.io/Color-Palette/)
 
